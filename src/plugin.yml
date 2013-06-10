@@ -1,9 +1,8 @@
 name: Cheeves
 main: no.runsafe.cheeves.Plugin
 version: 1.0.@BUILD@
-authors: []
-depend: []
-description:
+author: Kruithne
+description: Achievements!
 commands:
   something:
     description:

@@ -1,5 +1,6 @@
 package no.runsafe.cheeves;
 
+import no.runsafe.cheeves.achievements.Pimp;
 import no.runsafe.framework.RunsafePlugin;
 
 public class Plugin extends RunsafePlugin
@@ -7,6 +8,7 @@ public class Plugin extends RunsafePlugin
 	@Override
 	protected void PluginSetup()
 	{
-		//addComponent(SomeComponent.class);
+		// Achievements
+		this.addComponent(Pimp.class);
 	}
 }
