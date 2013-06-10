@@ -3,6 +3,7 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.framework.event.inventory.IInventoryMoveItem;
 import no.runsafe.framework.minecraft.Item;
+import no.runsafe.framework.server.RunsafeServer;
 import no.runsafe.framework.server.event.inventory.RunsafeInventoryMoveItemEvent;
 import no.runsafe.framework.server.inventory.RunsafeInventory;
 import no.runsafe.framework.server.player.RunsafePlayer;
@@ -24,6 +25,7 @@ public class Pimp extends Achievement implements IInventoryMoveItem
 	public void OnInventoryMoveItemEvent(RunsafeInventoryMoveItemEvent event)
 	{
 		RunsafeInventory inventory = event.getDestination();
+		RunsafeServer.Instance.broadcastMessage("Inventory move detected");
 		if (inventory.getHolder() instanceof RunsafePlayer && inventory.contains(Item.BuildingBlock.Diamond, 64))
 			this.award((RunsafePlayer) inventory.getHolder());
 	}
