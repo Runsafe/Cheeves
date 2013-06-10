@@ -3,6 +3,7 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.framework.event.inventory.IInventoryClick;
 import no.runsafe.framework.minecraft.Item;
+import no.runsafe.framework.server.RunsafeServer;
 import no.runsafe.framework.server.event.inventory.RunsafeInventoryClickEvent;
 import no.runsafe.framework.server.inventory.RunsafeInventory;
 import no.runsafe.framework.server.player.RunsafePlayer;
@@ -24,7 +25,14 @@ public class Pimp extends Achievement implements IInventoryClick
 	public void OnInventoryClickEvent(RunsafeInventoryClickEvent event)
 	{
 		RunsafeInventory inventory = event.getInventory();
-		if (inventory.getHolder() instanceof RunsafePlayer && inventory.contains(Item.BuildingBlock.Diamond, 64))
-			this.award((RunsafePlayer) inventory.getHolder());
+		if (inventory.getHolder() instanceof RunsafePlayer)
+		{
+			RunsafeServer.Instance.broadcastMessage("Player detected");
+			if (inventory.contains(Item.BuildingBlock.Diamond, 64))
+			{
+				RunsafeServer.Instance.broadcastMessage("Diamond detected!");
+				this.award((RunsafePlayer) inventory.getHolder());
+			}
+		}
 	}
 }
