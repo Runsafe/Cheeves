@@ -5,13 +5,16 @@ import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.framework.event.inventory.IInventoryClick;
 import no.runsafe.framework.event.player.IPlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.Item;
+import no.runsafe.framework.server.RunsafeServer;
 import no.runsafe.framework.server.event.inventory.RunsafeInventoryClickEvent;
 import no.runsafe.framework.server.event.player.RunsafePlayerPickupItemEvent;
+import no.runsafe.framework.server.item.meta.RunsafeMeta;
+import no.runsafe.framework.server.item.meta.RunsafeSkull;
 import no.runsafe.framework.server.player.RunsafePlayer;
 
-public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
+public class WizardHead extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public Pimp(AchievementHandler achievementHandler)
+	public WizardHead(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 	}
@@ -19,19 +22,19 @@ public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupI
 	@Override
 	public String getAchievementName()
 	{
-		return "Pimp";
+		return "Wizards Did It";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Obtain 64 blocks of diamond.";
+		return "Obtain a wizard head.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return 1;
+		return 8;
 	}
 
 	@Override
@@ -48,7 +51,17 @@ public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupI
 
 	private void checkInventory(RunsafePlayer player)
 	{
-		if (player.getInventory().contains(Item.BuildingBlock.Diamond, 64))
-			this.award(player);
+		for (RunsafeMeta item : player.getInventory().getContents())
+		{
+			if (item.is(Item.Decoration.Head.Human))
+			{
+				RunsafeSkull skull = (RunsafeSkull) item;
+				RunsafePlayer wizard = RunsafeServer.Instance.getPlayerExact(skull.getOwner());
+
+				if (wizard != null)
+					if (wizard.getGroups().contains("wizard"))
+						this.award(player);
+			}
+		}
 	}
 }

@@ -1,7 +1,5 @@
 package no.runsafe.cheeves;
 
-import no.runsafe.cheeves.achievements.IAchievement;
-
 import java.util.HashMap;
 import java.util.Map;
 

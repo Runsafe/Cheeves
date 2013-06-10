@@ -1,6 +1,5 @@
-package no.runsafe.cheeves.achievements;
+package no.runsafe.cheeves;
 
-import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.framework.server.player.RunsafePlayer;
 
 public abstract class Achievement implements IAchievement

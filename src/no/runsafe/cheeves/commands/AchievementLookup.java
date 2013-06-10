@@ -1,7 +1,7 @@
 package no.runsafe.cheeves.commands;
 
 import no.runsafe.cheeves.AchievementFinder;
-import no.runsafe.cheeves.achievements.IAchievement;
+import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.command.ExecutableCommand;
 import no.runsafe.framework.server.ICommandExecutor;
 

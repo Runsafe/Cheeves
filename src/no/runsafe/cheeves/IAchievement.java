@@ -1,4 +1,4 @@
-package no.runsafe.cheeves.achievements;
+package no.runsafe.cheeves;
 
 public interface IAchievement
 {

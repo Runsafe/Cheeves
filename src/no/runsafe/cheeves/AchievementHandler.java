@@ -1,6 +1,5 @@
 package no.runsafe.cheeves;
 
-import no.runsafe.cheeves.achievements.IAchievement;
 import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.configuration.IConfiguration;
 import no.runsafe.framework.event.IConfigurationChanged;

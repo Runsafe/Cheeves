@@ -9,9 +9,9 @@ import no.runsafe.framework.server.event.inventory.RunsafeInventoryClickEvent;
 import no.runsafe.framework.server.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.server.player.RunsafePlayer;
 
-public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
+public class EmeraldCity extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public Pimp(AchievementHandler achievementHandler)
+	public EmeraldCity(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 	}
@@ -19,19 +19,19 @@ public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupI
 	@Override
 	public String getAchievementName()
 	{
-		return "Pimp";
+		return "Let's Build an Emerald City";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Obtain 64 blocks of diamond.";
+		return "Obtain 64 blocks of emerald.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return 1;
+		return 2;
 	}
 
 	@Override
@@ -48,7 +48,7 @@ public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupI
 
 	private void checkInventory(RunsafePlayer player)
 	{
-		if (player.getInventory().contains(Item.BuildingBlock.Diamond, 64))
+		if (player.getInventory().contains(Item.BuildingBlock.Emerald, 64))
 			this.award(player);
 	}
 }

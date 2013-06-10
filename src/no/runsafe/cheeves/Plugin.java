@@ -1,6 +1,6 @@
 package no.runsafe.cheeves;
 
-import no.runsafe.cheeves.achievements.Pimp;
+import no.runsafe.cheeves.achievements.*;
 import no.runsafe.cheeves.commands.AchievementLookup;
 import no.runsafe.cheeves.commands.AwardAchievement;
 import no.runsafe.cheeves.commands.ViewAchievements;
@@ -18,6 +18,13 @@ public class Plugin extends RunsafePlugin
 
 		// Achievements
 		this.addComponent(Pimp.class);
+		this.addComponent(EmeraldCity.class);
+		this.addComponent(DefenseOfTheKingdom.class);
+		this.addComponent(MyPrecious.class);
+		this.addComponent(PvPTournamentJune.class);
+		this.addComponent(ServerFirstEnderDragon.class);
+		this.addComponent(TheTunnel.class);
+		this.addComponent(WizardHead.class);
 
 		this.addComponent(AchievementFinder.class);
 

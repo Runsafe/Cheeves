@@ -1,6 +1,6 @@
 package no.runsafe.cheeves.database;
 
-import no.runsafe.cheeves.achievements.IAchievement;
+import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.database.IDatabase;
 import no.runsafe.framework.database.Repository;
 import no.runsafe.framework.database.Row;
