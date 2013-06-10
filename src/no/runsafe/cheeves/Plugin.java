@@ -8,6 +8,8 @@ public class Plugin extends RunsafePlugin
 	@Override
 	protected void PluginSetup()
 	{
+		this.addComponent(AchievementHandler.class);
+
 		// Achievements
 		this.addComponent(Pimp.class);
 	}
