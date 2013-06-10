@@ -4,6 +4,8 @@ version: 1.0.@BUILD@
 author: Kruithne
 description: Achievements!
 commands:
-  something:
-    description:
-    aliases: []
+  achievements:
+    description: Achievement related commands
+    aliases: [achievement, ach, achieve]
+  awardach:
+    description: Awards an achievement to a player

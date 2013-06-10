@@ -20,6 +20,18 @@ public class Pimp extends Achievement implements IInventoryClick
 	}
 
 	@Override
+	public String getAchievementInfo()
+	{
+		return "Obtain 64 blocks of diamond.";
+	}
+
+	@Override
+	public int getAchievementID()
+	{
+		return 1;
+	}
+
+	@Override
 	public void OnInventoryClickEvent(RunsafeInventoryClickEvent event)
 	{
 		RunsafePlayer player = event.getWhoClicked();
