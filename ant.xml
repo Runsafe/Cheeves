@@ -1,0 +1,44 @@
+<project name="Cheeves" basedir="." default="jar">
+
+    <property name="src.dir" value="src"/>
+    <property name="build.dir" value="build"/>
+    <property name="classes.dir" value="${build.dir}/classes"/>
+    <property name="jar.dir" value="${build.dir}/jar"/>
+    <property name="framework.dir" value="../../Framework"/>
+    <property name="runsafe.dir" value="${framework.dir}/lastStable/archive/build/jar"/>
+    <property name="lib.dir" value="${framework.dir}/workspace/lib"/>
+
+    <path id="classpath">
+        <fileset dir="${runsafe.dir}" includes="framework.jar"/>
+        <fileset dir="${lib.dir}" includes="*.jar"/>
+    </path>
+
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="injectVersion">
+        <copy file="${src.dir}/plugin.yml" todir="${build.dir}"/>
+        <replaceregexp file="${build.dir}/plugin.yml" match="@BUILD@" replace="${build.number}"/>
+    </target>
+
+    <target name="compile" depends="clean">
+        <buildnumber/>
+        <mkdir dir="${classes.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpathref="classpath" debug="true" debuglevel="lines,vars,source" deprecation="true"/>
+    </target>
+
+    <target name="jar" depends="compile,injectVersion">
+        <mkdir dir="${jar.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+            <manifest>
+                <attribute name="Class-Path" value="runsafe/framework.jar runsafe/joda-time-2.1.jar"/>
+            </manifest>
+            <fileset dir="${build.dir}" includes="plugin.yml"/>
+            <fileset dir="${src.dir}" includes="defaults.yml"/>
+        </jar>
+    </target>
+
+    <target name="clean-build" depends="clean,jar"/>
+
+</project>

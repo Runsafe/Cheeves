@@ -1,0 +1,10 @@
+name: Cheeves
+main: no.runsafe.cheeves.Plugin
+version: 1.0.@BUILD@
+authors: []
+depend: []
+description:
+commands:
+  something:
+    description:
+    aliases: []
