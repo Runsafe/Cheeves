@@ -40,28 +40,34 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 	@Override
 	public void OnInventoryClickEvent(RunsafeInventoryClickEvent event)
 	{
-		this.checkInventory(event.getWhoClicked());
+		this.checkInventory(event.getWhoClicked(), null);
 	}
 
 	@Override
 	public void OnPlayerPickupItemEvent(RunsafePlayerPickupItemEvent event)
 	{
-		this.checkInventory(event.getPlayer());
+		this.checkInventory(event.getPlayer(), event.getItem().getItemStack());
 	}
 
-	private void checkInventory(RunsafePlayer player)
+	private void checkInventory(RunsafePlayer player, RunsafeMeta pickedItem)
 	{
-		for (RunsafeMeta item : player.getInventory().getContents())
-		{
-			if (item.is(Item.Decoration.Head.Human))
-			{
-				RunsafeSkull skull = (RunsafeSkull) item;
-				RunsafePlayer wizard = RunsafeServer.Instance.getPlayerExact(skull.getOwner());
+		if (pickedItem != null)
+			this.checkForWizardHead(player, pickedItem);
 
-				if (wizard != null)
-					if (wizard.getGroups().contains("wizard"))
-						this.award(player);
-			}
+		for (RunsafeMeta item : player.getInventory().getContents())
+			this.checkForWizardHead(player, item);
+	}
+
+	private void checkForWizardHead(RunsafePlayer player, RunsafeMeta item)
+	{
+		if (item.is(Item.Decoration.Head.Human))
+		{
+			RunsafeSkull skull = (RunsafeSkull) item;
+			RunsafePlayer wizard = RunsafeServer.Instance.getPlayerExact(skull.getOwner());
+
+			if (wizard != null)
+				if (wizard.getGroups().contains("Wizard"))
+					this.award(player);
 		}
 	}
 }

@@ -7,6 +7,8 @@ import no.runsafe.framework.event.player.IPlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.Item;
 import no.runsafe.framework.server.event.inventory.RunsafeInventoryClickEvent;
 import no.runsafe.framework.server.event.player.RunsafePlayerPickupItemEvent;
+import no.runsafe.framework.server.inventory.RunsafeInventory;
+import no.runsafe.framework.server.item.meta.RunsafeMeta;
 import no.runsafe.framework.server.player.RunsafePlayer;
 
 public class EmeraldCity extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
@@ -37,18 +39,19 @@ public class EmeraldCity extends Achievement implements IInventoryClick, IPlayer
 	@Override
 	public void OnInventoryClickEvent(RunsafeInventoryClickEvent event)
 	{
-		this.checkInventory(event.getWhoClicked());
+		this.checkInventory(event.getWhoClicked(), null);
 	}
 
 	@Override
 	public void OnPlayerPickupItemEvent(RunsafePlayerPickupItemEvent event)
 	{
-		this.checkInventory(event.getPlayer());
+		this.checkInventory(event.getPlayer(), event.getItem().getItemStack());
 	}
 
-	private void checkInventory(RunsafePlayer player)
+	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
-		if (player.getInventory().contains(Item.BuildingBlock.Emerald, 64))
+		RunsafeInventory inventory = player.getInventory();
+		if (inventory.contains(Item.BuildingBlock.Emerald, 64) || (inventory.contains(Item.BuildingBlock.Emerald, 63) && (item != null && item.is(Item.BuildingBlock.Emerald))))
 			this.award(player);
 	}
 }
