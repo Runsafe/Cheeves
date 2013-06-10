@@ -34,6 +34,7 @@ public class AwardAchievement extends ExecutableCommand
 				return "&cNo achievement with that ID.";
 
 			this.achievementHandler.awardAchievement(achievement, player);
+			return null;
 		}
 		return "&cUnable to find player";
 	}

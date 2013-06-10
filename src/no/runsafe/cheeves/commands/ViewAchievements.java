@@ -58,6 +58,7 @@ public class ViewAchievements extends ExecutableCommand
 				IAchievement achievement = this.achievementFinder.getAchievementByID(achievementID);
 				executor.sendColouredMessage("&3%s - &f%s", achievement.getAchievementName(), achievement.getAchievementInfo());
 			}
+			return null;
 		}
 		return "&cUnable to draw achievement list for that player.";
 	}
