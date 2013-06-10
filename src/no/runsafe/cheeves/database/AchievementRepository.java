@@ -60,7 +60,7 @@ public class AchievementRepository extends Repository
 		sql.add(
 				"CREATE TABLE `cheeves_data` (" +
 						"`playerName` VARCHAR(50) NOT NULL," +
-						"`achievmentID` INT(10) NOT NULL," +
+						"`achievementID` INT(10) NOT NULL," +
 						"`earned` DATETIME NOT NULL," +
 						"PRIMARY KEY (`playerName`, `achievementID`)" +
 					")"
