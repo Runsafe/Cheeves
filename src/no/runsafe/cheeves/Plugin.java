@@ -5,10 +5,10 @@ import no.runsafe.cheeves.commands.AchievementLookup;
 import no.runsafe.cheeves.commands.AwardAchievement;
 import no.runsafe.cheeves.commands.ViewAchievements;
 import no.runsafe.cheeves.database.AchievementRepository;
-import no.runsafe.framework.RunsafePlugin;
+import no.runsafe.framework.RunsafeConfigurablePlugin;
 import no.runsafe.framework.command.Command;
 
-public class Plugin extends RunsafePlugin
+public class Plugin extends RunsafeConfigurablePlugin
 {
 	@Override
 	protected void PluginSetup()
