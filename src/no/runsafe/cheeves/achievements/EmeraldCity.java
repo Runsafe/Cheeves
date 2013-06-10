@@ -51,7 +51,7 @@ public class EmeraldCity extends Achievement implements IInventoryClick, IPlayer
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (inventory.contains(Item.BuildingBlock.Emerald, 64) || (inventory.contains(Item.BuildingBlock.Emerald, 63) && (item != null && item.is(Item.BuildingBlock.Emerald))))
+		if (!player.isCreative() && inventory.contains(Item.BuildingBlock.Emerald, 64) || (inventory.contains(Item.BuildingBlock.Emerald, 63) && (item != null && item.is(Item.BuildingBlock.Emerald))))
 			this.award(player);
 	}
 }

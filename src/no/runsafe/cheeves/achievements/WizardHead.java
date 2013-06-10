@@ -60,7 +60,7 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 
 	private void checkForWizardHead(RunsafePlayer player, RunsafeMeta item)
 	{
-		if (item.is(Item.Decoration.Head.Human))
+		if (!player.isCreative() && item.is(Item.Decoration.Head.Human))
 		{
 			RunsafeSkull skull = (RunsafeSkull) item;
 			RunsafePlayer wizard = RunsafeServer.Instance.getPlayer(skull.getOwner());

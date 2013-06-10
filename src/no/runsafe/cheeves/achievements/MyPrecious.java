@@ -51,7 +51,7 @@ public class MyPrecious extends Achievement implements IInventoryClick, IPlayerP
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (inventory.contains(Item.Special.DragonEgg, 1) || (item != null && item.is(Item.Special.DragonEgg)))
+		if (!player.isCreative() && inventory.contains(Item.Special.DragonEgg, 1) || (item != null && item.is(Item.Special.DragonEgg)))
 			this.award(player);
 	}
 }
