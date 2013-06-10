@@ -24,6 +24,7 @@ public class Plugin extends RunsafePlugin
 		Command achievements = new Command("achievements", "Achievement related commands", null);
 		achievements.addSubCommand(getInstance(AchievementLookup.class));
 		achievements.addSubCommand(getInstance(ViewAchievements.class));
+		this.addComponent(achievements);
 
 		this.addComponent(AwardAchievement.class);
 	}
