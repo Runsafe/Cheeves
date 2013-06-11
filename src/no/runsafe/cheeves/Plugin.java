@@ -14,7 +14,7 @@ public class Plugin extends RunsafeConfigurablePlugin
 	@Override
 	protected void PluginSetup()
 	{
-		this.addComponent(getPluginAPI(UniverseHandler.class));
+		this.addComponent(Instances.get("RunsafeInventories").getComponent(UniverseHandler.class));
 		this.addComponent(AchievementRepository.class);
 		this.addComponent(AchievementHandler.class);
 
