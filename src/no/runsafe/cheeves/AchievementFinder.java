@@ -5,9 +5,9 @@ import java.util.Map;
 
 public class AchievementFinder
 {
-	public AchievementFinder(IAchievement[] achievements)
+	public AchievementFinder(Achievement[] achievements)
 	{
-		for (IAchievement achievement : achievements)
+		for (Achievement achievement : achievements)
 			this.achievementHashMap.put(achievement.getAchievementID(), achievement);
 	}
 
@@ -19,7 +19,7 @@ public class AchievementFinder
 	public IAchievement getAchievementByTitle(String title)
 	{
 		IAchievement possibleMatch = null;
-		for (Map.Entry<Integer, IAchievement> entry : this.achievementHashMap.entrySet())
+		for (Map.Entry<Integer, Achievement> entry : this.achievementHashMap.entrySet())
 		{
 			IAchievement achievement = entry.getValue();
 			if (achievement.getAchievementName().equalsIgnoreCase(title))
@@ -35,5 +35,5 @@ public class AchievementFinder
 		return null;
 	}
 
-	private HashMap<Integer, IAchievement> achievementHashMap = new HashMap<Integer, IAchievement>();
+	private HashMap<Integer, Achievement> achievementHashMap = new HashMap<Integer, Achievement>();
 }

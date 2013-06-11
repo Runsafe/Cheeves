@@ -23,7 +23,7 @@ public class AchievementHandler implements IConfigurationChanged
 		this.earnedAchievements = repository.getAchievements();
 	}
 
-	public void awardAchievement(IAchievement achievement, RunsafePlayer player)
+	public void awardAchievement(Achievement achievement, RunsafePlayer player)
 	{
 		if (!this.hasAchievement(player, achievement))
 		{
@@ -48,7 +48,7 @@ public class AchievementHandler implements IConfigurationChanged
 		return (this.earnedAchievements.containsKey(playerName) ? this.earnedAchievements.get(playerName) : null);
 	}
 
-	public boolean hasAchievement(RunsafePlayer player, IAchievement achievement)
+	public boolean hasAchievement(RunsafePlayer player, Achievement achievement)
 	{
 		String playerName = player.getName();
 		return this.earnedAchievements.containsKey(playerName) && this.earnedAchievements.get(playerName).contains(achievement.getAchievementID());
