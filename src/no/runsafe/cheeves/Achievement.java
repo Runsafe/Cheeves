@@ -9,7 +9,7 @@ public abstract class Achievement implements IAchievement
 		this.achievementHandler = achievementHandler;
 	}
 
-	protected void award(RunsafePlayer player)
+	public void award(RunsafePlayer player)
 	{
 		this.achievementHandler.awardAchievement(this, player);
 	}
