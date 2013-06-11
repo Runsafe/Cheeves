@@ -56,7 +56,7 @@ public class ViewAchievements extends ExecutableCommand
 			for (Integer achievementID : achievements)
 			{
 				IAchievement achievement = this.achievementFinder.getAchievementByID(achievementID);
-				executor.sendColouredMessage("&3%s - &f%s", achievement.getAchievementName(), achievement.getAchievementInfo());
+				executor.sendColouredMessage("&3" + achievement.getAchievementName());
 			}
 			return null;
 		}

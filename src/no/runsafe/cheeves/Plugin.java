@@ -28,6 +28,7 @@ public class Plugin extends RunsafeConfigurablePlugin
 		this.addComponent(TheTunnel.class);
 		this.addComponent(WizardHead.class);
 		this.addComponent(Sponge.class);
+		this.addComponent(WickedSick.class);
 
 		this.addComponent(AchievementFinder.class);
 
