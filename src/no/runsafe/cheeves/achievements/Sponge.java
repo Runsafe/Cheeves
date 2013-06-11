@@ -35,7 +35,7 @@ public class Sponge extends Achievement implements IInventoryClick, IPlayerPicku
 	@Override
 	public int getAchievementID()
 	{
-		return 7;
+		return 10;
 	}
 
 	@Override
