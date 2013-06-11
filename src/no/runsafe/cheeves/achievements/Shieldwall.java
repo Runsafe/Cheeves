@@ -8,6 +8,8 @@ import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.minecraft.RunsafeEntityType;
 import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
+import no.runsafe.framework.minecraft.entity.ProjectileEntity;
+import no.runsafe.framework.minecraft.entity.RunsafeProjectile;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
@@ -53,9 +55,18 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		if (event.getEntity() instanceof RunsafePlayer)
 		{
 			RunsafeEntityType entityType = event.getDamageActor().getEntityType();
+			RunsafePlayer player = (RunsafePlayer) event.getEntity();
 
 			if (Shieldwall.requiredMobs.contains(entityType))
-				this.registerKill((RunsafePlayer) event.getEntity(), entityType);
+			{
+				this.registerKill(player, entityType);
+			}
+			else if (entityType instanceof ProjectileEntity)
+			{
+				RunsafeEntityType shooter = ((RunsafeProjectile) event.getDamageActor()).getShooter().getEntityType();
+				if (Shieldwall.requiredMobs.contains(shooter))
+					this.registerKill(player, shooter);
+			}
 		}
 	}
 
@@ -68,7 +79,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		if (!this.sprees.get(playerName).contains(type))
 		{
 			this.sprees.get(playerName).add(type);
-			RunsafeServer.Instance.broadcastMessage(player + " registered kill for " + type.getName());
+			RunsafeServer.Instance.broadcastMessage(player.getName() + " registered kill for " + type.getName());
 		}
 	}
 
