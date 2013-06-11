@@ -3,11 +3,11 @@ package no.runsafe.cheeves.commands;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.AchievementHandler;
-import no.runsafe.framework.command.ExecutableCommand;
-import no.runsafe.framework.server.ICommandExecutor;
-import no.runsafe.framework.server.RunsafeServer;
-import no.runsafe.framework.server.player.RunsafeAmbiguousPlayer;
-import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.framework.api.command.ICommandExecutor;
+import no.runsafe.framework.internal.command.ExecutableCommand;
+import no.runsafe.framework.minecraft.RunsafeServer;
+import no.runsafe.framework.minecraft.player.RunsafeAmbiguousPlayer;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.HashMap;
 

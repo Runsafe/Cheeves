@@ -1,6 +1,6 @@
 package no.runsafe.cheeves;
 
-import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 public abstract class Achievement implements IAchievement
 {

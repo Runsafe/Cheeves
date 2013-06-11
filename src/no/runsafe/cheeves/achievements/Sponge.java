@@ -3,14 +3,14 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
-import no.runsafe.framework.event.inventory.IInventoryClick;
-import no.runsafe.framework.event.player.IPlayerPickupItemEvent;
+import no.runsafe.framework.api.event.inventory.IInventoryClick;
+import no.runsafe.framework.api.event.player.IPlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.Item;
-import no.runsafe.framework.server.event.inventory.RunsafeInventoryClickEvent;
-import no.runsafe.framework.server.event.player.RunsafePlayerPickupItemEvent;
-import no.runsafe.framework.server.inventory.RunsafeInventory;
-import no.runsafe.framework.server.item.meta.RunsafeMeta;
-import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.framework.minecraft.event.inventory.RunsafeInventoryClickEvent;
+import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
+import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
+import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class Sponge extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
