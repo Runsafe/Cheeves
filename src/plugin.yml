@@ -3,6 +3,7 @@ main: no.runsafe.cheeves.Plugin
 version: 1.0.@BUILD@
 author: Kruithne
 description: Achievements!
+depend: [RunsafeInventories]
 commands:
   achievements:
     description: Achievement related commands

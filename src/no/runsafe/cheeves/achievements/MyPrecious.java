@@ -10,12 +10,14 @@ import no.runsafe.framework.server.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.server.inventory.RunsafeInventory;
 import no.runsafe.framework.server.item.meta.RunsafeMeta;
 import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class MyPrecious extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public MyPrecious(AchievementHandler achievementHandler)
+	public MyPrecious(AchievementHandler achievementHandler, UniverseHandler universeHandler)
 	{
 		super(achievementHandler);
+		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -51,7 +53,10 @@ public class MyPrecious extends Achievement implements IInventoryClick, IPlayerP
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (!player.isCreative() && inventory.contains(Item.Special.DragonEgg, 1) || (item != null && item.is(Item.Special.DragonEgg)))
-			this.award(player);
+		if (this.universeHandler.getUniverseName(player.getWorld()).equals("survival"))
+			if (inventory.contains(Item.Special.DragonEgg, 1) || (item != null && item.is(Item.Special.DragonEgg)))
+				this.award(player);
 	}
+
+	private UniverseHandler universeHandler;
 }

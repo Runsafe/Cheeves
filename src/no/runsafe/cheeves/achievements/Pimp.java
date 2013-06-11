@@ -10,12 +10,14 @@ import no.runsafe.framework.server.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.server.inventory.RunsafeInventory;
 import no.runsafe.framework.server.item.meta.RunsafeMeta;
 import no.runsafe.framework.server.player.RunsafePlayer;
+import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public Pimp(AchievementHandler achievementHandler)
+	public Pimp(AchievementHandler achievementHandler, UniverseHandler universeHandler)
 	{
 		super(achievementHandler);
+		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -51,7 +53,10 @@ public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupI
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (!player.isCreative() && inventory.contains(Item.BuildingBlock.Diamond, 64) || (inventory.contains(Item.BuildingBlock.Diamond, 63) && (item != null && item.is(Item.BuildingBlock.Diamond))))
-			this.award(player);
+		if (this.universeHandler.getUniverseName(player.getWorld()).equals("survival"))
+			if (inventory.contains(Item.BuildingBlock.Diamond, 64) || (inventory.contains(Item.BuildingBlock.Diamond, 63) && (item != null && item.is(Item.BuildingBlock.Diamond))))
+				this.award(player);
 	}
+
+	private UniverseHandler universeHandler;
 }
