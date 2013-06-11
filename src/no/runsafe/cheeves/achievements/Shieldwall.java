@@ -33,7 +33,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Take damage from the following mobs without dying: ";
+		return "Take damage from the following mobs without dying: Blaze, Cave Spider, Enderman, Creeper, Ghast, Lava Slime, Iron Golem, Zombie Pigman, Silverfish, Skeleton, Zombie, Witch, Wither, Wolf, Slime, Spider.";
 	}
 
 	@Override
