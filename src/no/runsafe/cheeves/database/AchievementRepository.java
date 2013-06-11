@@ -2,9 +2,9 @@ package no.runsafe.cheeves.database;
 
 import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.database.IDatabase;
-import no.runsafe.framework.internal.database.Repository;
-import no.runsafe.framework.internal.database.Row;
-import no.runsafe.framework.internal.database.Set;
+import no.runsafe.framework.api.database.IRow;
+import no.runsafe.framework.api.database.ISet;
+import no.runsafe.framework.api.database.Repository;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,11 +26,11 @@ public class AchievementRepository extends Repository
 	public HashMap<String, List<Integer>> getAchievements()
 	{
 		HashMap<String, List<Integer>> achievements = new HashMap<String, List<Integer>>();
-		Set data = this.database.Query("SELECT playerName, achievementID FROM cheeves_data");
+		ISet data = this.database.Query("SELECT playerName, achievementID FROM cheeves_data");
 
 		if (data != null)
 		{
-			for (Row node : data)
+			for (IRow node : data)
 			{
 				String playerName = node.String("playerName");
 				if (!achievements.containsKey(playerName))
