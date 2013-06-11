@@ -6,7 +6,6 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.minecraft.RunsafeEntityType;
-import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
 import no.runsafe.framework.minecraft.entity.ProjectileEntity;
 import no.runsafe.framework.minecraft.entity.RunsafeProjectile;
@@ -54,18 +53,22 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 	{
 		if (event.getEntity() instanceof RunsafePlayer)
 		{
-			RunsafeEntityType entityType = event.getDamageActor().getEntityType();
 			RunsafePlayer player = (RunsafePlayer) event.getEntity();
 
-			if (Shieldwall.requiredMobs.contains(entityType))
+			if (!this.achievementHandler.hasAchievement(player, this))
 			{
-				this.registerKill(player, entityType);
-			}
-			else if (entityType instanceof ProjectileEntity)
-			{
-				RunsafeEntityType shooter = ((RunsafeProjectile) event.getDamageActor()).getShooter().getEntityType();
-				if (Shieldwall.requiredMobs.contains(shooter))
-					this.registerKill(player, shooter);
+				RunsafeEntityType entityType = event.getDamageActor().getEntityType();
+
+				if (Shieldwall.requiredMobs.contains(entityType))
+				{
+					this.registerKill(player, entityType);
+				}
+				else if (entityType instanceof ProjectileEntity)
+				{
+					RunsafeEntityType shooter = ((RunsafeProjectile) event.getDamageActor()).getShooter().getEntityType();
+					if (Shieldwall.requiredMobs.contains(shooter))
+						this.registerKill(player, shooter);
+				}
 			}
 		}
 	}
@@ -79,8 +82,17 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		if (!this.sprees.get(playerName).contains(type))
 		{
 			this.sprees.get(playerName).add(type);
-			RunsafeServer.Instance.broadcastMessage(player.getName() + " registered kill for " + type.getName());
+			this.checkProgress(player);
 		}
+	}
+
+	private void checkProgress(RunsafePlayer player)
+	{
+		for (RunsafeEntityType type : Shieldwall.requiredMobs)
+			if (!this.sprees.get(player.getName()).contains(type))
+				return;
+
+		this.award(player);
 	}
 
 	private HashMap<String, List<RunsafeEntityType>> sprees = new HashMap<String, List<RunsafeEntityType>>();
