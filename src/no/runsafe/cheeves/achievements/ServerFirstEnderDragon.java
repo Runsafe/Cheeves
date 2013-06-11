@@ -2,6 +2,7 @@ package no.runsafe.cheeves.achievements;
 
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Achievements;
 
 public class ServerFirstEnderDragon extends Achievement
 {
@@ -25,6 +26,6 @@ public class ServerFirstEnderDragon extends Achievement
 	@Override
 	public int getAchievementID()
 	{
-		return 6;
+		return Achievements.SERVER_FIRST_ENDER_DRAGON.ordinal();
 	}
 }

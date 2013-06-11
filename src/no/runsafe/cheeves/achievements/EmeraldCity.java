@@ -2,6 +2,7 @@ package no.runsafe.cheeves.achievements;
 
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.event.inventory.IInventoryClick;
 import no.runsafe.framework.event.player.IPlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.Item;
@@ -35,7 +36,7 @@ public class EmeraldCity extends Achievement implements IInventoryClick, IPlayer
 	@Override
 	public int getAchievementID()
 	{
-		return 2;
+		return Achievements.EMERALD_CITY.ordinal();
 	}
 
 	@Override

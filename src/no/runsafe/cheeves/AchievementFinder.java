@@ -16,6 +16,11 @@ public class AchievementFinder
 		return (this.achievementHashMap.containsKey(achievementID) ? this.achievementHashMap.get(achievementID) : null);
 	}
 
+	public Achievement getAchievement(Achievements achievement)
+	{
+		return this.getAchievementByID(achievement.ordinal());
+	}
+
 	public Achievement getAchievementByTitle(String title)
 	{
 		Achievement possibleMatch = null;

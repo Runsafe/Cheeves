@@ -2,6 +2,7 @@ package no.runsafe.cheeves.achievements;
 
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Achievements;
 
 public class TheTunnel extends Achievement
 {
@@ -25,6 +26,6 @@ public class TheTunnel extends Achievement
 	@Override
 	public int getAchievementID()
 	{
-		return 3;
+		return Achievements.TUNNEL.ordinal();
 	}
 }

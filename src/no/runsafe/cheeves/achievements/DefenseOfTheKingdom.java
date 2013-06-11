@@ -2,6 +2,7 @@ package no.runsafe.cheeves.achievements;
 
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Achievements;
 
 public class DefenseOfTheKingdom extends Achievement
 {
@@ -25,6 +26,6 @@ public class DefenseOfTheKingdom extends Achievement
 	@Override
 	public int getAchievementID()
 	{
-		return 4;
+		return Achievements.DEFENSE_OF_THE_KINGDOM.ordinal();
 	}
 }

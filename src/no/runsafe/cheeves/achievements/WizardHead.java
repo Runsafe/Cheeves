@@ -2,6 +2,7 @@ package no.runsafe.cheeves.achievements;
 
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.event.inventory.IInventoryClick;
 import no.runsafe.framework.event.player.IPlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.Item;
@@ -36,7 +37,7 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 	@Override
 	public int getAchievementID()
 	{
-		return 8;
+		return Achievements.WIZARD_HEAD.ordinal();
 	}
 
 	@Override

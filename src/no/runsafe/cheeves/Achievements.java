@@ -1,0 +1,17 @@
+package no.runsafe.cheeves;
+
+public enum Achievements
+{
+	TEST,
+	PIMP,
+	EMERALD_CITY,
+	TUNNEL,
+	DEFENSE_OF_THE_KINGDOM,
+	PVP_TOURNAMENT_JUNE,
+	SERVER_FIRST_ENDER_DRAGON,
+	MY_PRECIOUS,
+	WIZARD_HEAD,
+	UNUSED,
+	SPONGE,
+	WICKED_SICK
+}
