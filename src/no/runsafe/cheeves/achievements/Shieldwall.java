@@ -6,6 +6,7 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.minecraft.RunsafeEntityType;
+import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
@@ -65,7 +66,10 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 			this.sprees.put(playerName, new ArrayList<RunsafeEntityType>());
 
 		if (!this.sprees.get(playerName).contains(type))
+		{
 			this.sprees.get(playerName).add(type);
+			RunsafeServer.Instance.broadcastMessage(player + " registered kill for " + type.getName());
+		}
 	}
 
 	private HashMap<String, List<RunsafeEntityType>> sprees = new HashMap<String, List<RunsafeEntityType>>();
