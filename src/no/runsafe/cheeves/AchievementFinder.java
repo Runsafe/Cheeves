@@ -25,7 +25,7 @@ public class AchievementFinder
 			if (achievement.getAchievementName().equalsIgnoreCase(title))
 				return achievement;
 
-			if (achievement.getAchievementName().startsWith(title))
+			if (achievement.getAchievementName().toLowerCase().startsWith(title.toLowerCase()))
 				possibleMatch = achievement;
 		}
 
