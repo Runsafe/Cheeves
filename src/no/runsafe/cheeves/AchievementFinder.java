@@ -11,17 +11,17 @@ public class AchievementFinder
 			this.achievementHashMap.put(achievement.getAchievementID(), achievement);
 	}
 
-	public IAchievement getAchievementByID(int achievementID)
+	public Achievement getAchievementByID(int achievementID)
 	{
 		return (this.achievementHashMap.containsKey(achievementID) ? this.achievementHashMap.get(achievementID) : null);
 	}
 
-	public IAchievement getAchievementByTitle(String title)
+	public Achievement getAchievementByTitle(String title)
 	{
-		IAchievement possibleMatch = null;
+		Achievement possibleMatch = null;
 		for (Map.Entry<Integer, Achievement> entry : this.achievementHashMap.entrySet())
 		{
-			IAchievement achievement = entry.getValue();
+			Achievement achievement = entry.getValue();
 			if (achievement.getAchievementName().equalsIgnoreCase(title))
 				return achievement;
 

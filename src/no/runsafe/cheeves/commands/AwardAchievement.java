@@ -1,8 +1,8 @@
 package no.runsafe.cheeves.commands;
 
+import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.AchievementHandler;
-import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.command.ExecutableCommand;
 import no.runsafe.framework.server.ICommandExecutor;
 import no.runsafe.framework.server.RunsafeServer;
@@ -29,7 +29,7 @@ public class AwardAchievement extends ExecutableCommand
 			if (player instanceof RunsafeAmbiguousPlayer)
 				return player.toString();
 
-			IAchievement achievement = this.achievementFinder.getAchievementByID(Integer.valueOf(parameters.get("achievementID")));
+			Achievement achievement = this.achievementFinder.getAchievementByID(Integer.valueOf(parameters.get("achievementID")));
 			if (achievement == null)
 				return "&cNo achievement with that ID.";
 
