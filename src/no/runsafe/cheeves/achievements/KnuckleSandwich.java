@@ -5,14 +5,16 @@ import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
 import no.runsafe.cheeves.achievementmetas.KnuckleSandwichMeta;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
+import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
 import no.runsafe.framework.minecraft.entity.RunsafeEntity;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
+import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.HashMap;
 
-public class KnuckleSandwich extends Achievement implements IEntityDamageByEntityEvent
+public class KnuckleSandwich extends Achievement implements IEntityDamageByEntityEvent, IPlayerDeathEvent
 {
 	public KnuckleSandwich(AchievementHandler achievementHandler)
 	{
@@ -28,13 +30,21 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Deal 100 points of damage to a wither using your fists.";
+		return "Deal 100 points of damage to a wither using your fists without dying.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
 		return Achievements.KNUCKLE_SANDWICH.ordinal();
+	}
+
+	@Override
+	public void OnPlayerDeathEvent(RunsafePlayerDeathEvent event)
+	{
+		String playerName = event.getEntity().getName();
+		if (this.meta.containsKey(playerName))
+			this.meta.get(playerName).resetDamage();
 	}
 
 	@Override
