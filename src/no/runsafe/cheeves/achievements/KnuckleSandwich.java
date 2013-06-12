@@ -6,6 +6,7 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.cheeves.achievementmetas.KnuckleSandwichMeta;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
+import no.runsafe.framework.minecraft.Item;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
 import no.runsafe.framework.minecraft.entity.RunsafeEntity;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
@@ -58,7 +59,7 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 
 			KnuckleSandwichMeta meta = (this.meta.containsKey(playerName) ? this.meta.get(playerName) : new KnuckleSandwichMeta(entity));
 
-			if (!meta.isSameEntity(entity))
+			if (!meta.isSameEntity(entity) || player.getItemInHand() == null || player.getItemInHand().is(Item.Unavailable.Air))
 			{
 				meta.resetDamage();
 				meta.setEntity(entity);
