@@ -32,6 +32,7 @@ public class Plugin extends RunsafeConfigurablePlugin
 		this.addComponent(Shieldwall.class);
 		this.addComponent(Gladiator.class);
 		this.addComponent(MercilessGladiator.class);
+		this.addComponent(FleshWound.class);
 
 		this.addComponent(AchievementFinder.class);
 
