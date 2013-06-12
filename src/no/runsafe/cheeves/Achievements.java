@@ -2,7 +2,7 @@ package no.runsafe.cheeves;
 
 public enum Achievements
 {
-	TEST,
+	GLADIATOR,
 	PIMP,
 	EMERALD_CITY,
 	TUNNEL,
@@ -13,5 +13,6 @@ public enum Achievements
 	WIZARD_HEAD,
 	SHIELDWALL,
 	SPONGE,
-	WICKED_SICK
+	WICKED_SICK,
+	MERCILESS_GLADIATOR
 }

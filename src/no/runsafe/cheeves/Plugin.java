@@ -30,6 +30,8 @@ public class Plugin extends RunsafeConfigurablePlugin
 		this.addComponent(Sponge.class);
 		this.addComponent(WickedSick.class);
 		this.addComponent(Shieldwall.class);
+		this.addComponent(Gladiator.class);
+		this.addComponent(MercilessGladiator.class);
 
 		this.addComponent(AchievementFinder.class);
 
