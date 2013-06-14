@@ -29,9 +29,9 @@ public class KnuckleSandwichMeta
 		this.damage = 1;
 	}
 
-	public void addDamagePoint()
+	public void addDamagePoint(int damage)
 	{
-		this.damage += 1;
+		this.damage += damage;
 	}
 
 	private int damage;

@@ -69,7 +69,7 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 				if (meta.getDamage() == 100)
 					this.award(player);
 				else
-					meta.addDamagePoint();
+					meta.addDamagePoint(event.getDamage());
 			}
 		}
 	}
