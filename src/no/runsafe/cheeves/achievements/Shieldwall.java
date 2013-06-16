@@ -57,7 +57,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		{
 			RunsafePlayer player = (RunsafePlayer) event.getEntity();
 
-			if (!this.achievementHandler.hasAchievement(player, this) && this.universeHandler.getUniverseName(player.getWorld()).equals("survival"))
+			if (!this.achievementHandler.hasAchievement(player, this) && this.universeHandler.isInUniverse(player, "survival"))
 			{
 				RunsafeEntityType entityType = event.getDamageActor().getEntityType();
 

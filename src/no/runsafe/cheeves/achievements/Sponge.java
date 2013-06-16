@@ -54,7 +54,7 @@ public class Sponge extends Achievement implements IInventoryClick, IPlayerPicku
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (this.universeHandler.getUniverseName(player.getWorld()).equals("survival"))
+		if (this.universeHandler.isInUniverse(player, "survival"))
 			if (inventory.contains(Item.BuildingBlock.Sponge, 1) || (item != null && item.is(Item.BuildingBlock.Sponge)))
 				this.award(player);
 	}

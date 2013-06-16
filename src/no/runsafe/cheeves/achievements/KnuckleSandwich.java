@@ -12,14 +12,16 @@ import no.runsafe.framework.minecraft.entity.RunsafeEntity;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.runsafeinventories.UniverseHandler;
 
 import java.util.HashMap;
 
 public class KnuckleSandwich extends Achievement implements IEntityDamageByEntityEvent, IPlayerDeathEvent
 {
-	public KnuckleSandwich(AchievementHandler achievementHandler)
+	public KnuckleSandwich(AchievementHandler achievementHandler, UniverseHandler universeHandler)
 	{
 		super(achievementHandler);
+		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -55,24 +57,28 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 		if (event.getDamageActor() instanceof RunsafePlayer && entity.getEntityType() == LivingEntity.Wither)
 		{
 			RunsafePlayer player = (RunsafePlayer) event.getDamageActor();
-			String playerName = player.getName();
 
-			KnuckleSandwichMeta meta = (this.meta.containsKey(playerName) ? this.meta.get(playerName) : new KnuckleSandwichMeta(entity));
+			if (this.universeHandler.isInUniverse(player, "survival"))
+			{
+				String playerName = player.getName();
+				KnuckleSandwichMeta meta = (this.meta.containsKey(playerName) ? this.meta.get(playerName) : new KnuckleSandwichMeta(entity));
 
-			if (!meta.isSameEntity(entity) || player.getItemInHand() == null || player.getItemInHand().is(Item.Unavailable.Air))
-			{
-				meta.resetDamage();
-				meta.setEntity(entity);
-			}
-			else
-			{
-				if (meta.getDamage() == 100)
-					this.award(player);
+				if (!meta.isSameEntity(entity) || player.getItemInHand() == null || player.getItemInHand().is(Item.Unavailable.Air))
+				{
+					meta.resetDamage();
+					meta.setEntity(entity);
+				}
 				else
-					meta.addDamagePoint(event.getDamage());
+				{
+					if (meta.getDamage() == 100)
+						this.award(player);
+					else
+						meta.addDamagePoint(event.getDamage());
+				}
 			}
 		}
 	}
 
 	HashMap<String, KnuckleSandwichMeta> meta = new HashMap<String, KnuckleSandwichMeta>();
+	private UniverseHandler universeHandler;
 }
