@@ -1,8 +1,7 @@
 package no.runsafe.cheeves;
 
 import no.runsafe.cheeves.database.AchievementRepository;
-import no.runsafe.framework.api.IConfiguration;
-import no.runsafe.framework.api.event.plugin.IConfigurationChanged;
+import no.runsafe.framework.api.event.plugin.IPluginEnabled;
 import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
@@ -10,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class AchievementHandler implements IConfigurationChanged
+public class AchievementHandler implements IPluginEnabled
 {
 	public AchievementHandler(AchievementRepository repository)
 	{
@@ -18,7 +17,7 @@ public class AchievementHandler implements IConfigurationChanged
 	}
 
 	@Override
-	public void OnConfigurationChanged(IConfiguration configuration)
+	public void OnPluginEnabled()
 	{
 		this.earnedAchievements = repository.getAchievements();
 	}
