@@ -3,8 +3,10 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
+import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
-public class WickedSick extends Achievement
+public class WickedSick extends Achievement implements IPlayerCustomEvent
 {
 	public WickedSick(AchievementHandler achievementHandler)
 	{
@@ -27,5 +29,12 @@ public class WickedSick extends Achievement
 	public int getAchievementID()
 	{
 		return Achievements.WICKED_SICK.ordinal();
+	}
+
+	@Override
+	public void OnPlayerCustomEvent(RunsafePlayer player, String event, Object data)
+	{
+		if (event.equals("peeveepee.killspree.wickedsick"))
+			this.award(player);
 	}
 }
