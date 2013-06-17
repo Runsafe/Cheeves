@@ -34,7 +34,7 @@ public class MercilessGladiator extends Achievement implements IPlayerCustomEven
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("peeveepee.rating.change") && (Integer) event.getData() == 2500)
+		if (event.getEvent().equals("peeveepee.rating.change") && (Integer) event.getData() >= 2500)
 			this.award(event.getPlayer());
 	}
 }

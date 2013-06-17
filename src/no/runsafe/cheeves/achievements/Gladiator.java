@@ -34,7 +34,7 @@ public class Gladiator extends Achievement implements IPlayerCustomEvent
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("peeveepee.rating.change") && (Integer) event.getData() == 2000)
+		if (event.getEvent().equals("peeveepee.rating.change") && (Integer) event.getData() >= 2000)
 			this.award(event.getPlayer());
 	}
 }
