@@ -56,7 +56,7 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 		{
 			RunsafePlayer player = (RunsafePlayer) event.getDamageActor();
 
-			if (player.getWorld().IsUniverse("survival"))
+			if (player.isInUniverse("survival"))
 			{
 				String playerName = player.getName();
 				KnuckleSandwichMeta meta = (this.meta.containsKey(playerName) ? this.meta.get(playerName) : new KnuckleSandwichMeta(entity));

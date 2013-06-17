@@ -35,7 +35,7 @@ public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 	@Override
 	public void OnPlayerDamage(RunsafePlayer player, RunsafeEntityDamageEvent event)
 	{
-		if (player.getWorld().IsUniverse("survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
+		if (player.isInUniverse("survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
 			this.award(player);
 	}
 }

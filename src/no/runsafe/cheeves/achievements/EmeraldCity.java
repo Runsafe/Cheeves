@@ -53,7 +53,7 @@ public class EmeraldCity extends Achievement implements IInventoryClick, IPlayer
 	{
 		RunsafeInventory inventory = player.getInventory();
 
-		if (player.getWorld().IsUniverse("survival"))
+		if (player.isInUniverse("survival"))
 			if (inventory.contains(Item.BuildingBlock.Emerald, 64) || (inventory.contains(Item.BuildingBlock.Emerald, 63) && (item != null && item.is(Item.BuildingBlock.Emerald))))
 				this.award(player);
 	}

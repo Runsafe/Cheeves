@@ -61,7 +61,7 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 
 	private void checkForWizardHead(RunsafePlayer player, RunsafeMeta item)
 	{
-		if (player.getWorld().IsUniverse("survival") && item.is(Item.Decoration.Head.Human))
+		if (player.isInUniverse("survival") && item.is(Item.Decoration.Head.Human))
 		{
 			RunsafeSkull skull = (RunsafeSkull) item;
 			RunsafePlayer wizard = RunsafeServer.Instance.getPlayer(skull.getOwner());

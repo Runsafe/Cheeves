@@ -52,7 +52,7 @@ public class Pimp extends Achievement implements IInventoryClick, IPlayerPickupI
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (player.getWorld().IsUniverse("survival"))
+		if (player.isInUniverse("survival"))
 			if (inventory.contains(Item.BuildingBlock.Diamond, 64) || (inventory.contains(Item.BuildingBlock.Diamond, 63) && (item != null && item.is(Item.BuildingBlock.Diamond))))
 				this.award(player);
 	}
