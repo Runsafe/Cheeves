@@ -6,13 +6,11 @@
     <property name="jar.dir" value="${build.dir}/jar"/>
     <property name="framework.dir" value="../../Framework"/>
     <property name="runsafe.dir" value="${framework.dir}/lastStable/archive/build/jar"/>
-	<property name="runsafeinventories.dir" value="../../RunsafeInventories/lastStable/archive/build/jar"/>
     <property name="lib.dir" value="${framework.dir}/workspace/lib"/>
 
     <path id="classpath">
         <fileset dir="${runsafe.dir}" includes="framework.jar"/>
         <fileset dir="${lib.dir}" includes="*.jar"/>
-		<fileset dir="${runsafeinventories.dir}" includes="*.jar"/>
     </path>
 
     <target name="clean">
