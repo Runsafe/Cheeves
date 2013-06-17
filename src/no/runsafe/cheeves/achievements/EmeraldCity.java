@@ -11,14 +11,12 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class EmeraldCity extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public EmeraldCity(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public EmeraldCity(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -55,10 +53,8 @@ public class EmeraldCity extends Achievement implements IInventoryClick, IPlayer
 	{
 		RunsafeInventory inventory = player.getInventory();
 
-		if (this.universeHandler.isInUniverse(player, "survival"))
+		if (player.getWorld().IsUniverse("survival"))
 			if (inventory.contains(Item.BuildingBlock.Emerald, 64) || (inventory.contains(Item.BuildingBlock.Emerald, 63) && (item != null && item.is(Item.BuildingBlock.Emerald))))
 				this.award(player);
 	}
-
-	private UniverseHandler universeHandler;
 }

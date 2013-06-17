@@ -7,14 +7,12 @@ import no.runsafe.cheeves.commands.ViewAchievements;
 import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.RunsafePlugin;
 import no.runsafe.framework.api.command.Command;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class Plugin extends RunsafePlugin
 {
 	@Override
 	protected void PluginSetup()
 	{
-		this.addComponent(Instances.get("RunsafeInventories").getComponent(UniverseHandler.class));
 		this.addComponent(AchievementRepository.class);
 		this.addComponent(AchievementHandler.class);
 		this.addComponent(AchievementChecker.class);
