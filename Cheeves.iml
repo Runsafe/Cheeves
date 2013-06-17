@@ -11,6 +11,7 @@
     <orderEntry type="library" name="joda-time-2.1-sources" level="project" />
     <orderEntry type="library" name="craftbukkit" level="project" />
     <orderEntry type="library" name="RunsafeInventories" level="project" />
+    <orderEntry type="library" name="worldguardbridge" level="project" />
   </component>
 </module>
 
