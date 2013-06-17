@@ -4,12 +4,11 @@ import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.IScheduler;
-import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.HashMap;
 
-public class SewageSurvivor extends Achievement implements IPlayerCustomEvent
+public class SewageSurvivor extends Achievement
 {
 	public SewageSurvivor(AchievementHandler achievementHandler, IScheduler scheduler)
 	{
@@ -33,15 +32,6 @@ public class SewageSurvivor extends Achievement implements IPlayerCustomEvent
 	public int getAchievementID()
 	{
 		return Achievements.SEWAGE_SURVIVOR.ordinal();
-	}
-
-	@Override
-	public void OnPlayerCustomEvent(RunsafePlayer player, String event, Object data)
-	{
-		if (event.equals("region.enter"))
-		{
-			player.sendColouredMessage(data.toString());
-		}
 	}
 
 	private void startTimer(final RunsafePlayer player)

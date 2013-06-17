@@ -4,7 +4,7 @@ import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
 public class MercilessGladiator extends Achievement implements IPlayerCustomEvent
 {
@@ -32,9 +32,9 @@ public class MercilessGladiator extends Achievement implements IPlayerCustomEven
 	}
 
 	@Override
-	public void OnPlayerCustomEvent(RunsafePlayer player, String event, Object data)
+	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.equals("peeveepee.rating.change") && (Integer) data == 2500)
-			this.award(player);
+		if (event.getEvent().equals("peeveepee.rating.change") && (Integer) event.getData() == 2500)
+			this.award(event.getPlayer());
 	}
 }

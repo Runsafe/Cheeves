@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="worldguardbridge">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../WorldGuardBridge" />
+      <root url="file://$PROJECT_DIR$/../worldguardbridge" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/../WorldGuardBridge/src" />
+      <root url="file://$PROJECT_DIR$/../worldguardbridge/src" />
     </SOURCES>
   </library>
 </component>
