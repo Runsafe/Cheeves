@@ -5,6 +5,7 @@ import no.runsafe.framework.api.database.IDatabase;
 import no.runsafe.framework.api.database.IRow;
 import no.runsafe.framework.api.database.ISet;
 import no.runsafe.framework.api.database.Repository;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,12 +44,30 @@ public class AchievementRepository extends Repository
 		return achievements;
 	}
 
-	public void storeAchievement(String playerName, IAchievement achievement)
+	public List<Integer> getNonToastedAchievements(RunsafePlayer player)
+	{
+		List<Integer> achievements = new ArrayList<Integer>();
+		ISet data = this.database.Query("SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0", player.getName());
+
+		if (data != null)
+			for (IRow node : data)
+				achievements.add(node.Integer("achievementID"));
+
+		return achievements;
+	}
+
+	public void clearNonToastedAchievements(RunsafePlayer player)
+	{
+		this.database.Execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName());
+	}
+
+	public void storeAchievement(String playerName, IAchievement achievement, boolean toasted)
 	{
 		this.database.Execute(
-				"INSERT INTO cheeves_data (playerName, achievementID, earned) VALUES(?, ?, NOW())",
+				"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
 				playerName,
-				achievement.getAchievementID()
+				achievement.getAchievementID(),
+				(toasted ? 1 : 0)
 		);
 	}
 
@@ -66,6 +85,13 @@ public class AchievementRepository extends Repository
 					")"
 		);
 		queries.put(1, sql);
+
+		sql.clear();
+		sql.add(
+				"ALTER TABLE `cheeves_data`" +
+						"ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`;"
+		);
+		queries.put(2, sql);
 		return queries;
 	}
 
