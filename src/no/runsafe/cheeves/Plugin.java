@@ -17,6 +17,7 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(Instances.get("RunsafeInventories").getComponent(UniverseHandler.class));
 		this.addComponent(AchievementRepository.class);
 		this.addComponent(AchievementHandler.class);
+		this.addComponent(AchievementChecker.class);
 
 		// Achievements
 		this.addComponent(Pimp.class);
