@@ -11,14 +11,12 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class Sponge extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public Sponge(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public Sponge(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -54,10 +52,8 @@ public class Sponge extends Achievement implements IInventoryClick, IPlayerPicku
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (this.universeHandler.isInUniverse(player, "survival"))
+		if (player.getWorld().IsUniverse("survival"))
 			if (inventory.contains(Item.BuildingBlock.Sponge, 1) || (item != null && item.is(Item.BuildingBlock.Sponge)))
 				this.award(player);
 	}
-
-	private UniverseHandler universeHandler;
 }

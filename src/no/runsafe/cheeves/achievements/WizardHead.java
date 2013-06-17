@@ -12,14 +12,12 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 import no.runsafe.framework.minecraft.item.meta.RunsafeSkull;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class WizardHead extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public WizardHead(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public WizardHead(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -63,7 +61,7 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 
 	private void checkForWizardHead(RunsafePlayer player, RunsafeMeta item)
 	{
-		if (this.universeHandler.isInUniverse(player, "survival") && item.is(Item.Decoration.Head.Human))
+		if (player.getWorld().IsUniverse("survival") && item.is(Item.Decoration.Head.Human))
 		{
 			RunsafeSkull skull = (RunsafeSkull) item;
 			RunsafePlayer wizard = RunsafeServer.Instance.getPlayer(skull.getOwner());
@@ -73,6 +71,4 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 					this.award(player);
 		}
 	}
-
-	private UniverseHandler universeHandler;
 }

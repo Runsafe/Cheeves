@@ -12,7 +12,6 @@ import no.runsafe.framework.minecraft.entity.RunsafeProjectile;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,10 +19,9 @@ import java.util.List;
 
 public class Shieldwall extends Achievement implements IEntityDamageByEntityEvent, IPlayerDeathEvent
 {
-	public Shieldwall(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public Shieldwall(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -57,7 +55,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		{
 			RunsafePlayer player = (RunsafePlayer) event.getEntity();
 
-			if (!this.achievementHandler.hasAchievement(player, this) && this.universeHandler.isInUniverse(player, "survival"))
+			if (!this.achievementHandler.hasAchievement(player, this) && player.getWorld().IsUniverse("survival"))
 			{
 				RunsafeEntityType entityType = event.getDamageActor().getEntityType();
 
@@ -99,7 +97,6 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 
 	private HashMap<String, List<RunsafeEntityType>> sprees = new HashMap<String, List<RunsafeEntityType>>();
 	private static List<RunsafeEntityType> requiredMobs = new ArrayList<RunsafeEntityType>();
-	private UniverseHandler universeHandler;
 
 	static
 	{

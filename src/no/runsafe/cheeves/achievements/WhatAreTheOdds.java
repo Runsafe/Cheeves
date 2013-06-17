@@ -6,14 +6,12 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerDamageEvent;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 {
-	public WhatAreTheOdds(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public WhatAreTheOdds(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -37,9 +35,7 @@ public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 	@Override
 	public void OnPlayerDamage(RunsafePlayer player, RunsafeEntityDamageEvent event)
 	{
-		if (this.universeHandler.isInUniverse(player, "survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
+		if (player.getWorld().IsUniverse("survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
 			this.award(player);
 	}
-
-	private UniverseHandler universeHandler;
 }

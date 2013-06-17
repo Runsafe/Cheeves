@@ -12,16 +12,14 @@ import no.runsafe.framework.minecraft.entity.RunsafeEntity;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 import java.util.HashMap;
 
 public class KnuckleSandwich extends Achievement implements IEntityDamageByEntityEvent, IPlayerDeathEvent
 {
-	public KnuckleSandwich(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public KnuckleSandwich(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -58,7 +56,7 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 		{
 			RunsafePlayer player = (RunsafePlayer) event.getDamageActor();
 
-			if (this.universeHandler.isInUniverse(player, "survival"))
+			if (player.getWorld().IsUniverse("survival"))
 			{
 				String playerName = player.getName();
 				KnuckleSandwichMeta meta = (this.meta.containsKey(playerName) ? this.meta.get(playerName) : new KnuckleSandwichMeta(entity));
@@ -80,5 +78,4 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 	}
 
 	HashMap<String, KnuckleSandwichMeta> meta = new HashMap<String, KnuckleSandwichMeta>();
-	private UniverseHandler universeHandler;
 }

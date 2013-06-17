@@ -12,14 +12,12 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
-import no.runsafe.runsafeinventories.UniverseHandler;
 
 public class MyPrecious extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public MyPrecious(AchievementHandler achievementHandler, UniverseHandler universeHandler)
+	public MyPrecious(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		this.universeHandler = universeHandler;
 	}
 
 	@Override
@@ -55,10 +53,8 @@ public class MyPrecious extends Achievement implements IInventoryClick, IPlayerP
 	private void checkInventory(RunsafePlayer player, RunsafeMeta item)
 	{
 		RunsafeInventory inventory = player.getInventory();
-		if (this.universeHandler.isInUniverse(player, "survival"))
+		if (player.getWorld().IsUniverse("survival"))
 			if (inventory.contains(Item.Special.DragonEgg, 1) || (item != null && item.is(Item.Special.DragonEgg)))
 				this.award(player);
 	}
-
-	private UniverseHandler universeHandler;
 }
