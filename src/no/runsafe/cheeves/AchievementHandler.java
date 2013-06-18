@@ -64,7 +64,7 @@ public class AchievementHandler implements IPluginEnabled
 
 	public boolean hasAchievement(RunsafePlayer player, int achievementID)
 	{
-		String playerName = player.getName();
+		String playerName = player.getName().toLowerCase();
 		return this.earnedAchievements.containsKey(playerName) && this.earnedAchievements.get(playerName).contains(achievementID);
 	}
 

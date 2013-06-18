@@ -47,7 +47,7 @@ public class AchievementRepository extends Repository
 	public List<Integer> getNonToastedAchievements(RunsafePlayer player)
 	{
 		List<Integer> achievements = new ArrayList<Integer>();
-		ISet data = this.database.Query("SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0", player.getName());
+		ISet data = this.database.Query("SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
 
 		if (data != null)
 			for (IRow node : data)
@@ -58,14 +58,14 @@ public class AchievementRepository extends Repository
 
 	public void clearNonToastedAchievements(RunsafePlayer player)
 	{
-		this.database.Execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName());
+		this.database.Execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
 	}
 
 	public void storeAchievement(String playerName, IAchievement achievement, boolean toasted)
 	{
 		this.database.Execute(
 				"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
-				playerName,
+				playerName.toLowerCase(),
 				achievement.getAchievementID(),
 				(toasted ? 1 : 0)
 		);
