@@ -3,15 +3,17 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
+import no.runsafe.framework.api.IScheduler;
 import no.runsafe.framework.api.event.player.IPlayerDamageEvent;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 {
-	public WhatAreTheOdds(AchievementHandler achievementHandler)
+	public WhatAreTheOdds(AchievementHandler achievementHandler, IScheduler scheduler)
 	{
 		super(achievementHandler);
+		this.scheduler = scheduler;
 	}
 
 	@Override
@@ -33,9 +35,16 @@ public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 	}
 
 	@Override
-	public void OnPlayerDamage(RunsafePlayer player, RunsafeEntityDamageEvent event)
+	public void OnPlayerDamage(final RunsafePlayer player, RunsafeEntityDamageEvent event)
 	{
 		if (player.isInUniverse("survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
-			this.award(player);
+			this.scheduler.startAsyncTask(new Runnable() {
+				@Override
+				public void run() {
+					award(player);
+				}
+			}, 1);
 	}
+
+	private IScheduler scheduler;
 }
