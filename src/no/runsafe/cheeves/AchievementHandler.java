@@ -59,8 +59,13 @@ public class AchievementHandler implements IPluginEnabled
 
 	public boolean hasAchievement(RunsafePlayer player, Achievement achievement)
 	{
+		return this.hasAchievement(player, achievement.getAchievementID());
+	}
+
+	public boolean hasAchievement(RunsafePlayer player, int achievementID)
+	{
 		String playerName = player.getName();
-		return this.earnedAchievements.containsKey(playerName) && this.earnedAchievements.get(playerName).contains(achievement.getAchievementID());
+		return this.earnedAchievements.containsKey(playerName) && this.earnedAchievements.get(playerName).contains(achievementID);
 	}
 
 	private HashMap<String, List<Integer>> earnedAchievements = new HashMap<String, List<Integer>>();

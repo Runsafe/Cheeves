@@ -36,6 +36,7 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(Cheerios.class);
 		this.addComponent(WhatAreTheOdds.class);
 		this.addComponent(SewageSurvivor.class);
+		this.addComponent(LightningStrikesTwice.class);
 
 		this.addComponent(AchievementFinder.class);
 
