@@ -37,6 +37,8 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(WhatAreTheOdds.class);
 		this.addComponent(SewageSurvivor.class);
 		this.addComponent(LightningStrikesTwice.class);
+		this.addComponent(SupremeArchitect.class);
+		this.addComponent(IMadeThat.class);
 
 		this.addComponent(AchievementFinder.class);
 
