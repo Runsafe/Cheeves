@@ -8,6 +8,9 @@ import no.runsafe.framework.api.event.player.IPlayerDamageEvent;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 {
 	public WhatAreTheOdds(AchievementHandler achievementHandler, IScheduler scheduler)
@@ -38,13 +41,21 @@ public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 	public void OnPlayerDamage(final RunsafePlayer player, RunsafeEntityDamageEvent event)
 	{
 		if (player.isInUniverse("survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
-			this.scheduler.startAsyncTask(new Runnable() {
-				@Override
-				public void run() {
-					award(player);
-				}
-			}, 1);
+		{
+			if (!this.awardedPlayers.contains(player.getName()))
+			{
+				this.awardedPlayers.add(player.getName());
+				this.scheduler.startAsyncTask(new Runnable() {
+					@Override
+					public void run() {
+						award(player);
+						awardedPlayers.remove(player.getName());
+					}
+				}, 4);
+			}
+		}
 	}
 
+	private List<String> awardedPlayers = new ArrayList<String>();
 	private IScheduler scheduler;
 }
