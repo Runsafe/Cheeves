@@ -6,6 +6,8 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
+import no.runsafe.framework.minecraft.player.RunsafeAmbiguousPlayer;
+import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.Map;
 
@@ -40,7 +42,9 @@ public class IMadeThat extends Achievement implements IPlayerCustomEvent
 		if (event.getEvent().equals("creative.plot.approved"))
 		{
 			Map<String, String> data = (Map<String, String>) event.getData();
-			this.award(RunsafeServer.Instance.getPlayerExact(data.get("owner")));
+			RunsafePlayer player = RunsafeServer.Instance.getPlayer(data.get("owner"));
+			if (player != null && !(player instanceof RunsafeAmbiguousPlayer))
+				this.award(player);
 		}
 	}
 }
