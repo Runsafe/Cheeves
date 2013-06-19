@@ -33,7 +33,7 @@ public class AchievementHandler implements IPluginEnabled
 				toasted = true;
 			}
 
-			String playerName = player.getName();
+			String playerName = player.getName().toLowerCase();
 			if (!this.earnedAchievements.containsKey(playerName))
 				this.earnedAchievements.put(playerName, new ArrayList<Integer>());
 
@@ -53,7 +53,7 @@ public class AchievementHandler implements IPluginEnabled
 
 	public List<Integer> getPlayerAchievements(RunsafePlayer player)
 	{
-		String playerName = player.getName();
+		String playerName = player.getName().toLowerCase();
 		return (this.earnedAchievements.containsKey(playerName) ? this.earnedAchievements.get(playerName) : null);
 	}
 
