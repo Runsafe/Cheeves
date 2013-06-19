@@ -6,6 +6,7 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.minecraft.entity.RunsafeEntity;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
+import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
@@ -37,16 +38,15 @@ public class FleshWound extends Achievement implements IPlayerDeathEvent
 	@Override
 	public void OnPlayerDeathEvent(RunsafePlayerDeathEvent event)
 	{
-		if (event.getEntity().getLastDamageCause() instanceof RunsafeEntityDamageByEntityEvent)
+		RunsafePlayer victim = event.getEntity();
+		if (victim.getLastDamageCause() instanceof RunsafeEntityDamageByEntityEvent)
 		{
-			RunsafeEntityDamageByEntityEvent deathEvent = (RunsafeEntityDamageByEntityEvent) event.getEntity().getLastDamageCause();
-			RunsafeEntity killer = deathEvent.getDamageActor();
-
-			if (killer != null && killer instanceof RunsafePlayer)
+			RunsafeEntityDamageByEntityEvent damage = (RunsafeEntityDamageByEntityEvent) victim.getLastDamageCause();
+			if (damage.getDamageActor() instanceof RunsafePlayer)
 			{
-				RunsafePlayer killerPlayer = (RunsafePlayer) killer;
-				if (killerPlayer.getHealth() == 1)
-					this.award(killerPlayer);
+				RunsafePlayer attacker = (RunsafePlayer) damage.getDamageActor();
+				if (attacker.getHealth() == 1)
+					this.award(attacker);
 			}
 		}
 	}
