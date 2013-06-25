@@ -16,6 +16,7 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(AchievementRepository.class);
 		this.addComponent(AchievementHandler.class);
 		this.addComponent(AchievementChecker.class);
+		this.addComponent(ServerFirstHandler.class);
 
 		// Achievements
 		this.addComponent(Pimp.class);
@@ -39,6 +40,8 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(LightningStrikesTwice.class);
 		this.addComponent(SupremeArchitect.class);
 		this.addComponent(IMadeThat.class);
+		this.addComponent(MyBrainHurts.class);
+		this.addComponent(ServerFirstMyBrainHurts.class);
 
 		this.addComponent(AchievementFinder.class);
 

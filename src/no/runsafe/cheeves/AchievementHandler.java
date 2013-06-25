@@ -24,6 +24,14 @@ public class AchievementHandler implements IPluginEnabled
 
 	public void awardAchievement(Achievement achievement, RunsafePlayer player)
 	{
+		this.awardAchievement(achievement, player, false);
+	}
+
+	public void awardAchievement(Achievement achievement, RunsafePlayer player, boolean serverFirst)
+	{
+		if (serverFirst && this.hasHadServerFirst(achievement.getAchievementID()))
+			return;
+
 		if (!this.hasAchievement(player, achievement))
 		{
 			boolean toasted = false;
@@ -68,6 +76,22 @@ public class AchievementHandler implements IPluginEnabled
 		return this.earnedAchievements.containsKey(playerName) && this.earnedAchievements.get(playerName).contains(achievementID);
 	}
 
+	public HashMap<String, List<Integer>> getEarnedAchievements()
+	{
+		return this.earnedAchievements;
+	}
+
+	public void registerServerFirst(int achievementID)
+	{
+		this.serverFirstAchievements.add(achievementID);
+	}
+
+	private boolean hasHadServerFirst(int achievementID)
+	{
+		return this.serverFirstAchievements.contains(achievementID);
+	}
+
 	private HashMap<String, List<Integer>> earnedAchievements = new HashMap<String, List<Integer>>();
+	private List<Integer> serverFirstAchievements = new ArrayList<Integer>();
 	private AchievementRepository repository;
 }
