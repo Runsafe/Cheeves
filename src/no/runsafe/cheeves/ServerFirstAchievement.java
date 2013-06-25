@@ -13,5 +13,6 @@ public abstract class ServerFirstAchievement extends Achievement
 	public void award(RunsafePlayer player)
 	{
 		this.achievementHandler.awardAchievement(this, player, true);
+		this.achievementHandler.registerServerFirst(this.getAchievementID());
 	}
 }
