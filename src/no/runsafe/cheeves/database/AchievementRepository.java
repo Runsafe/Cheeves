@@ -41,11 +41,10 @@ public class AchievementRepository extends Repository
 
 	public List<Integer> getNonToastedAchievements(RunsafePlayer player)
 	{
-		List<Integer> achievements = new ArrayList<Integer>();
-		ISet data = this.database.Query("SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
-		for (IRow node : data)
-			achievements.add(node.Integer("achievementID"));
-		return achievements;
+		return this.database.QueryIntegers(
+			"SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0",
+			player.getName().toLowerCase()
+		);
 	}
 
 	public void clearNonToastedAchievements(RunsafePlayer player)
