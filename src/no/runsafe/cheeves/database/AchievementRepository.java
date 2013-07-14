@@ -28,19 +28,14 @@ public class AchievementRepository extends Repository
 	{
 		HashMap<String, List<Integer>> achievements = new HashMap<String, List<Integer>>();
 		ISet data = this.database.Query("SELECT playerName, achievementID FROM cheeves_data");
-
-		if (data != null)
+		for (IRow node : data)
 		{
-			for (IRow node : data)
-			{
-				String playerName = node.String("playerName");
-				if (!achievements.containsKey(playerName))
-					achievements.put(playerName, new ArrayList<Integer>());
+			String playerName = node.String("playerName");
+			if (!achievements.containsKey(playerName))
+				achievements.put(playerName, new ArrayList<Integer>());
 
-				achievements.get(playerName).add(node.Integer("achievementID"));
-			}
+			achievements.get(playerName).add(node.Integer("achievementID"));
 		}
-
 		return achievements;
 	}
 
@@ -48,11 +43,8 @@ public class AchievementRepository extends Repository
 	{
 		List<Integer> achievements = new ArrayList<Integer>();
 		ISet data = this.database.Query("SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
-
-		if (data != null)
-			for (IRow node : data)
-				achievements.add(node.Integer("achievementID"));
-
+		for (IRow node : data)
+			achievements.add(node.Integer("achievementID"));
 		return achievements;
 	}
 
@@ -64,10 +56,10 @@ public class AchievementRepository extends Repository
 	public void storeAchievement(String playerName, IAchievement achievement, boolean toasted)
 	{
 		this.database.Execute(
-				"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
-				playerName.toLowerCase(),
-				achievement.getAchievementID(),
-				(toasted ? 1 : 0)
+			"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
+			playerName.toLowerCase(),
+			achievement.getAchievementID(),
+			(toasted ? 1 : 0)
 		);
 	}
 
@@ -77,19 +69,19 @@ public class AchievementRepository extends Repository
 		HashMap<Integer, List<String>> queries = new HashMap<Integer, List<String>>();
 		ArrayList<String> sql = new ArrayList<String>();
 		sql.add(
-				"CREATE TABLE `cheeves_data` (" +
-						"`playerName` VARCHAR(50) NOT NULL," +
-						"`achievementID` INT(10) NOT NULL," +
-						"`earned` DATETIME NOT NULL," +
-						"PRIMARY KEY (`playerName`, `achievementID`)" +
-					")"
+			"CREATE TABLE `cheeves_data` (" +
+				"`playerName` VARCHAR(50) NOT NULL," +
+				"`achievementID` INT(10) NOT NULL," +
+				"`earned` DATETIME NOT NULL," +
+				"PRIMARY KEY (`playerName`, `achievementID`)" +
+				")"
 		);
 		queries.put(1, sql);
 
 		sql.clear();
 		sql.add(
-				"ALTER TABLE `cheeves_data`" +
-						"ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`;"
+			"ALTER TABLE `cheeves_data`" +
+				"ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`;"
 		);
 		queries.put(2, sql);
 		return queries;
