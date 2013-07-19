@@ -9,8 +9,8 @@ import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.player.RunsafeAmbiguousPlayer;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ViewAchievements extends ExecutableCommand
 {
@@ -20,14 +20,15 @@ public class ViewAchievements extends ExecutableCommand
 		this.achievementFinder = achievementFinder;
 		this.achievementHandler = achievementHandler;
 	}
+
 	@Override
-	public String OnExecute(ICommandExecutor executor, HashMap<String, String> parameters)
+	public String OnExecute(ICommandExecutor executor, Map<String, String> parameters)
 	{
 		return null;
 	}
 
 	@Override
-	public String OnExecute(ICommandExecutor executor, HashMap<String, String> parameters, String[] arguments)
+	public String OnExecute(ICommandExecutor executor, Map<String, String> parameters, String[] arguments)
 	{
 		RunsafePlayer viewPlayer;
 		if (executor instanceof RunsafePlayer)
@@ -52,7 +53,7 @@ public class ViewAchievements extends ExecutableCommand
 			if (achievements == null)
 				return String.format("&3%s has no achievements.", viewPlayer.getName());
 
-			executor.sendColouredMessage("Achievements earned by "+ viewPlayer.getName());
+			executor.sendColouredMessage("Achievements earned by " + viewPlayer.getName());
 			for (Integer achievementID : achievements)
 			{
 				IAchievement achievement = this.achievementFinder.getAchievementByID(achievementID);

@@ -9,7 +9,7 @@ import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.player.RunsafeAmbiguousPlayer;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
-import java.util.HashMap;
+import java.util.Map;
 
 public class AwardAchievement extends ExecutableCommand
 {
@@ -19,8 +19,9 @@ public class AwardAchievement extends ExecutableCommand
 		this.achievementHandler = achievementHandler;
 		this.achievementFinder = achievementFinder;
 	}
+
 	@Override
-	public String OnExecute(ICommandExecutor executor, HashMap<String, String> parameters)
+	public String OnExecute(ICommandExecutor executor, Map<String, String> parameters)
 	{
 		RunsafePlayer player = RunsafeServer.Instance.getPlayer(parameters.get("player"));
 
