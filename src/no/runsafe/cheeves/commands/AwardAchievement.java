@@ -5,6 +5,8 @@ import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
+import no.runsafe.framework.api.command.argument.PlayerArgument;
+import no.runsafe.framework.api.command.argument.RequiredArgument;
 import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.player.RunsafeAmbiguousPlayer;
 import no.runsafe.framework.minecraft.player.RunsafePlayer;
@@ -15,7 +17,7 @@ public class AwardAchievement extends ExecutableCommand
 {
 	public AwardAchievement(AchievementHandler achievementHandler, AchievementFinder achievementFinder)
 	{
-		super("awardach", "Awards an achievement to a player", "runsafe.cheeves.award", "player", "achievementID");
+		super("awardach", "Awards an achievement to a player", "runsafe.cheeves.award", new PlayerArgument(), new RequiredArgument("achievementID"));
 		this.achievementHandler = achievementHandler;
 		this.achievementFinder = achievementFinder;
 	}
