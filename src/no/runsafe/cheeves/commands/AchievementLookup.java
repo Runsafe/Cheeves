@@ -4,6 +4,7 @@ import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
+import no.runsafe.framework.api.command.argument.TrailingArgument;
 
 import java.util.Map;
 
@@ -11,8 +12,7 @@ public class AchievementLookup extends ExecutableCommand
 {
 	public AchievementLookup(AchievementFinder achievementFinder)
 	{
-		super("lookup", "Lookup information on an achievement", "runsafe.cheeves.lookup", "achievementTitle");
-		this.captureTail();
+		super("lookup", "Lookup information on an achievement", "runsafe.cheeves.lookup", new TrailingArgument("achievementTitle"));
 
 		this.achievementFinder = achievementFinder;
 	}
