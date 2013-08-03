@@ -43,6 +43,8 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(MyBrainHurts.class);
 		this.addComponent(ServerFirstMyBrainHurts.class);
 		this.addComponent(VaultDweller.class);
+		this.addComponent(SpleefTournamentAugust.class);
+		this.addComponent(SpleefTournamentAugustWinner.class);
 
 		this.addComponent(AchievementFinder.class);
 
