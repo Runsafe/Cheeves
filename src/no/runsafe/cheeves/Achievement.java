@@ -1,6 +1,6 @@
 package no.runsafe.cheeves;
 
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.api.player.IPlayer;
 
 public abstract class Achievement implements IAchievement
 {
@@ -9,7 +9,7 @@ public abstract class Achievement implements IAchievement
 		this.achievementHandler = achievementHandler;
 	}
 
-	public void award(RunsafePlayer player)
+	public void award(IPlayer player)
 	{
 		this.achievementHandler.awardAchievement(this, player);
 	}

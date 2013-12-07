@@ -1,6 +1,6 @@
 package no.runsafe.cheeves;
 
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.api.player.IPlayer;
 
 public abstract class ServerFirstAchievement extends Achievement
 {
@@ -10,7 +10,7 @@ public abstract class ServerFirstAchievement extends Achievement
 	}
 
 	@Override
-	public void award(RunsafePlayer player)
+	public void award(IPlayer player)
 	{
 		this.achievementHandler.awardAchievement(this, player, true);
 		this.achievementHandler.registerServerFirst(this.getAchievementID());

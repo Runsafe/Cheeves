@@ -4,7 +4,7 @@ import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.IScheduler;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.HashMap;
 
@@ -34,7 +34,7 @@ public class SewageSurvivor extends Achievement
 		return Achievements.SEWAGE_SURVIVOR.ordinal();
 	}
 
-	private void startTimer(final RunsafePlayer player)
+	private void startTimer(final IPlayer player)
 	{
 		String playerName = player.getName();
 		if (!this.activeTimers.containsKey(playerName))
@@ -47,7 +47,7 @@ public class SewageSurvivor extends Achievement
 			}, 300));
 	}
 
-	private void stopTimer(RunsafePlayer player)
+	private void stopTimer(IPlayer player)
 	{
 		String playerName = player.getName();
 		if (this.activeTimers.containsKey(playerName))

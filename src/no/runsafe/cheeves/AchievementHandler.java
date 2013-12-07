@@ -2,8 +2,8 @@ package no.runsafe.cheeves;
 
 import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.api.event.plugin.IPluginEnabled;
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.RunsafeServer;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,12 +22,12 @@ public class AchievementHandler implements IPluginEnabled
 		this.earnedAchievements = repository.getAchievements();
 	}
 
-	public void awardAchievement(Achievement achievement, RunsafePlayer player)
+	public void awardAchievement(Achievement achievement, IPlayer player)
 	{
 		this.awardAchievement(achievement, player, false);
 	}
 
-	public void awardAchievement(Achievement achievement, RunsafePlayer player, boolean serverFirst)
+	public void awardAchievement(Achievement achievement, IPlayer player, boolean serverFirst)
 	{
 		if (serverFirst && this.hasHadServerFirst(achievement.getAchievementID()))
 			return;
@@ -50,7 +50,7 @@ public class AchievementHandler implements IPluginEnabled
 		}
 	}
 
-	public void announceAchievement(Achievement achievement, RunsafePlayer player)
+	public void announceAchievement(Achievement achievement, IPlayer player)
 	{
 		RunsafeServer.Instance.broadcastMessage(String.format(
 				"%s &ehas earned the achievement &3%s&e.",
@@ -59,18 +59,18 @@ public class AchievementHandler implements IPluginEnabled
 		));
 	}
 
-	public List<Integer> getPlayerAchievements(RunsafePlayer player)
+	public List<Integer> getPlayerAchievements(IPlayer player)
 	{
 		String playerName = player.getName().toLowerCase();
 		return (this.earnedAchievements.containsKey(playerName) ? this.earnedAchievements.get(playerName) : null);
 	}
 
-	public boolean hasAchievement(RunsafePlayer player, Achievement achievement)
+	public boolean hasAchievement(IPlayer player, Achievement achievement)
 	{
 		return this.hasAchievement(player, achievement.getAchievementID());
 	}
 
-	public boolean hasAchievement(RunsafePlayer player, int achievementID)
+	public boolean hasAchievement(IPlayer player, int achievementID)
 	{
 		String playerName = player.getName().toLowerCase();
 		return this.earnedAchievements.containsKey(playerName) && this.earnedAchievements.get(playerName).contains(achievementID);

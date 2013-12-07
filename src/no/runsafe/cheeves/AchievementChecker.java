@@ -3,8 +3,8 @@ package no.runsafe.cheeves;
 import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.api.IScheduler;
 import no.runsafe.framework.api.event.player.IPlayerJoinEvent;
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerJoinEvent;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.List;
 
@@ -21,7 +21,7 @@ public class AchievementChecker implements IPlayerJoinEvent
 	@Override
 	public void OnPlayerJoinEvent(RunsafePlayerJoinEvent event)
 	{
-		final RunsafePlayer player = event.getPlayer();
+		final IPlayer player = event.getPlayer();
 		final List<Integer> achievements = this.repository.getNonToastedAchievements(player);
 
 		this.scheduler.startAsyncTask(new Runnable() {

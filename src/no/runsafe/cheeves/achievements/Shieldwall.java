@@ -6,12 +6,11 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.minecraft.RunsafeEntityType;
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
-import no.runsafe.framework.minecraft.entity.ProjectileEntity;
 import no.runsafe.framework.minecraft.entity.RunsafeProjectile;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,9 +50,9 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 	@Override
 	public void OnEntityDamageByEntity(RunsafeEntityDamageByEntityEvent event)
 	{
-		if (event.getEntity() instanceof RunsafePlayer)
+		if (event.getEntity() instanceof IPlayer)
 		{
-			RunsafePlayer player = (RunsafePlayer) event.getEntity();
+			IPlayer player = (IPlayer) event.getEntity();
 			if (!this.achievementHandler.hasAchievement(player, this) && player.isInUniverse("survival"))
 			{
 				RunsafeEntityType entityType = event.getDamageActor().getEntityType();
@@ -72,7 +71,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		}
 	}
 
-	private void registerKill(RunsafePlayer player, RunsafeEntityType type)
+	private void registerKill(IPlayer player, RunsafeEntityType type)
 	{
 		String playerName = player.getName();
 		if (!this.sprees.containsKey(playerName))
@@ -85,7 +84,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		}
 	}
 
-	private void checkProgress(RunsafePlayer player)
+	private void checkProgress(IPlayer player)
 	{
 		for (RunsafeEntityType type : Shieldwall.requiredMobs)
 			if (!this.sprees.get(player.getName()).contains(type))

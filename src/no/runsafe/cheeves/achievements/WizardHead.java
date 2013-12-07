@@ -5,13 +5,13 @@ import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.inventory.IInventoryClick;
 import no.runsafe.framework.api.event.player.IPlayerPickupItemEvent;
+import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.Item;
 import no.runsafe.framework.minecraft.RunsafeServer;
 import no.runsafe.framework.minecraft.event.inventory.RunsafeInventoryClickEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 import no.runsafe.framework.minecraft.item.meta.RunsafeSkull;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
 
 public class WizardHead extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
@@ -50,7 +50,7 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 		this.checkInventory(event.getPlayer(), event.getItem().getItemStack());
 	}
 
-	private void checkInventory(RunsafePlayer player, RunsafeMeta pickedItem)
+	private void checkInventory(IPlayer player, RunsafeMeta pickedItem)
 	{
 		if (pickedItem != null)
 			this.checkForWizardHead(player, pickedItem);
@@ -59,12 +59,12 @@ public class WizardHead extends Achievement implements IInventoryClick, IPlayerP
 			this.checkForWizardHead(player, item);
 	}
 
-	private void checkForWizardHead(RunsafePlayer player, RunsafeMeta item)
+	private void checkForWizardHead(IPlayer player, RunsafeMeta item)
 	{
 		if (player.isInUniverse("survival") && item.is(Item.Decoration.Head.Human))
 		{
 			RunsafeSkull skull = (RunsafeSkull) item;
-			RunsafePlayer wizard = RunsafeServer.Instance.getPlayer(skull.getOwner());
+			IPlayer wizard = RunsafeServer.Instance.getPlayer(skull.getOwner());
 
 			if (wizard != null)
 				if (wizard.getGroups().contains("Wizard"))

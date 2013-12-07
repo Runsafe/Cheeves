@@ -5,7 +5,7 @@ import no.runsafe.framework.api.database.IDatabase;
 import no.runsafe.framework.api.database.IRow;
 import no.runsafe.framework.api.database.ISet;
 import no.runsafe.framework.api.database.Repository;
-import no.runsafe.framework.minecraft.player.RunsafePlayer;
+import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,7 +39,7 @@ public class AchievementRepository extends Repository
 		return achievements;
 	}
 
-	public List<Integer> getNonToastedAchievements(RunsafePlayer player)
+	public List<Integer> getNonToastedAchievements(IPlayer player)
 	{
 		return this.database.QueryIntegers(
 			"SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0",
@@ -47,7 +47,7 @@ public class AchievementRepository extends Repository
 		);
 	}
 
-	public void clearNonToastedAchievements(RunsafePlayer player)
+	public void clearNonToastedAchievements(IPlayer player)
 	{
 		this.database.Execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
 	}
