@@ -22,6 +22,6 @@ public class ServerFirstHandler implements IPluginEnabled
 					this.handler.registerServerFirst(achievementID);
 	}
 
-	private AchievementHandler handler;
-	private AchievementFinder finder;
+	private final AchievementHandler handler;
+	private final AchievementFinder finder;
 }

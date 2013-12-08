@@ -1,9 +1,9 @@
 package no.runsafe.cheeves;
 
 import no.runsafe.cheeves.database.AchievementRepository;
+import no.runsafe.framework.api.IOutput;
 import no.runsafe.framework.api.event.plugin.IPluginEnabled;
 import no.runsafe.framework.api.player.IPlayer;
-import no.runsafe.framework.minecraft.RunsafeServer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,9 +11,10 @@ import java.util.List;
 
 public class AchievementHandler implements IPluginEnabled
 {
-	public AchievementHandler(AchievementRepository repository)
+	public AchievementHandler(AchievementRepository repository, IOutput server)
 	{
 		this.repository = repository;
+		this.server = server;
 	}
 
 	@Override
@@ -52,11 +53,11 @@ public class AchievementHandler implements IPluginEnabled
 
 	public void announceAchievement(Achievement achievement, IPlayer player)
 	{
-		RunsafeServer.Instance.broadcastMessage(String.format(
-				"%s &ehas earned the achievement &3%s&e.",
-				player.getPrettyName(),
-				achievement.getAchievementName()
-		));
+		server.broadcastColoured(
+			"%s &ehas earned the achievement &3%s&e.",
+			player.getPrettyName(),
+			achievement.getAchievementName()
+		);
 	}
 
 	public List<Integer> getPlayerAchievements(IPlayer player)
@@ -92,6 +93,7 @@ public class AchievementHandler implements IPluginEnabled
 	}
 
 	private HashMap<String, List<Integer>> earnedAchievements = new HashMap<String, List<Integer>>();
-	private List<Integer> serverFirstAchievements = new ArrayList<Integer>();
-	private AchievementRepository repository;
+	private final List<Integer> serverFirstAchievements = new ArrayList<Integer>();
+	private final AchievementRepository repository;
+	private final IOutput server;
 }

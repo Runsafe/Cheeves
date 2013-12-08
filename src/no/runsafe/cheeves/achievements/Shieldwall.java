@@ -93,8 +93,8 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 		this.award(player);
 	}
 
-	private HashMap<String, List<RunsafeEntityType>> sprees = new HashMap<String, List<RunsafeEntityType>>();
-	private static List<RunsafeEntityType> requiredMobs = new ArrayList<RunsafeEntityType>();
+	private final HashMap<String, List<RunsafeEntityType>> sprees = new HashMap<String, List<RunsafeEntityType>>();
+	private static final List<RunsafeEntityType> requiredMobs = new ArrayList<RunsafeEntityType>();
 
 	static
 	{

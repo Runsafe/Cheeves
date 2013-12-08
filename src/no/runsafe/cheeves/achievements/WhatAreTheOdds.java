@@ -56,6 +56,6 @@ public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 		}
 	}
 
-	private List<String> awardedPlayers = new ArrayList<String>();
-	private IScheduler scheduler;
+	private final List<String> awardedPlayers = new ArrayList<String>();
+	private final IScheduler scheduler;
 }

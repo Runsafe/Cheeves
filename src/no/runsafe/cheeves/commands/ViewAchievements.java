@@ -3,23 +3,24 @@ package no.runsafe.cheeves.commands;
 import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.IAchievement;
+import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
 import no.runsafe.framework.api.command.argument.PlayerArgument;
+import no.runsafe.framework.api.player.IAmbiguousPlayer;
 import no.runsafe.framework.api.player.IPlayer;
-import no.runsafe.framework.minecraft.RunsafeServer;
-import no.runsafe.framework.minecraft.player.RunsafeAmbiguousPlayer;
 
 import java.util.List;
 import java.util.Map;
 
 public class ViewAchievements extends ExecutableCommand
 {
-	public ViewAchievements(AchievementFinder achievementFinder, AchievementHandler achievementHandler)
+	public ViewAchievements(AchievementFinder achievementFinder, AchievementHandler achievementHandler, IServer server)
 	{
 		super("view", "Views achievements for yourself or another player", "runsafe.cheeves.view", new PlayerArgument(false));
 		this.achievementFinder = achievementFinder;
 		this.achievementHandler = achievementHandler;
+		this.server = server;
 	}
 
 	@Override
@@ -30,12 +31,12 @@ public class ViewAchievements extends ExecutableCommand
 			viewPlayer = (IPlayer) executor;
 
 		if (parameters.containsKey("player"))
-			viewPlayer = RunsafeServer.Instance.getPlayer(parameters.get("player"));
+			viewPlayer = server.getPlayer(parameters.get("player"));
 
 		if (viewPlayer == null)
 			return "&cPlease specify a player when running this from the console.";
 
-		if (viewPlayer instanceof RunsafeAmbiguousPlayer)
+		if (viewPlayer instanceof IAmbiguousPlayer)
 			return viewPlayer.toString();
 
 		List<Integer> achievements = this.achievementHandler.getPlayerAchievements(viewPlayer);
@@ -52,6 +53,7 @@ public class ViewAchievements extends ExecutableCommand
 		return null;
 	}
 
-	private AchievementFinder achievementFinder;
-	private AchievementHandler achievementHandler;
+	private final AchievementFinder achievementFinder;
+	private final AchievementHandler achievementHandler;
+	private final IServer server;
 }

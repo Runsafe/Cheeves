@@ -27,5 +27,5 @@ public class AchievementLookup extends ExecutableCommand
 		return "&cSorry, no achievement with that title could be found.";
 	}
 
-	private AchievementFinder achievementFinder;
+	private final AchievementFinder achievementFinder;
 }

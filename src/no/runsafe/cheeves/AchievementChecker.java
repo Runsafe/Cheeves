@@ -36,8 +36,8 @@ public class AchievementChecker implements IPlayerJoinEvent
 		this.repository.clearNonToastedAchievements(player);
 	}
 
-	private AchievementHandler handler;
-	private AchievementFinder finder;
-	private AchievementRepository repository;
-	private IScheduler scheduler;
+	private final AchievementHandler handler;
+	private final AchievementFinder finder;
+	private final AchievementRepository repository;
+	private final IScheduler scheduler;
 }

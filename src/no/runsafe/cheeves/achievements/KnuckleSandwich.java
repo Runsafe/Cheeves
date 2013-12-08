@@ -77,5 +77,5 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 		}
 	}
 
-	HashMap<String, KnuckleSandwichMeta> meta = new HashMap<String, KnuckleSandwichMeta>();
+	final HashMap<String, KnuckleSandwichMeta> meta = new HashMap<String, KnuckleSandwichMeta>();
 }

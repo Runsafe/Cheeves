@@ -40,5 +40,5 @@ public class AchievementFinder
 		return null;
 	}
 
-	private HashMap<Integer, Achievement> achievementHashMap = new HashMap<Integer, Achievement>();
+	private final HashMap<Integer, Achievement> achievementHashMap = new HashMap<Integer, Achievement>();
 }

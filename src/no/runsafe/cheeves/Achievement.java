@@ -14,5 +14,5 @@ public abstract class Achievement implements IAchievement
 		this.achievementHandler.awardAchievement(this, player);
 	}
 
-	protected AchievementHandler achievementHandler;
+	protected final AchievementHandler achievementHandler;
 }

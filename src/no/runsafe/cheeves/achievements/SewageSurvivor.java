@@ -54,6 +54,6 @@ public class SewageSurvivor extends Achievement
 			this.scheduler.cancelTask(this.activeTimers.get(playerName));
 	}
 
-	private HashMap<String, Integer> activeTimers = new HashMap<String, Integer>();
-	private IScheduler scheduler;
+	private final HashMap<String, Integer> activeTimers = new HashMap<String, Integer>();
+	private final IScheduler scheduler;
 }
