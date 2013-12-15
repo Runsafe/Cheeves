@@ -7,12 +7,21 @@ import no.runsafe.cheeves.commands.ViewAchievements;
 import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.RunsafePlugin;
 import no.runsafe.framework.api.command.Command;
+import no.runsafe.framework.features.Commands;
+import no.runsafe.framework.features.Database;
+import no.runsafe.framework.features.Events;
 
 public class Plugin extends RunsafePlugin
 {
 	@Override
 	protected void PluginSetup()
 	{
+		// Framework features
+		addComponent(Commands.class);
+		addComponent(Events.class);
+		addComponent(Database.class);
+
+		// Plugin components
 		this.addComponent(AchievementRepository.class);
 		this.addComponent(AchievementHandler.class);
 		this.addComponent(AchievementChecker.class);
@@ -50,6 +59,7 @@ public class Plugin extends RunsafePlugin
 
 		this.addComponent(AchievementFinder.class);
 
+		// Commands
 		Command achievements = new Command("achievements", "Achievement related commands", null);
 		achievements.addSubCommand(getInstance(AchievementLookup.class));
 		achievements.addSubCommand(getInstance(ViewAchievements.class));
