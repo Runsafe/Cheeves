@@ -14,7 +14,7 @@ import no.runsafe.framework.features.Events;
 public class Plugin extends RunsafePlugin
 {
 	@Override
-	protected void PluginSetup()
+	protected void pluginSetup()
 	{
 		// Framework features
 		addComponent(Commands.class);
