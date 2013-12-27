@@ -3,6 +3,7 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
+import no.runsafe.framework.api.entity.IEntity;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
@@ -38,14 +39,11 @@ public class Cheerios extends Achievement implements IPlayerDeathEvent
 	{
 		IPlayer deadPlayer = event.getEntity();
 
-		if (deadPlayer.getLevel() >= 30)
+		if (deadPlayer.getOldLevel() >= 30)
 		{
-			if (deadPlayer.getLastDamageCause() instanceof RunsafeEntityDamageByEntityEvent)
-			{
-				RunsafeEntityDamageByEntityEvent deathEvent = (RunsafeEntityDamageByEntityEvent) deadPlayer.getLastDamageCause();
-				if (deathEvent.getDamageActor() instanceof IPlayer)
-					this.award((IPlayer) deathEvent.getDamageActor());
-			}
+			IEntity killer = deadPlayer.getKiller();
+			if (killer != null && killer instanceof IPlayer)
+				award((IPlayer) killer);
 		}
 	}
 }
