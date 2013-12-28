@@ -22,50 +22,50 @@ public class Plugin extends RunsafePlugin
 		addComponent(Database.class);
 
 		// Plugin components
-		this.addComponent(AchievementRepository.class);
-		this.addComponent(AchievementHandler.class);
-		this.addComponent(AchievementChecker.class);
-		this.addComponent(ServerFirstHandler.class);
+		addComponent(AchievementRepository.class);
+		addComponent(AchievementHandler.class);
+		addComponent(AchievementChecker.class);
+		addComponent(ServerFirstHandler.class);
 
 		// Achievements
-		this.addComponent(Pimp.class);
-		this.addComponent(EmeraldCity.class);
-		this.addComponent(DefenseOfTheKingdom.class);
-		this.addComponent(MyPrecious.class);
-		this.addComponent(PvPTournamentJune.class);
-		this.addComponent(ServerFirstEnderDragon.class);
-		this.addComponent(TheTunnel.class);
-		this.addComponent(WizardHead.class);
-		this.addComponent(Sponge.class);
-		this.addComponent(WickedSick.class);
-		this.addComponent(Shieldwall.class);
-		this.addComponent(Gladiator.class);
-		this.addComponent(MercilessGladiator.class);
-		this.addComponent(FleshWound.class);
-		this.addComponent(KnuckleSandwich.class);
-		this.addComponent(Cheerios.class);
-		this.addComponent(WhatAreTheOdds.class);
-		this.addComponent(SewageSurvivor.class);
-		this.addComponent(LightningStrikesTwice.class);
-		this.addComponent(SupremeArchitect.class);
-		this.addComponent(IMadeThat.class);
-		this.addComponent(MyBrainHurts.class);
-		this.addComponent(ServerFirstMyBrainHurts.class);
-		this.addComponent(VaultDweller.class);
-		this.addComponent(SpleefTournamentAugust.class);
-		this.addComponent(SpleefTournamentAugustWinner.class);
-		this.addComponent(SurvivalChallenge.class);
-		this.addComponent(SurvivalChallengeWinner.class);
-		this.addComponent(MasterOfMagic.class);
+		addComponent(Pimp.class);
+		addComponent(EmeraldCity.class);
+		addComponent(DefenseOfTheKingdom.class);
+		addComponent(MyPrecious.class);
+		addComponent(PvPTournamentJune.class);
+		addComponent(ServerFirstEnderDragon.class);
+		addComponent(TheTunnel.class);
+		addComponent(WizardHead.class);
+		addComponent(Sponge.class);
+		addComponent(WickedSick.class);
+		addComponent(Shieldwall.class);
+		addComponent(Gladiator.class);
+		addComponent(MercilessGladiator.class);
+		addComponent(FleshWound.class);
+		addComponent(KnuckleSandwich.class);
+		addComponent(Cheerios.class);
+		addComponent(WhatAreTheOdds.class);
+		addComponent(SewageSurvivor.class);
+		addComponent(LightningStrikesTwice.class);
+		addComponent(SupremeArchitect.class);
+		addComponent(IMadeThat.class);
+		addComponent(MyBrainHurts.class);
+		addComponent(ServerFirstMyBrainHurts.class);
+		addComponent(VaultDweller.class);
+		addComponent(SpleefTournamentAugust.class);
+		addComponent(SpleefTournamentAugustWinner.class);
+		addComponent(SurvivalChallenge.class);
+		addComponent(SurvivalChallengeWinner.class);
+		addComponent(MasterOfMagic.class);
 
-		this.addComponent(AchievementFinder.class);
+		addComponent(AchievementFinder.class);
 
 		// Commands
 		Command achievements = new Command("achievements", "Achievement related commands", null);
 		achievements.addSubCommand(getInstance(AchievementLookup.class));
 		achievements.addSubCommand(getInstance(ViewAchievements.class));
-		this.addComponent(achievements);
+		addComponent(achievements);
 
-		this.addComponent(AwardAchievement.class);
+		addComponent(AwardAchievement.class);
 	}
 }
