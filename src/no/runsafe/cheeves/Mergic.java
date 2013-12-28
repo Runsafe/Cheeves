@@ -11,7 +11,7 @@ import no.runsafe.framework.features.Commands;
 import no.runsafe.framework.features.Database;
 import no.runsafe.framework.features.Events;
 
-public class Plugin extends RunsafePlugin
+public class Mergic extends RunsafePlugin
 {
 	@Override
 	protected void pluginSetup()
