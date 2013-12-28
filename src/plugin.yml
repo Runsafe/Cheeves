@@ -1,5 +1,5 @@
 name: Cheeves
-main: no.runsafe.cheeves.Mergic
+main: no.runsafe.cheeves.Cheeves
 version: 1.0.@BUILD@
 author: Kruithne
 description: Achievements!
