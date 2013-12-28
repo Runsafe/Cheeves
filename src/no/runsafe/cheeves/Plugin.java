@@ -56,6 +56,7 @@ public class Plugin extends RunsafePlugin
 		this.addComponent(SpleefTournamentAugustWinner.class);
 		this.addComponent(SurvivalChallenge.class);
 		this.addComponent(SurvivalChallengeWinner.class);
+		this.addComponent(MasterOfMagic.class);
 
 		this.addComponent(AchievementFinder.class);
 
