@@ -27,7 +27,7 @@ public class AchievementRepository extends Repository
 	public HashMap<String, List<Integer>> getAchievements()
 	{
 		HashMap<String, List<Integer>> achievements = new HashMap<String, List<Integer>>();
-		ISet data = this.database.Query("SELECT playerName, achievementID FROM cheeves_data");
+		ISet data = this.database.query("SELECT playerName, achievementID FROM cheeves_data");
 		for (IRow node : data)
 		{
 			String playerName = node.String("playerName");
@@ -41,7 +41,7 @@ public class AchievementRepository extends Repository
 
 	public List<Integer> getNonToastedAchievements(IPlayer player)
 	{
-		return this.database.QueryIntegers(
+		return this.database.queryIntegers(
 			"SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0",
 			player.getName().toLowerCase()
 		);
@@ -49,12 +49,12 @@ public class AchievementRepository extends Repository
 
 	public void clearNonToastedAchievements(IPlayer player)
 	{
-		this.database.Execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
+		this.database.execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
 	}
 
 	public void storeAchievement(String playerName, IAchievement achievement, boolean toasted)
 	{
-		this.database.Execute(
+		this.database.execute(
 			"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
 			playerName.toLowerCase(),
 			achievement.getAchievementID(),
