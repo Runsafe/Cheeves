@@ -65,8 +65,8 @@ public class AchievementRepository extends Repository
 	@Override
 	public HashMap<Integer, List<String>> getSchemaUpdateQueries()
 	{
-		HashMap<Integer, List<String>> queries = new HashMap<Integer, List<String>>();
-		ArrayList<String> sql = new ArrayList<String>();
+		HashMap<Integer, List<String>> queries = new HashMap<Integer, List<String>>(2);
+		ArrayList<String> sql = new ArrayList<String>(1);
 		sql.add(
 			"CREATE TABLE `cheeves_data` (" +
 				"`playerName` VARCHAR(50) NOT NULL," +
