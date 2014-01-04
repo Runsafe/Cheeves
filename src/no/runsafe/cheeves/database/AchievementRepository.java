@@ -77,7 +77,7 @@ public class AchievementRepository extends Repository
 		);
 		queries.put(1, sql);
 
-		sql.clear();
+		sql = new ArrayList<String>(1);
 		sql.add(
 			"ALTER TABLE `cheeves_data`" +
 				"ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`;"
