@@ -9,6 +9,7 @@ import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class AchievementRepository extends Repository
@@ -65,7 +66,7 @@ public class AchievementRepository extends Repository
 	@Override
 	public HashMap<Integer, List<String>> getSchemaUpdateQueries()
 	{
-		HashMap<Integer, List<String>> queries = new HashMap<Integer, List<String>>(2);
+		HashMap<Integer, List<String>> queries = new LinkedHashMap<Integer, List<String>>(2);
 		ArrayList<String> sql = new ArrayList<String>(1);
 		sql.add(
 			"CREATE TABLE `cheeves_data` (" +
