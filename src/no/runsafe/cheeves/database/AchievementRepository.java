@@ -1,15 +1,11 @@
 package no.runsafe.cheeves.database;
 
 import no.runsafe.cheeves.IAchievement;
-import no.runsafe.framework.api.database.IDatabase;
-import no.runsafe.framework.api.database.IRow;
-import no.runsafe.framework.api.database.ISet;
-import no.runsafe.framework.api.database.Repository;
+import no.runsafe.framework.api.database.*;
 import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public class AchievementRepository extends Repository
@@ -64,24 +60,20 @@ public class AchievementRepository extends Repository
 	}
 
 	@Override
-	public HashMap<Integer, List<String>> getSchemaUpdateQueries()
+	public ISchemaUpdate getSchemaUpdateQueries()
 	{
-		HashMap<Integer, List<String>> queries = new LinkedHashMap<Integer, List<String>>(2);
-		ArrayList<String> sql = new ArrayList<String>(1);
-		sql.add(
+		ISchemaUpdate update = new SchemaUpdate();
+
+		update.addQueries(
 			"CREATE TABLE `cheeves_data` (" +
 				"`playerName` VARCHAR(50) NOT NULL," +
 				"`achievementID` INT(10) NOT NULL," +
 				"`earned` DATETIME NOT NULL," +
 				"PRIMARY KEY (`playerName`, `achievementID`)" +
-				")"
+			")"
 		);
-		queries.put(1, sql);
 
-		sql = new ArrayList<String>(1);
-		sql.add("ALTER TABLE `cheeves_data` ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`");
-		queries.put(2, sql);
-		return queries;
+		return update;
 	}
 
 	private final IDatabase database;
