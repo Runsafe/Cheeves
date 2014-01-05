@@ -37,13 +37,10 @@ public class Cheerios extends Achievement implements IPlayerDeathEvent
 	@Override
 	public void OnPlayerDeathEvent(RunsafePlayerDeathEvent event)
 	{
-		IPlayer deadPlayer = event.getEntity();
+		IPlayer killer = event.getEntity().getKiller();
 
-		/*if (deadPlayer.getOldLevel() >= 30)
-		{
-			IEntity killer = deadPlayer.getKiller();
-			if (killer != null && killer instanceof IPlayer)
-				award((IPlayer) killer);
-		}*/
+		if (killer != null && killer.isInUniverse("survival") && event.getLevelAmount() >= 30)
+			award(killer);
+
 	}
 }
