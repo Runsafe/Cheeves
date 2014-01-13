@@ -22,7 +22,7 @@ public class MasterOfMagic extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Score first place in wizard PvP whilst using each of the schools of magic.";
+		return "Score first place in a match of wizard PvP.";
 	}
 
 	@Override
