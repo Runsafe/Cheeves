@@ -12,8 +12,6 @@ import no.runsafe.framework.api.command.argument.RequiredArgument;
 import no.runsafe.framework.api.player.IAmbiguousPlayer;
 import no.runsafe.framework.api.player.IPlayer;
 
-import java.util.Map;
-
 public class AwardAchievement extends ExecutableCommand
 {
 	public AwardAchievement(AchievementHandler achievementHandler, AchievementFinder achievementFinder, IServer server)
