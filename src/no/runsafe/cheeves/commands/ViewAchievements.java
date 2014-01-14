@@ -6,12 +6,12 @@ import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
+import no.runsafe.framework.api.command.argument.IArgumentList;
 import no.runsafe.framework.api.command.argument.PlayerArgument;
 import no.runsafe.framework.api.player.IAmbiguousPlayer;
 import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.List;
-import java.util.Map;
 
 public class ViewAchievements extends ExecutableCommand
 {
@@ -24,7 +24,7 @@ public class ViewAchievements extends ExecutableCommand
 	}
 
 	@Override
-	public String OnExecute(ICommandExecutor executor, Map<String, String> parameters)
+	public String OnExecute(ICommandExecutor executor, IArgumentList parameters)
 	{
 		IPlayer viewPlayer = null;
 		if (executor instanceof IPlayer)

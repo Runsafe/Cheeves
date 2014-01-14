@@ -4,9 +4,8 @@ import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
+import no.runsafe.framework.api.command.argument.IArgumentList;
 import no.runsafe.framework.api.command.argument.TrailingArgument;
-
-import java.util.Map;
 
 public class AchievementLookup extends ExecutableCommand
 {
@@ -18,7 +17,7 @@ public class AchievementLookup extends ExecutableCommand
 	}
 
 	@Override
-	public String OnExecute(ICommandExecutor executor, Map<String, String> parameters)
+	public String OnExecute(ICommandExecutor executor, IArgumentList parameters)
 	{
 		IAchievement achievement = this.achievementFinder.getAchievementByTitle(parameters.get("achievementTitle"));
 		if (achievement != null)
