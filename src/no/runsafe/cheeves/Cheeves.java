@@ -58,6 +58,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(SurvivalChallengeWinner.class);
 		addComponent(MasterOfMagic.class);
 		addComponent(ApprenticeWizard.class);
+		addComponent(TouchOfDeath.class);
 
 		addComponent(AchievementFinder.class);
 
