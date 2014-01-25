@@ -10,11 +10,6 @@ import java.util.List;
 
 public class AchievementRepository extends Repository
 {
-	public AchievementRepository(IDatabase database)
-	{
-		this.database = database;
-	}
-
 	@Override
 	public String getTableName()
 	{
@@ -75,6 +70,4 @@ public class AchievementRepository extends Repository
 
 		return update;
 	}
-
-	private final IDatabase database;
 }
