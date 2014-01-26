@@ -8,6 +8,7 @@ import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.minecraft.RunsafeEntityType;
 import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.entity.LivingEntity;
+import no.runsafe.framework.minecraft.entity.RunsafeLivingEntity;
 import no.runsafe.framework.minecraft.entity.RunsafeProjectile;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerDeathEvent;
@@ -63,9 +64,9 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 				}
 				else if (event.getDamageActor() instanceof RunsafeProjectile)
 				{
-					RunsafeEntityType shooter = ((RunsafeProjectile) event.getDamageActor()).getShooter().getEntityType();
-					if (shooter != null && Shieldwall.requiredMobs.contains(shooter))
-						this.registerKill(player, shooter);
+					RunsafeLivingEntity shooter = ((RunsafeProjectile) event.getDamageActor()).getShooter();
+					if (shooter != null && Shieldwall.requiredMobs.contains(shooter.getEntityType()))
+						this.registerKill(player, shooter.getEntityType());
 				}
 			}
 		}
