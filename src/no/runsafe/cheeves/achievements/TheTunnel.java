@@ -20,7 +20,7 @@ public class TheTunnel extends Achievement
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Completed the tunnel event within the time limit.";
+		return "Completed the original tunnel event within the time limit.";
 	}
 
 	@Override
