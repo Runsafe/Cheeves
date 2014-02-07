@@ -37,5 +37,6 @@ public enum Achievements
 	TUNNEL_2,
 	TUNNEL_3,
 	TUNNEL_4,
-	TUNNEL_5
+	TUNNEL_5,
+	SOMEBODY_LIKES_ME
 }

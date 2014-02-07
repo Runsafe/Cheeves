@@ -64,6 +64,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(TunnelStage3.class);
 		addComponent(TunnelStage4.class);
 		addComponent(TunnelStage5.class);
+		addComponent(SomebodyLikesMe.class);
 
 		addComponent(AchievementFinder.class);
 
