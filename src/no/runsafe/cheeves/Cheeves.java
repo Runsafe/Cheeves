@@ -68,6 +68,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(Backstabber.class);
 		addComponent(MarvellousMutiny.class);
 		addComponent(TunnelEnd.class);
+		addComponent(Dergonborn.class);
 
 		addComponent(AchievementFinder.class);
 
