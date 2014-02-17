@@ -44,5 +44,6 @@ public enum Achievements
 	WHAT_YEAR_IS_IT,
 	DERGONBORN,
 	HAVE_AT_THEE,
-	BULLSEYE
+	BULLSEYE,
+	DERGON_RIDE
 }
