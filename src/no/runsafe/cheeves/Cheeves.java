@@ -72,6 +72,8 @@ public class Cheeves extends RunsafePlugin
 		addComponent(HaveAtThee.class);
 		addComponent(Bullseye.class);
 		addComponent(DergonRide.class);
+		addComponent(FishingTournamentWin.class);
+		addComponent(FishingLoot.class);
 
 		addComponent(AchievementFinder.class);
 
