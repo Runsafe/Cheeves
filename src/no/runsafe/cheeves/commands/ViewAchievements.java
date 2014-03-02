@@ -6,7 +6,7 @@ import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
 import no.runsafe.framework.api.command.argument.IArgumentList;
-import no.runsafe.framework.api.command.argument.SelfOrAnyPlayer;
+import no.runsafe.framework.api.command.argument.Player;
 import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.List;
@@ -15,7 +15,7 @@ public class ViewAchievements extends ExecutableCommand
 {
 	public ViewAchievements(AchievementFinder achievementFinder, AchievementHandler achievementHandler)
 	{
-		super("view", "Views achievements for yourself or another player", "runsafe.cheeves.view", new SelfOrAnyPlayer());
+		super("view", "Views achievements for yourself or another player", "runsafe.cheeves.view", new Player.Any("player", false, true));
 		this.achievementFinder = achievementFinder;
 		this.achievementHandler = achievementHandler;
 	}
@@ -23,7 +23,7 @@ public class ViewAchievements extends ExecutableCommand
 	@Override
 	public String OnExecute(ICommandExecutor executor, IArgumentList parameters)
 	{
-		IPlayer viewPlayer = parameters.getPlayer("player");
+		IPlayer viewPlayer = parameters.getValue("player");
 
 		if (viewPlayer == null)
 			return "&cPlease specify a player when running this from the console.";
