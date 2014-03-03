@@ -15,7 +15,7 @@ public class ViewAchievements extends ExecutableCommand
 {
 	public ViewAchievements(AchievementFinder achievementFinder, AchievementHandler achievementHandler)
 	{
-		super("view", "Views achievements for yourself or another player", "runsafe.cheeves.view", new Player.Any("player", false, true));
+		super("view", "Views achievements for yourself or another player", "runsafe.cheeves.view", new Player.Any("player", true));
 		this.achievementFinder = achievementFinder;
 		this.achievementHandler = achievementHandler;
 	}
