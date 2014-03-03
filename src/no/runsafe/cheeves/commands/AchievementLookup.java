@@ -12,7 +12,6 @@ public class AchievementLookup extends ExecutableCommand
 	public AchievementLookup(AchievementFinder achievementFinder)
 	{
 		super("lookup", "Lookup information on an achievement", "runsafe.cheeves.lookup", new TrailingArgument("achievementTitle"));
-
 		this.achievementFinder = achievementFinder;
 	}
 

@@ -14,7 +14,7 @@ public class AwardAchievement extends ExecutableCommand
 {
 	public AwardAchievement(AchievementHandler achievementHandler, AchievementFinder achievementFinder)
 	{
-		super("awardach", "Awards an achievement to a player", "runsafe.cheeves.award", new Player.Any().require(), new WholeNumber("achievementID").require());
+		super("awardach", "Awards an achievement to a player", "runsafe.cheeves.award", new Player.Any.Required(), new WholeNumber("achievementID").require());
 		this.achievementHandler = achievementHandler;
 		this.achievementFinder = achievementFinder;
 	}
