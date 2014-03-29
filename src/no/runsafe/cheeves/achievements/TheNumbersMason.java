@@ -14,7 +14,7 @@ public class TheNumbersMason extends Achievement
 	@Override
 	public String getAchievementName()
 	{
-		return "The Numbers Mason!?";
+		return "Shipwrecked!";
 	}
 
 	@Override
