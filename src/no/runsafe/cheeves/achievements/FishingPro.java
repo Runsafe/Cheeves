@@ -17,6 +17,8 @@ public class FishingPro extends Achievement implements IInventoryClick, IPlayerP
 	public FishingPro(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
+		flintItem = Item.Materials.GoldNugget.getItem();
+		flintItem.setDisplayName("§6Captain Flint's Gold");
 	}
  
 	@Override
@@ -53,7 +55,18 @@ public class FishingPro extends Achievement implements IInventoryClick, IPlayerP
 	{
 		RunsafeInventory inventory = player.getInventory();
 		if (player.isInUniverse("survival"))
-			if (inventory.contains(Item.Material.GoldenNugget, 64) || (inventory.contains(Item.Material.GoldenNugget, 63) && (item != null && item.is(Item.Material.GoldenNugget))))
+			if (inventory.containsStrict(flintItem, 64) || (inventory.containsStrict(flintItem, 63) && isItem(item)))
 				this.award(player);
 	}
+	
+	private boolean isItem(RunsafeMeta item)
+	{
+		if (item == null || !item.is(flintItem.getItemType())
+			return false;
+			
+			String itemName = item.getDisplayName();
+			return itemName != null && itemName.equals(flintItem.getDisplayName);
+	}
+	
+	private final RunsafeMeta flintItem;
 }
