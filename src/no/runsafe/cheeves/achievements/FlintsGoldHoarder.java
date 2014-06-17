@@ -12,9 +12,9 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
  
-public class FishingPro extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
+public class FlintsGoldHoarder extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public FishingPro(AchievementHandler achievementHandler)
+	public FlintsGoldHoarder(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 		flintItem = Item.Materials.GoldNugget.getItem();
@@ -24,7 +24,7 @@ public class FishingPro extends Achievement implements IInventoryClick, IPlayerP
 	@Override
 	public String getAchievementName()
 	{
-		return "Fishing Pro";
+		return "Flint's Gold Hoarder";
 	}
  
 	@Override
@@ -36,7 +36,7 @@ public class FishingPro extends Achievement implements IInventoryClick, IPlayerP
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.FISHINGPRO.ordinal();
+		return Achievements.FLINTSGOLDHOARDER.ordinal();
 	}
  
 	@Override
