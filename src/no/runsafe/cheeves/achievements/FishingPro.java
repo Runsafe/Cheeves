@@ -34,7 +34,7 @@ public class FishingPro extends Achievement implements IInventoryClick, IPlayerP
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.FishingPro.ordinal();
+		return Achievements.FISHINGPRO.ordinal();
 	}
  
 	@Override
