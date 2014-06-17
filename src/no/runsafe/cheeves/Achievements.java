@@ -50,4 +50,5 @@ public enum Achievements
 	FISHING_SPECIAL_LOOT,
 	NUMBERS_MASON,
 	AZUREN_DUNGEON
+	Fishing_Pro
 }
