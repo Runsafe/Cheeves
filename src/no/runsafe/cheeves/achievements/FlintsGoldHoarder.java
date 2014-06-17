@@ -65,7 +65,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 			return false;
 
 			String itemName = item.getDisplayName();
-			return itemName != null && itemName.equals(flintItem.getDisplayName);
+			return itemName != null && itemName.equals(flintItem.getDisplayName());
 	}
 
 	private final RunsafeMeta flintItem;
