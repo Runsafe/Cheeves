@@ -36,7 +36,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.FLINTSGOLDHOARDER.ordinal();
+		return Achievements.FLINTS_GOLD_HOARDER.ordinal();
 	}
  
 	@Override
