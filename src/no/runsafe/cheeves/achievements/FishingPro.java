@@ -53,7 +53,7 @@ public class FishingPro extends Achievement implements IInventoryClick, IPlayerP
 	{
 		RunsafeInventory inventory = player.getInventory();
 		if (player.isInUniverse("survival"))
-			if (inventory.contains(Item.Material.GoldenNugget, 64) || (inventory.contains(Item.Material.GoldenNugget, 63) && (item != null && item.is(Item.Material.GoldenNugget))))
+			if (inventory.contains(Item.Material.GoldenNugget, 25) || (inventory.contains(Item.Material.GoldenNugget, 24) && (item != null && item.is(Item.Material.GoldenNugget))))
 				this.award(player);
 	}
 }
