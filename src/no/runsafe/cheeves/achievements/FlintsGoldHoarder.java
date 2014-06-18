@@ -30,8 +30,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public String getAchievementInfo()
 	{
-		return "§3Looks like a piece of gold from the rusty treasure chest.";
-	}
+		return "Obatain 25 pieces Captain Flints Gold";
  
 	@Override
 	public int getAchievementID()
