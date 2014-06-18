@@ -55,7 +55,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	{
 		RunsafeInventory inventory = player.getInventory();
 		if (player.isInUniverse("survival"))
-			if (inventory.containsStrict(flintItem, 64) || (inventory.containsStrict(flintItem, 63) && isItem(item)))
+			if (inventory.containsStrict(flintItem, 25) || (inventory.containsStrict(flintItem, 24) && isItem(item)))
 				this.award(player);
 	}
 
