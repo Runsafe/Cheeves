@@ -30,7 +30,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Obtain 25 pieces of Flint's Gold.";
+		return "§3Looks like a piece of gold from the rusty treasure chest.";
 	}
  
 	@Override
