@@ -52,4 +52,5 @@ public enum Achievements
 	AZUREN_DUNGEON,
 	FLINTS_GOLD_HOARDER,
 	OPEN_SORCERER
+	CLOWN
 }
