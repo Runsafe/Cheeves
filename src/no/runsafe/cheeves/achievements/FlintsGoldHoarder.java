@@ -30,7 +30,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Obatain 25 pieces Captain Flints Gold";
+		return "Obtain 25 pieces Captain Flints Gold";
  
 	@Override
 	public int getAchievementID()
@@ -38,34 +38,23 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 		return Achievements.FLINTS_GOLD_HOARDER.ordinal();
 	}
  
+	private void checkInventory(RunsafeInventory inventory, IPlayer player)
+	{
+		if (player.isInUniverse("survival") && inventory.getAmountOfItem(flintItem) + inventory.getAmountOfItem(flintItem) >= 25)
+			award(player);
+	}
+
 	@Override
 	public void OnInventoryClickEvent(RunsafeInventoryClickEvent event)
 	{
-		this.checkInventory(event.getWhoClicked(), null);
+		checkInventory(event.getInventory(), event.getWhoClicked());
 	}
- 
+
 	@Override
 	public void OnPlayerPickupItemEvent(RunsafePlayerPickupItemEvent event)
 	{
-		this.checkInventory(event.getPlayer(), event.getItem().getItemStack());
+		IPlayer player = event.getPlayer();
+		checkInventory(player.getInventory(), player);
 	}
- 
-	private void checkInventory(IPlayer player, RunsafeMeta item)
-	{
-		RunsafeInventory inventory = player.getInventory();
-		if (player.isInUniverse("survival"))
-			if (inventory.containsStrict(flintItem, 25) || (inventory.containsStrict(flintItem, 24) && isItem(item)))
-				this.award(player);
-	}
-
-	private boolean isItem(RunsafeMeta item)
-	{
-		if (item == null || !item.is(flintItem.getItemType()))
-			return false;
-
-			String itemName = item.getDisplayName();
-			return itemName != null && itemName.equals(flintItem.getDisplayName());
-	}
-
 	private final RunsafeMeta flintItem;
 }
