@@ -28,7 +28,7 @@ public class Clown extends Achievement implements IInventoryClick, IPlayerPickup
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Get 64 clownfish.";
+		return "Obtain 64 clownfish.";
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class Clown extends Achievement implements IInventoryClick, IPlayerPickup
 	{
 		RunsafeInventory inventory = player.getInventory();
 		if (player.isInUniverse("survival"))
-			if (inventory.contains(Item.FoodStuff.Clownfish, 64) || (inventory.contains(Item.FoodStuff.Clownfish, 63) && (item != null && item.is(Item.FoodStuff.Clownfish))))
+			if (inventory.contains(Item.Food.Meat.Fish.Clownfish, 64) || (inventory.contains(Item.Food.Meat.Fish.Clownfish, 63) && (item != null && item.is(Item.Food.Meat.Fish.Clownfish))))
 				this.award(player);
 	}
 }
