@@ -38,9 +38,8 @@ public class MasterFisherman extends Achievement implements IInventoryClick, IPl
 
 	private void checkInventory(RunsafeInventory inventory, IPlayer player)
 	{
-		if (inventory.getAmountOfItem(Item.Food.Cooked.Fish.Normal) + inventory.getAmountOfItem(Item.Food.Cooked.Fish.Salmon) >= 2000)
+		if (player.isInUniverse("survival") && inventory.getAmountOfItem(Item.Food.Cooked.Fish.Normal) + inventory.getAmountOfItem(Item.Food.Cooked.Fish.Salmon) >= 2000)
 			award(player);
-	}
 
 	@Override
 	public void OnInventoryClickEvent(RunsafeInventoryClickEvent event)
