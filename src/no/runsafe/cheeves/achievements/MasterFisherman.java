@@ -2,6 +2,7 @@ package no.runsafe.cheeves.achievements;
 
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.Achievements;
+import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.framework.api.event.inventory.IInventoryClick;
 import no.runsafe.framework.api.event.player.IPlayerPickupItemEvent;
 import no.runsafe.framework.api.player.IPlayer;
