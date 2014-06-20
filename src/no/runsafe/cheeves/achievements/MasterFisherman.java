@@ -12,7 +12,7 @@ import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 
 public class MasterFisherman extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public MasterFisherman(AchievementHandler achievement handler)
+	public MasterFisherman(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 	}
