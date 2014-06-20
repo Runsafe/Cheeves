@@ -11,14 +11,12 @@ import no.runsafe.framework.minecraft.event.inventory.RunsafeInventoryClickEvent
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
- 
+
 public class FlintsGoldHoarder extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
 	public FlintsGoldHoarder(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
-		flintItem = Item.Materials.GoldNugget.getItem();
-		flintItem.setDisplayName("§6Captain Flint's Gold");
 	}
  
 	@Override
@@ -41,8 +39,26 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
  
 	private void checkInventory(RunsafeInventory inventory, IPlayer player)
 	{
-		if (player.isInUniverse("survival") && inventory.contains(flintItem, 25))
-			award(player);
+		if (player.isInUniverse("survival"))
+		{
+			int amount = 0;
+			for (RunsafeMeta inventoryItem : inventory.getContents())
+			{
+				if (inventoryItem.is(Item.Materials.GoldNugget))
+				{
+					String displayName = inventoryItem.getDisplayName();
+					if (displayName != null && displayName.equals("§6Captain Flint's Gold"))
+					{
+						amount += inventoryItem.getAmount();
+						if (amount >= 25)
+						{
+							award(player);
+							return;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	@Override
@@ -57,5 +73,4 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 		IPlayer player = event.getPlayer();
 		checkInventory(player.getInventory(), player);
 	}
-	private final RunsafeMeta flintItem;
 }
