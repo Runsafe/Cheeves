@@ -79,6 +79,9 @@ public class Cheeves extends RunsafePlugin
 		addComponent(FlintsGoldHoarder.class);
 		addComponent(OpenSorcerer.class);
 		addComponent(MasterFisherman.class);
+		addComponent(LandHo.class);
+		addComponent(DeadBone.class);
+		addComponent(BelovedFlower.class);
 
 		addComponent(AchievementFinder.class);
 
