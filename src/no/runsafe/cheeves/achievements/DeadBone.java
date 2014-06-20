@@ -16,7 +16,7 @@ public class DeadBone extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Pirates always get thar hands dirty";
+		return "Pirates Always Get Thar Hands Dirty";
 	}
 
 	@Override
