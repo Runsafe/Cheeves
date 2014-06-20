@@ -31,6 +31,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	public String getAchievementInfo()
 	{
 		return "Obtain 25 pieces Captain Flints Gold";
+	}
  
 	@Override
 	public int getAchievementID()
@@ -40,7 +41,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
  
 	private void checkInventory(RunsafeInventory inventory, IPlayer player)
 	{
-		if (player.isInUniverse("survival") && inventory.getAmountOfItem(flintItem) + inventory.getAmountOfItem(flintItem) >= 25)
+		if (player.isInUniverse("survival") && inventory.contains(flintItem, 25))
 			award(player);
 	}
 
