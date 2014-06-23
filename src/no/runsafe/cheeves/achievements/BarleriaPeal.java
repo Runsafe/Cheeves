@@ -16,7 +16,7 @@ public class BarleriaPeal extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Why Are Pearls So Shiny";
+		return "Why Are Pearls So Shiny?";
 	}
 
 	@Override
