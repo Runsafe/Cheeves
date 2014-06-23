@@ -16,7 +16,7 @@ public class BelovedFlower extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "All t' mates loved that flower";
+		return "All t' Mates Loved That Flower";
 	}
 
 	@Override
