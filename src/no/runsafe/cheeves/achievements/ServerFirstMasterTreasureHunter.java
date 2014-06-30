@@ -26,6 +26,6 @@ public class ServerFirstMasterTreasureHunter extends Achievement
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.SERVER_FIRST_TREASURE_MASTER.ordinal();
+		return Achievements.SERVER_FIRST_MASTER_TREASURE_HUNTER.ordinal();
 	}
 }
