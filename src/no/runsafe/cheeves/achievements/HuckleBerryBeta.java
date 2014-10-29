@@ -47,7 +47,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 				if (inventoryItem.is(Item.Materials.NetherWart))
 				{
 					String displayName = inventoryItem.getDisplayName();
-					if (displayName != null && displayName.equals("§4 Beta Token"))
+					if (displayName != null && displayName.equals("§4Beta Token"))
 					{
 						amount += inventoryItem.getAmount();
 						if (amount >= 100)
