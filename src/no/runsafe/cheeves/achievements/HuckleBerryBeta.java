@@ -28,7 +28,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Obtain 100 pieces of HuckleBerry beta tokens.";
+		return "Obtain 100 beta tokens.";
 	}
  
 	@Override
