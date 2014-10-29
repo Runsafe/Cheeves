@@ -82,6 +82,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(LandHo.class);
 		addComponent(DeadBone.class);
 		addComponent(BelovedFlower.class);
+		addComponent(HuckleBerryBeta.class);
 
 		addComponent(AchievementFinder.class);
 
