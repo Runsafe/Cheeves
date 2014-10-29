@@ -12,7 +12,7 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 
-public class Huckleberry Beta extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
+public class HuckleberryBeta extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
 	public HuckleberryBeta(AchievementHandler achievementHandler)
 	{
