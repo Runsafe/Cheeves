@@ -55,5 +55,6 @@ public enum Achievements
 	MASTER_FISHERMAN,
 	LAND_HO,
 	DEAD_BONE,
-	BELOVED_FLOWER
+	BELOVED_FLOWER,
+	HuckleBerry_Beta
 }
