@@ -34,7 +34,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.HuckleBerry_Beta.ordinal();
+		return Achievements.HUCKLEBERRY_BETA.ordinal();
 	}
  
 	private void checkInventory(RunsafeInventory inventory, IPlayer player)
