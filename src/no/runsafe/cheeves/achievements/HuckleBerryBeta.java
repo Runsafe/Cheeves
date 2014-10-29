@@ -22,7 +22,7 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 	@Override
 	public String getAchievementName()
 	{
-		return "HuckleBerry beta";
+		return "Huckleberry beta";
 	}
  
 	@Override
