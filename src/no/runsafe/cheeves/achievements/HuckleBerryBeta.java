@@ -1,4 +1,4 @@
-ckage no.runsafe.cheeves.achievements;
+package no.runsafe.cheeves.achievements;
  
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
@@ -12,9 +12,9 @@ import no.runsafe.framework.minecraft.event.player.RunsafePlayerPickupItemEvent;
 import no.runsafe.framework.minecraft.inventory.RunsafeInventory;
 import no.runsafe.framework.minecraft.item.meta.RunsafeMeta;
 
-public class FlintsGoldHoarder extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
+public class Huckleberry Beta extends Achievement implements IInventoryClick, IPlayerPickupItemEvent
 {
-	public FlintsGoldHoarder(AchievementHandler achievementHandler)
+	public HuckleberryBeta(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 	}
@@ -73,3 +73,4 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
 		IPlayer player = event.getPlayer();
 		checkInventory(player.getInventory(), player);
 	}
+}
