@@ -44,7 +44,7 @@ public class HuckleberryBeta extends Achievement implements IInventoryClick, IPl
 			int amount = 0;
 			for (RunsafeMeta inventoryItem : inventory.getContents())
 			{
-				if (inventoryItem.is(Item.Materials.NetherWart))
+				if (inventoryItem.is(Item.Brewing.NetherWart))
 				{
 					String displayName = inventoryItem.getDisplayName();
 					if (displayName != null && displayName.equals("§4Beta Token"))
