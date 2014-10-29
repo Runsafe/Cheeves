@@ -56,5 +56,5 @@ public enum Achievements
 	LAND_HO,
 	DEAD_BONE,
 	BELOVED_FLOWER,
-	HuckleBerry_Beta
+	HUCKLEBERRY_BETA
 }
