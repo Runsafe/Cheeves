@@ -86,6 +86,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(SilverfishMind.class);
 		addComponent(ServerFirstMasterTreasureHunter.class);
 		addComponent(MasterTreasureHunter.class);
+		addComponent(HuckleBerryBeta.class);
 
 		addComponent(AchievementFinder.class);
 
