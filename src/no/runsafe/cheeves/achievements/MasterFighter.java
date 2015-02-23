@@ -16,7 +16,7 @@ public class MasterFighter extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "It's lonely at the top";
+		return "It's Lonely At The Top";
 	}
 
 	@Override
