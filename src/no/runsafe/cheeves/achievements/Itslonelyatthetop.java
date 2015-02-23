@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class Itslonelyatthetop extends Achievement implements IPlayerCustomEvent
+public class MasterFighter extends Achievement implements IPlayerCustomEvent
 {
-	public Itslonelyatthetop(AchievementHandler achievementHandler)
+	public MasterFighter(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 	}
@@ -28,13 +28,13 @@ public class Itslonelyatthetop extends Achievement implements IPlayerCustomEvent
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.ITS_LONELY_AT_THE_TOP.ordinal();
+		return Achievements.MASTER_FIGHTER.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.itsLonelyAtTheTop"))
+		if (event.getEvent().equals("achievement.masterFighter"))
 			award(event.getPlayer());
 	}
 }
