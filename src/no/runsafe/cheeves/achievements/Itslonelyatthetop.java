@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class It'slonelyatthetop extends Achievement implements IPlayerCustomEvent
+public class Itslonelyatthetop extends Achievement implements IPlayerCustomEvent
 {
-	public It'slonelyatthetop(AchievementHandler achievementHandler)
+	public Itslonelyatthetop(AchievementHandler achievementHandler)
 	{
 		super(achievementHandler);
 	}
@@ -28,13 +28,13 @@ public class It'slonelyatthetop extends Achievement implements IPlayerCustomEven
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.IT'S_LONELY_AT_THE_TOP.ordinal();
+		return Achievements.ITS_LONELY_AT_THE_TOP.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.it'sLonelyAtTheTop"))
+		if (event.getEvent().equals("achievement.itsLonelyAtTheTop"))
 			award(event.getPlayer());
 	}
 }
