@@ -28,7 +28,7 @@ public class ParkourRed extends Achievement implements IPlayerCustomEvent
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.PARKOURRED.ordinal();
+		return Achievements.PARKOUR_RED.ordinal();
 	}
 
 	@Override
