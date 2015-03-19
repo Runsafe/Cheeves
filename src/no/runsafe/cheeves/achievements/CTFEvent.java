@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class MasterTreasureHunter extends Achievement implements IPlayerCustomEvent
+public class CTFEvent extends Achievement implements IPlayerCustomEvent
 {
-	public MasterTreasureHunter(AchievementHandler handler)
+	public CTFEvent(AchievementHandler handler)
 	{
 		super(handler);
 	}
