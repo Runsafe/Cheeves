@@ -16,13 +16,13 @@ public class CTFEvent extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "CTF Event March 2014";
+		return "CTF Event March 2015";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Participated in the March 2014 CTF Event!";
+		return "Participated in the March 2015 CTF Event!";
 	}
 
 	@Override
