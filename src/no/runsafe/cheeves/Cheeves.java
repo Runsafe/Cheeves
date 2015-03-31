@@ -78,6 +78,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(AzurenDungeon.class);
 		addComponent(FlintsGoldHoarder.class);
 		addComponent(Coins.class);
+		addComponent(BigSpender.class);
 
 		addComponent(AchievementFinder.class);
 
