@@ -67,5 +67,7 @@ public enum Achievements
 	CTF_EVENT_MARCH_VICTOR,
 	BIG_SPENDER,
 	OPEN_POCKETS,
-	COINS
+	COINS,
+	COINS_2,
+	COINS_3
 }
