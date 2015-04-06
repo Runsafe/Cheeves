@@ -88,7 +88,14 @@ public class Cheeves extends RunsafePlugin
 		addComponent(MasterTreasureHunter.class);
 		addComponent(HuckleberryBeta.class);
 		addComponent(MasterFighter.class);
-		addComponent(ParkourRed.class)
+		addComponent(ParkourRed.class);
+		addComponent(CTFEvent.class);
+		addComponent(CTFEventVictor.class);
+		addComponent(BigSpender.class);
+		addComponent(OpenPockets.class);
+		addComponent(Coins.class);
+		addComponent(Coins2.class);
+		addComponent(Coins3.class);
 
 		addComponent(AchievementFinder.class);
 
