@@ -96,7 +96,9 @@ public class Cheeves extends RunsafePlugin
 		addComponent(Coins.class);
 		addComponent(Coins2.class);
 		addComponent(Coins3.class);
-
+		addComponent(ParkourYellow.class);
+		addComponent(MobGrinder.class);
+		
 		addComponent(AchievementFinder.class);
 
 		// Commands
