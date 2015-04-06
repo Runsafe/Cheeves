@@ -69,5 +69,7 @@ public enum Achievements
 	OPEN_POCKETS,
 	COINS,
 	COINS_2,
-	COINS_3
+	COINS_3,
+	PARKOUR_YELLOW, 
+	MOB_GRINDER
 }
