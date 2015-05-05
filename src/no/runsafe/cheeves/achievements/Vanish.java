@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class MobGrinder extends Achievement implements IPlayerCustomEvent
+public class Vanish extends Achievement implements IPlayerCustomEvent
 {
-	public MobGrinder(AchievementHandler handler)
+	public Vanish(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class MobGrinder extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Mob Grinder";
+		return "Vanish!";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Complete all five rounds in any arena.";
+		return "Purchase a Vanish spell from the PVE Shop.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.MOB_GRINDER.ordinal();
+		return Achievements.VANISH.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.mobgrinder"))
+		if (event.getEvent().equals("achievement.vanish"))
 			award(event.getPlayer());
 	}
 }

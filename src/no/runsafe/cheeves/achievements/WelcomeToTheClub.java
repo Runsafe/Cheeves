@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class MobGrinder extends Achievement implements IPlayerCustomEvent
+public class WelcomeToTheClub extends Achievement implements IPlayerCustomEvent
 {
-	public MobGrinder(AchievementHandler handler)
+	public WelcomeToTheClub(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class MobGrinder extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Mob Grinder";
+		return "Welcome To The Club";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Complete all five rounds in any arena.";
+		return "Enter the Secret Room in PVE.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.MOB_GRINDER.ordinal();
+		return Achievements.WELCOME_TO_THE_CLUB.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.mobgrinder"))
+		if (event.getEvent().equals("achievement.welcometotheclub"))
 			award(event.getPlayer());
 	}
 }
