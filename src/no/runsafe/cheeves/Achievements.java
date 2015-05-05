@@ -71,5 +71,7 @@ public enum Achievements
 	COINS_2,
 	COINS_3,
 	PARKOUR_YELLOW, 
-	MOB_GRINDER
+	MOB_GRINDER,
+	VANISH,
+	WELCOME_TO_THE_CLUB
 }
