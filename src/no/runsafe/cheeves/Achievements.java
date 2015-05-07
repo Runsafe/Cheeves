@@ -74,7 +74,7 @@ public enum Achievements
 	MOB_GRINDER,
 	VANISH,
 	WELCOME_TO_THE_CLUB,
-	TOP_Consumer,
+	Top_Consumer,
 	PVE_Master,
 	PVE_Novice,
 	PVE_Apprentice,
