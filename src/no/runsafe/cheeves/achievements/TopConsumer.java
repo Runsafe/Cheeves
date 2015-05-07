@@ -28,7 +28,7 @@ public class TopConsumer extends Achievement implements IPlayerCustomEvent
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.TOP_Consumer.ordinal();
+		return Achievements.TOP_CONSUMER.ordinal();
 	}
 
 	@Override
