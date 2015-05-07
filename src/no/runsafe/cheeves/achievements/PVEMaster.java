@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class Vanish extends Achievement implements IPlayerCustomEvent
+public class PVEMaster extends Achievement implements IPlayerCustomEvent
 {
-	public Vanish(AchievementHandler handler)
+	public PVEMaster(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class Vanish extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Vanish";
+		return "PVE Master";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Purchase a Vanish spell from the PVE Shop.";
+		return "Have a total of 1000 PvE Points at once.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.VANISH.ordinal();
+		return Achievements.PVE_MASTER.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.vanish"))
+		if (event.getEvent().equals("achievement.pvemaster"))
 			award(event.getPlayer());
 	}
 }

@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class Vanish extends Achievement implements IPlayerCustomEvent
+public class TopConsumer extends Achievement implements IPlayerCustomEvent
 {
-	public Vanish(AchievementHandler handler)
+	public TopConsumer(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class Vanish extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Vanish";
+		return "Top Consumer";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Purchase a Vanish spell from the PVE Shop.";
+		return "Bought one item from a shop.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.VANISH.ordinal();
+		return Achievements.TOP_CONSUMER.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.vanish"))
+		if (event.getEvent().equals("achievement.topconsumer"))
 			award(event.getPlayer());
 	}
 }

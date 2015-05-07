@@ -100,6 +100,11 @@ public class Cheeves extends RunsafePlugin
 		addComponent(MobGrinder.class);
 		addComponent(Vanish.class);
 		addComponent(WelcomeToTheClub.class);
+		addComponent(TopConsumer.class);
+		addComponent(PVEMaster.class);
+		addComponent(PVEExpert.class);
+		addComponent(PVEApprentice.class);
+		addComponent(PVENovice.class);
 		
 		addComponent(AchievementFinder.class);
 
