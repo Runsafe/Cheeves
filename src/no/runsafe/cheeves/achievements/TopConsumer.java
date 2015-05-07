@@ -22,7 +22,7 @@ public class TopConsumer extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Bought one item from a shop.";
+		return "Buy an item from the PvE shop.";
 	}
 
 	@Override
