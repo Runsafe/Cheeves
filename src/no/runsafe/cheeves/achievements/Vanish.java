@@ -16,7 +16,7 @@ public class Vanish extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Vanish!";
+		return "Vanish";
 	}
 
 	@Override
