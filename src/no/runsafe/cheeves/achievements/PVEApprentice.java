@@ -16,7 +16,7 @@ public class PVEApprentice extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "PVE Apprentice";
+		return "PvE Apprentice";
 	}
 
 	@Override

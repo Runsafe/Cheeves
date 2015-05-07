@@ -16,7 +16,7 @@ public class PVEExpert extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "PVE Expert";
+		return "PvE Expert";
 	}
 
 	@Override

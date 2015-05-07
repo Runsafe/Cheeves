@@ -16,7 +16,7 @@ public class PVEMaster extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "PVE Master";
+		return "PvE Master";
 	}
 
 	@Override
