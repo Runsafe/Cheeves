@@ -64,7 +64,7 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 				}
 				else if (event.getDamageActor() instanceof RunsafeProjectile)
 				{
-					RunsafeLivingEntity shooter = ((RunsafeProjectile) event.getDamageActor()).getShooter();
+					RunsafeLivingEntity shooter =(RunsafeLivingEntity)((RunsafeProjectile) event.getDamageActor()).getShooter();
 					if (shooter != null && Shieldwall.requiredMobs.contains(shooter.getEntityType()))
 						this.registerKill(player, shooter.getEntityType());
 				}
