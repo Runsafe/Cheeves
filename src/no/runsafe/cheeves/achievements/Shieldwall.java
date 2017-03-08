@@ -3,6 +3,7 @@ package no.runsafe.cheeves.achievements;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
+import no.runsafe.framework.api.entity.IProjectileSource;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
 import no.runsafe.framework.api.event.player.IPlayerDeathEvent;
 import no.runsafe.framework.api.minecraft.RunsafeEntityType;
@@ -64,7 +65,12 @@ public class Shieldwall extends Achievement implements IEntityDamageByEntityEven
 				}
 				else if (event.getDamageActor() instanceof RunsafeProjectile)
 				{
-					RunsafeLivingEntity shooter =(RunsafeLivingEntity)((RunsafeProjectile) event.getDamageActor()).getShooter();
+					IProjectileSource shooterSource = ((RunsafeProjectile) event.getDamageActor()).getShooter();
+					if(!(shooterSource instanceof RunsafeLivingEntity))
+						return;
+
+					RunsafeLivingEntity shooter = (RunsafeLivingEntity) shooterSource;
+
 					if (shooter != null && Shieldwall.requiredMobs.contains(shooter.getEntityType()))
 						this.registerKill(player, shooter.getEntityType());
 				}
