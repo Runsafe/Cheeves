@@ -45,7 +45,7 @@ public class Bullseye extends Achievement implements IEntityDamageByEntityEvent
 			RunsafeEntity attacker = event.getDamageActor();
 			if (attacker.getEntityType() == ProjectileEntity.Arrow)
 			{
-				IPlayer shooter = ((RunsafeProjectile) attacker).getShooterPlayer();
+				IPlayer shooter = ((RunsafeProjectile) attacker).getShootingPlayer();
 				if (shooter != null)
 				{
 					ILocation playerLocation = entity.getLocation();
