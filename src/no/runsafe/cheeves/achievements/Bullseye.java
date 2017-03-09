@@ -56,5 +56,4 @@ public class Bullseye extends Achievement implements IEntityDamageByEntityEvent
 				award(shooter);
 		}
 	}
-
 }
