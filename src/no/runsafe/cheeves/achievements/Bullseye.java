@@ -40,21 +40,20 @@ public class Bullseye extends Achievement implements IEntityDamageByEntityEvent
 	public void OnEntityDamageByEntity(RunsafeEntityDamageByEntityEvent event)
 	{
 		RunsafeEntity entity = event.getEntity();
-		if (entity instanceof IPlayer)
-		{
-			RunsafeEntity attacker = event.getDamageActor();
-			if (attacker.getEntityType() == ProjectileEntity.Arrow)
-			{
-				IPlayer shooter = ((RunsafeProjectile) attacker).getShooterPlayer();
-				if (shooter != null)
-				{
-					ILocation playerLocation = entity.getLocation();
-					ILocation shooterLocation = shooter.getLocation();
+		if (!(entity instanceof IPlayer))
+			return;
 
-					if (playerLocation != null && shooterLocation != null && playerLocation.distance(shooterLocation) >= 40)
-						award(shooter);
-				}
-			}
+		RunsafeEntity attacker = event.getDamageActor();
+		if (attacker.getEntityType() == ProjectileEntity.Arrow)
+		{
+			IPlayer shooter = ((RunsafeProjectile) attacker).getShootingPlayer();
+			if (shooter == null)
+				return;
+			ILocation playerLocation = entity.getLocation();
+			ILocation shooterLocation = shooter.getLocation();
+
+			if (playerLocation != null && shooterLocation != null && playerLocation.distance(shooterLocation) >= 40)
+				award(shooter);
 		}
 	}
 }
