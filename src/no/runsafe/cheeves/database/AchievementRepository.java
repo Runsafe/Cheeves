@@ -1,6 +1,7 @@
 package no.runsafe.cheeves.database;
 
 import no.runsafe.cheeves.IAchievement;
+import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.database.*;
 import no.runsafe.framework.api.player.IPlayer;
 
@@ -10,23 +11,31 @@ import java.util.List;
 
 public class AchievementRepository extends Repository
 {
+	public AchievementRepository(IServer server)
+	{
+		this.server = server;
+	}
+
 	@Override
 	public String getTableName()
 	{
 		return "cheeves_data";
 	}
 
-	public HashMap<String, List<Integer>> getAchievements()
+	public HashMap<IPlayer, List<Integer>> getAchievements()
 	{
-		HashMap<String, List<Integer>> achievements = new HashMap<String, List<Integer>>();
+		HashMap<IPlayer, List<Integer>> achievements = new HashMap<IPlayer, List<Integer>>();
 		ISet data = this.database.query("SELECT playerName, achievementID FROM cheeves_data");
 		for (IRow node : data)
 		{
-			String playerName = node.String("playerName");
-			if (!achievements.containsKey(playerName))
-				achievements.put(playerName, new ArrayList<Integer>());
+			IPlayer player = server.getPlayer(node.String("playerName"));
+			if (player != null)
+			{
+				if (!achievements.containsKey(player))
+					achievements.put(player, new ArrayList<Integer>());
 
-			achievements.get(playerName).add(node.Integer("achievementID"));
+				achievements.get(player).add(node.Integer("achievementID"));
+			}
 		}
 		return achievements;
 	}
@@ -44,11 +53,11 @@ public class AchievementRepository extends Repository
 		this.database.execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
 	}
 
-	public void storeAchievement(String playerName, IAchievement achievement, boolean toasted)
+	public void storeAchievement(IPlayer player, IAchievement achievement, boolean toasted)
 	{
 		this.database.execute(
 			"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
-			playerName.toLowerCase(),
+			player.getName().toLowerCase(),
 			achievement.getAchievementID(),
 			(toasted ? 1 : 0)
 		);
@@ -70,4 +79,6 @@ public class AchievementRepository extends Repository
 
 		return update;
 	}
+
+	private final IServer server;
 }
