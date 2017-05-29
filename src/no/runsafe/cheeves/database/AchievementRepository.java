@@ -27,10 +27,10 @@ public class AchievementRepository extends Repository
 	public HashMap<IPlayer, List<Integer>> getAchievements()
 	{
 		HashMap<IPlayer, List<Integer>> achievements = new HashMap<IPlayer, List<Integer>>();
-		ISet data = this.database.query("SELECT playerName, achievementID FROM cheeves_data");
+		ISet data = this.database.query("SELECT player, achievementID FROM cheeves_data");
 		for (IRow node : data)
 		{
-			IPlayer player = playerProvider.getPlayer(node.String("playerName"));
+			IPlayer player = playerProvider.getPlayer(node.String("player"));
 			if (player != null)
 			{
 				if (!achievements.containsKey(player))
@@ -45,20 +45,20 @@ public class AchievementRepository extends Repository
 	public List<Integer> getNonToastedAchievements(IPlayer player)
 	{
 		return this.database.queryIntegers(
-			"SELECT achievementID FROM cheeves_data WHERE playerName = ? AND toasted = 0",
+			"SELECT achievementID FROM cheeves_data WHERE player = ? AND toasted = 0",
 			player.getName().toLowerCase()
 		);
 	}
 
 	public void clearNonToastedAchievements(IPlayer player)
 	{
-		this.database.execute("UPDATE cheeves_data SET toasted = 1 WHERE playerName = ? AND toasted = 0", player.getName().toLowerCase());
+		this.database.execute("UPDATE cheeves_data SET toasted = 1 WHERE player = ? AND toasted = 0", player.getName().toLowerCase());
 	}
 
 	public void storeAchievement(IPlayer player, IAchievement achievement, boolean toasted)
 	{
 		this.database.execute(
-			"INSERT INTO cheeves_data (playerName, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
+			"INSERT INTO cheeves_data (player, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
 			player.getName().toLowerCase(),
 			achievement.getAchievementID(),
 			(toasted ? 1 : 0)
@@ -81,6 +81,8 @@ public class AchievementRepository extends Repository
 		);
 
 		update.addQueries("ALTER TABLE `cheeves_data` ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`");
+
+		update.addQueries(String.format("ALTER TABLE `%s` CHANGE `playerName` `player` varchar(50) NOT NULL", getTableName()));
 
 		return update;
 	}
