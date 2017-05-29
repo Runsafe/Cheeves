@@ -46,20 +46,20 @@ public class AchievementRepository extends Repository
 	{
 		return this.database.queryIntegers(
 			"SELECT achievementID FROM cheeves_data WHERE player = ? AND toasted = 0",
-			player.getName().toLowerCase()
+			player.getUniqueId().toString()
 		);
 	}
 
 	public void clearNonToastedAchievements(IPlayer player)
 	{
-		this.database.execute("UPDATE cheeves_data SET toasted = 1 WHERE player = ? AND toasted = 0", player.getName().toLowerCase());
+		this.database.execute("UPDATE cheeves_data SET toasted = 1 WHERE player = ? AND toasted = 0", player.getUniqueId().toString());
 	}
 
 	public void storeAchievement(IPlayer player, IAchievement achievement, boolean toasted)
 	{
 		this.database.execute(
 			"INSERT INTO cheeves_data (player, achievementID, earned, toasted) VALUES(?, ?, NOW(), ?)",
-			player.getName().toLowerCase(),
+			player.getUniqueId().toString(),
 			achievement.getAchievementID(),
 			(toasted ? 1 : 0)
 		);
@@ -83,6 +83,15 @@ public class AchievementRepository extends Repository
 		update.addQueries("ALTER TABLE `cheeves_data` ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`");
 
 		update.addQueries(String.format("ALTER TABLE `%s` CHANGE `playerName` `player` varchar(50) NOT NULL", getTableName()));
+
+		update.addQueries( // Update player UUIDs
+			String.format(
+				"UPDATE IGNORE `%s` SET `player` = " +
+					"COALESCE((SELECT `uuid` FROM player_db WHERE `name`=`%s`.`player`), `player`) " +
+					"WHERE length(`player`) != 36",
+				getTableName(), getTableName()
+			)
+		);
 
 		return update;
 	}
