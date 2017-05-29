@@ -82,10 +82,9 @@ public class AchievementRepository extends Repository
 
 		update.addQueries("ALTER TABLE `cheeves_data` ADD COLUMN `toasted` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `earned`");
 
-		update.addQueries(String.format("ALTER TABLE `%s` CHANGE `playerName` `player` varchar(50) NOT NULL", getTableName()));
-
-		update.addQueries( // Update player UUIDs
-			String.format(
+		update.addQueries(
+			String.format("ALTER TABLE `%s` CHANGE `playerName` `player` varchar(50) NOT NULL", getTableName()),
+			String.format(// Update player UUIDs
 				"UPDATE IGNORE `%s` SET `player` = " +
 					"COALESCE((SELECT `uuid` FROM player_db WHERE `name`=`%s`.`player`), `player`) " +
 					"WHERE length(`player`) != 36",
