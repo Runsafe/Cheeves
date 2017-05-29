@@ -32,16 +32,15 @@ public class AchievementRepository extends Repository
 		for (IRow node : data)
 		{
 			String playerID = node.String("player");
-			if (playerID.length() == 36)
+			if (playerID.length() != 36)
+				continue;
+			IPlayer player = playerProvider.getPlayer(UUID.fromString(playerID));
+			if (player != null)
 			{
-				IPlayer player = playerProvider.getPlayer(UUID.fromString(playerID));
-				if (player != null)
-				{
-					if (!achievements.containsKey(player))
-						achievements.put(player, new ArrayList<Integer>());
+				if (!achievements.containsKey(player))
+					achievements.put(player, new ArrayList<Integer>());
 
-					achievements.get(player).add(node.Integer("achievementID"));
-				}
+				achievements.get(player).add(node.Integer("achievementID"));
 			}
 		}
 		return achievements;
