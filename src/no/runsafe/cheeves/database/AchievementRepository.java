@@ -1,9 +1,9 @@
 package no.runsafe.cheeves.database;
 
 import no.runsafe.cheeves.IAchievement;
-import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.database.*;
 import no.runsafe.framework.api.player.IPlayer;
+import no.runsafe.framework.api.server.IPlayerProvider;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -12,9 +12,9 @@ import java.util.List;
 
 public class AchievementRepository extends Repository
 {
-	public AchievementRepository(IServer server)
+	public AchievementRepository(IPlayerProvider playerProvider)
 	{
-		this.server = server;
+		this.playerProvider = playerProvider;
 	}
 
 	@Nonnull
@@ -30,7 +30,7 @@ public class AchievementRepository extends Repository
 		ISet data = this.database.query("SELECT playerName, achievementID FROM cheeves_data");
 		for (IRow node : data)
 		{
-			IPlayer player = server.getPlayer(node.String("playerName"));
+			IPlayer player = playerProvider.getPlayer(node.String("playerName"));
 			if (player != null)
 			{
 				if (!achievements.containsKey(player))
@@ -85,5 +85,5 @@ public class AchievementRepository extends Repository
 		return update;
 	}
 
-	private final IServer server;
+	private final IPlayerProvider playerProvider;
 }
