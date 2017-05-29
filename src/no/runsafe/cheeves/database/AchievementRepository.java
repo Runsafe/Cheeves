@@ -31,13 +31,17 @@ public class AchievementRepository extends Repository
 		ISet data = this.database.query("SELECT player, achievementID FROM cheeves_data");
 		for (IRow node : data)
 		{
-			IPlayer player = playerProvider.getPlayer(UUID.fromString(node.String("player")));
-			if (player != null)
+			String playerID = node.String("player");
+			if (playerID.length() == 36)
 			{
-				if (!achievements.containsKey(player))
-					achievements.put(player, new ArrayList<Integer>());
+				IPlayer player = playerProvider.getPlayer(UUID.fromString(playerID));
+				if (player != null)
+				{
+					if (!achievements.containsKey(player))
+						achievements.put(player, new ArrayList<Integer>());
 
-				achievements.get(player).add(node.Integer("achievementID"));
+					achievements.get(player).add(node.Integer("achievementID"));
+				}
 			}
 		}
 		return achievements;
