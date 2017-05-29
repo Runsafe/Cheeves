@@ -5,6 +5,7 @@ import no.runsafe.framework.api.IServer;
 import no.runsafe.framework.api.database.*;
 import no.runsafe.framework.api.player.IPlayer;
 
+import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +17,7 @@ public class AchievementRepository extends Repository
 		this.server = server;
 	}
 
+	@Nonnull
 	@Override
 	public String getTableName()
 	{
@@ -63,6 +65,7 @@ public class AchievementRepository extends Repository
 		);
 	}
 
+	@Nonnull
 	@Override
 	public ISchemaUpdate getSchemaUpdateQueries()
 	{
