@@ -1,6 +1,7 @@
 package no.runsafe.cheeves;
 
 import no.runsafe.framework.api.event.plugin.IPluginEnabled;
+import no.runsafe.framework.api.player.IPlayer;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class ServerFirstHandler implements IPluginEnabled
 	@Override
 	public void OnPluginEnabled()
 	{
-		for (Map.Entry<String, List<Integer>> node : this.handler.getEarnedAchievements().entrySet())
+		for (Map.Entry<IPlayer, List<Integer>> node : this.handler.getEarnedAchievements().entrySet())
 			for (int achievementID : node.getValue())
 				if (this.finder.getAchievementByID(achievementID) instanceof ServerFirstAchievement)
 					this.handler.registerServerFirst(achievementID);

@@ -18,7 +18,7 @@ public class AchievementLookup extends ExecutableCommand
 	@Override
 	public String OnExecute(ICommandExecutor executor, IArgumentList parameters)
 	{
-		IAchievement achievement = this.achievementFinder.getAchievementByTitle(parameters.get("achievementTitle"));
+		IAchievement achievement = this.achievementFinder.getAchievementByTitle(parameters.getValue("achievementTitle"));
 		if (achievement != null)
 			return String.format("&3%s - &f%s", achievement.getAchievementName(), achievement.getAchievementInfo());
 
