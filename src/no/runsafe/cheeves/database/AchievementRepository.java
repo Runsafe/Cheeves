@@ -35,13 +35,13 @@ public class AchievementRepository extends Repository
 			if (playerID.length() != 36)
 				continue;
 			IPlayer player = playerProvider.getPlayer(UUID.fromString(playerID));
-			if (player != null)
-			{
-				if (!achievements.containsKey(player))
-					achievements.put(player, new ArrayList<Integer>());
+			if (player == null)
+				continue;
 
-				achievements.get(player).add(node.Integer("achievementID"));
-			}
+			if (!achievements.containsKey(player))
+				achievements.put(player, new ArrayList<Integer>());
+
+			achievements.get(player).add(node.Integer("achievementID"));
 		}
 		return achievements;
 	}
