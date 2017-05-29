@@ -9,6 +9,7 @@ import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class AchievementRepository extends Repository
 {
@@ -30,14 +31,17 @@ public class AchievementRepository extends Repository
 		ISet data = this.database.query("SELECT player, achievementID FROM cheeves_data");
 		for (IRow node : data)
 		{
-			IPlayer player = playerProvider.getPlayer(node.String("player"));
-			if (player != null)
-			{
-				if (!achievements.containsKey(player))
-					achievements.put(player, new ArrayList<Integer>());
+			String playerID = node.String("player");
+			if (playerID.length() != 36)
+				continue;
+			IPlayer player = playerProvider.getPlayer(UUID.fromString(playerID));
+			if (player == null)
+				continue;
 
-				achievements.get(player).add(node.Integer("achievementID"));
-			}
+			if (!achievements.containsKey(player))
+				achievements.put(player, new ArrayList<Integer>());
+
+			achievements.get(player).add(node.Integer("achievementID"));
 		}
 		return achievements;
 	}
