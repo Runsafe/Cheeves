@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class TimeCapsule extends Achievement implements IPlayerCustomEvent
+public class PvESpender extends Achievement implements IPlayerCustomEvent
 {
-	public TimeCapsule(AchievementHandler handler)
+	public PvESpender(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class TimeCapsule extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Time Capsule";
+		return "PvE Spender";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Enter the Secret Room in the Survival Spawn.";
+		return "Made a purchase in the PVE Minigame.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.TIME_CAPSULE.ordinal();
+		return Achievements.PVE_SPENDER.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.timecapsule"))
+		if (event.getEvent().equals("achievement.pvespender"))
 			award(event.getPlayer());
 	}
 }

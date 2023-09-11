@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class TimeCapsule extends Achievement implements IPlayerCustomEvent
+public class SurfaceChampion extends Achievement implements IPlayerCustomEvent
 {
-	public TimeCapsule(AchievementHandler handler)
+	public SurfaceChampion(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class TimeCapsule extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Time Capsule";
+		return "Surface Champion";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Enter the Secret Room in the Survival Spawn.";
+		return "Beat all 5 Rounds of the Surface Arena.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.TIME_CAPSULE.ordinal();
+		return Achievements.SURFACE_CHAMPION.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.timecapsule"))
+		if (event.getEvent().equals("achievement.surfacechampion"))
 			award(event.getPlayer());
 	}
 }

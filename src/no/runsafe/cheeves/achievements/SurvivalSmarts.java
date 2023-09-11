@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class TimeCapsule extends Achievement implements IPlayerCustomEvent
+public class SurvivalSmarts extends Achievement implements IPlayerCustomEvent
 {
-	public TimeCapsule(AchievementHandler handler)
+	public SurvivalSmarts(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class TimeCapsule extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Time Capsule";
+		return "Survival Smarts";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Enter the Secret Room in the Survival Spawn.";
+		return "Traded a Dergon Egg for Dergon bones.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.TIME_CAPSULE.ordinal();
+		return Achievements.SURVIVAL_SMARTS.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.timecapsule"))
+		if (event.getEvent().equals("achievement.survivalsmarts"))
 			award(event.getPlayer());
 	}
 }
