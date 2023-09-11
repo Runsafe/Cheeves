@@ -78,5 +78,6 @@ public enum Achievements
 	PVE_MASTER,
 	PVE_NOVICE,
 	PVE_APPRENTICE,
-	PVE_EXPERT
+	PVE_EXPERT,
+	TIME_CAPSULE
 }
