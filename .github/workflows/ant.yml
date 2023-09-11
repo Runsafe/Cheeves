@@ -19,5 +19,12 @@ jobs:
       with:
         java-version: '8'
         distribution: 'temurin'
+    - shell: bash
+      run: |
+        mkdir -p ../../Framework/archive/build/jar
+        curl https://jenkins.runsafe.no/job/Framework/lastSuccessfulBuild/artifact/build/jar/framework.jar -o ../../Framework/archive/build/jar
+        cd ../../Framework
+        git clone git@github.com/runsafe/Framework
+        mv Framework workspace
     - name: Build with Ant
       run: ant -noinput -buildfile ant.xml
