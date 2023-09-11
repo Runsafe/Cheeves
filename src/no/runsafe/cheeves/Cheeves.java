@@ -105,6 +105,11 @@ public class Cheeves extends RunsafePlugin
 		addComponent(PVEExpert.class);
 		addComponent(PVEApprentice.class);
 		addComponent(PVENovice.class);
+		addComponent(SurfaceChampion.class);
+		addComponent(MineChampion.class);
+		addComponent(PvESpender.class);
+		addComponent(SurvivalSmarts.class);
+		addComponent(TimeCapsule.class);
 		
 		addComponent(AchievementFinder.class);
 
