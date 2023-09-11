@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class SurfaceChampion extends Achievement implements IPlayerCustomEvent
+public class PvESpender extends Achievement implements IPlayerCustomEvent
 {
-	public SurfaceChampion(AchievementHandler handler)
+	public PvESpender(AchievementHandler handler)
 	{
 		super(handler);
 	}
@@ -16,25 +16,25 @@ public class SurfaceChampion extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementName()
 	{
-		return "Surface Champion";
+		return "PvE Spender";
 	}
 
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Beat all 5 Rounds of the Surface Arena.";
+		return "Made a purchase in the PVE Minigame.";
 	}
 
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.SURFACE_CHAMPION.ordinal();
+		return Achievements.PVE_SPENDER.ordinal();
 	}
 
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("achievement.surfacechampion"))
+		if (event.getEvent().equals("achievement.pvespender"))
 			award(event.getPlayer());
 	}
 }
