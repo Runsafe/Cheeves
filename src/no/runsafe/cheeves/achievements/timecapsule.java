@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class timecapsule extends Achievement implements IPlayerCustomEvent
+public class TimeCapsule extends Achievement implements IPlayerCustomEvent
 {
-	public Time Capsule(AchievementHandler handler)
+	public TimeCapsule(AchievementHandler handler)
 	{
 		super(handler);
 	}
