@@ -24,7 +24,7 @@ jobs:
         mkdir -p ../../Framework/archive/build/jar
         curl https://jenkins.runsafe.no/job/Framework/lastSuccessfulBuild/artifact/build/jar/framework.jar -o ../../Framework/archive/build/jar/framework.jar
         cd ../../Framework
-        git clone git@github.com/runsafe/Framework
+        git clone git@github.com:Runsafe/Framework.git
         mv Framework workspace
     - name: Build with Ant
       run: ant -noinput -buildfile ant.xml
