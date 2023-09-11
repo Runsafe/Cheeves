@@ -22,7 +22,7 @@ jobs:
     - shell: bash
       run: |
         mkdir -p ../../Framework/archive/build/jar
-        curl https://jenkins.runsafe.no/job/Framework/lastSuccessfulBuild/artifact/build/jar/framework.jar -o ../../Framework/archive/build/jar
+        curl https://jenkins.runsafe.no/job/Framework/lastSuccessfulBuild/artifact/build/jar/framework.jar -o ../../Framework/archive/build/jar/framework.jar
         cd ../../Framework
         git clone git@github.com/runsafe/Framework
         mv Framework workspace
