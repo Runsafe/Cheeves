@@ -21,9 +21,9 @@ jobs:
         distribution: 'temurin'
     - shell: bash
       run: |
-        mkdir -p ../../Framework/archive/build/jar
+        mkdir -p /home/runner/work/Framework/archive/build/jar
         curl https://jenkins.runsafe.no/job/Framework/lastSuccessfulBuild/artifact/build/jar/framework.jar -o ../../Framework/archive/build/jar/framework.jar
-        cd ../../Framework
+        cd /home/runner/work/Framework
         git clone https://github.com/Runsafe/Framework.git
         mv Framework workspace
     - name: Build with Ant
