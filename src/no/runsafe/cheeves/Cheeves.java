@@ -110,6 +110,8 @@ public class Cheeves extends RunsafePlugin
 		addComponent(PvESpender.class);
 		addComponent(SurvivalSmarts.class);
 		addComponent(TimeCapsule.class);
+		addComponent(NetherChampion.class);
+		
 		
 		addComponent(AchievementFinder.class);
 
