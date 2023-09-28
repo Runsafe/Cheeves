@@ -6,9 +6,9 @@ import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.event.player.IPlayerCustomEvent;
 import no.runsafe.framework.minecraft.event.player.RunsafeCustomEvent;
 
-public class MastersSpook extends Achievement implements IPlayerCustomEvent
+public class MasterSpook extends Achievement implements IPlayerCustomEvent
 {
-	public MastersSpook(AchievementHandler handler)
+	public MasterSpook(AchievementHandler handler)
 	{
 		super(handler);
 	}
