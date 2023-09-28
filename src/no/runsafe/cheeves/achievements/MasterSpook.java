@@ -28,7 +28,7 @@ public class MasterSpook extends Achievement implements IPlayerCustomEvent
 	@Override
 	public int getAchievementID()
 	{
-		return Achievements.MASTERSPOOK.ordinal();
+		return Achievements.MASTER_SPOOK.ordinal();
 	}
 
 	@Override
