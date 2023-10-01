@@ -114,6 +114,10 @@ public class Cheeves extends RunsafePlugin
 		addComponent(LightningRound.class);
 		addComponent(Halloween2023.class);
 		addComponent(MasterSpook.class);
+		addComponent(SnoopingAround.class);
+		addComponent(CouldBeWorse.class);
+		addComponent(TamperingWithEquipment.class);
+		addComponent(WhereCouldTheyBe.class);
 		
 		
 		addComponent(AchievementFinder.class);
