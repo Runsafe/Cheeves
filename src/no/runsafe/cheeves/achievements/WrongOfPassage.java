@@ -37,3 +37,4 @@ public class WrongOfPassage extends Achievement implements IPlayerCustomEvent
 		if (event.getEvent().equals("achievement.wrongofpassage"))
 			award(event.getPlayer());
 	}
+}
