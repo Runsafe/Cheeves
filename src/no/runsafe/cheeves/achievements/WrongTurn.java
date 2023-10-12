@@ -37,3 +37,4 @@ public class WrongTurn extends Achievement implements IPlayerCustomEvent
 		if (event.getEvent().equals("achievement.wrongturn"))
 			award(event.getPlayer());
 	}
+}
