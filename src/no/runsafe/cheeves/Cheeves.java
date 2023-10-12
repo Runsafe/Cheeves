@@ -119,6 +119,9 @@ public class Cheeves extends RunsafePlugin
 		addComponent(TamperingWithEquipment.class);
 		addComponent(WhereCouldTheyBe.class);
 		addComponent(TopExcavator.class);
+		addComponent(WrongTurn.class);
+		addComponent(WrongOfPassage.class);
+		addComponent(LegacyOfPain.class);
 		
 		
 		addComponent(AchievementFinder.class);
