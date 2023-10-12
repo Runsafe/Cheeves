@@ -37,3 +37,4 @@ public class LegacyOfPain extends Achievement implements IPlayerCustomEvent
 		if (event.getEvent().equals("achievement.legacyofpain"))
 			award(event.getPlayer());
 	}
+}
