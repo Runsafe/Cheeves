@@ -22,7 +22,7 @@ public class WrongOfPassage extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Found the entrance to the tunnel. ";
+		return "Found the entrance to the tunnel.";
 	}
 
 	@Override
