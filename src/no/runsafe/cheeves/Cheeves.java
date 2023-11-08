@@ -125,6 +125,7 @@ public class Cheeves extends RunsafePlugin
 		addComponent(ParkourNovice.class);
 		addComponent(ParkourCompetent.class);
 		addComponent(DungeonCrawler.class);
+		addComponent(ParkourMaster.class);
 		
 		addComponent(AchievementFinder.class);
 
