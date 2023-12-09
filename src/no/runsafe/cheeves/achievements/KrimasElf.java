@@ -22,7 +22,7 @@ public class KrimasElf extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Located all 15 gifts in the wonderland.";
+		return "Located all 18 gifts in the wonderland.";
 	}
 
 	@Override
