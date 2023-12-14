@@ -22,7 +22,7 @@ public class TooPersonal extends Achievement implements IPlayerCustomEvent
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Made DOG a little to uncomfortable.";
+		return "Made DOG a little too uncomfortable.";
 	}
 
 	@Override
