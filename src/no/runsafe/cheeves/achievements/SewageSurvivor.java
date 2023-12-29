@@ -38,13 +38,7 @@ public class SewageSurvivor extends Achievement
 	{
 		String playerName = player.getName();
 		if (!this.activeTimers.containsKey(playerName))
-			this.activeTimers.put(playerName, this.scheduler.startAsyncTask(new Runnable() {
-				@Override
-				public void run()
-				{
-					award(player);
-				}
-			}, 300));
+			this.activeTimers.put(playerName, this.scheduler.startAsyncTask(() -> award(player), 300));
 	}
 
 	private void stopTimer(IPlayer player)
@@ -54,6 +48,6 @@ public class SewageSurvivor extends Achievement
 			this.scheduler.cancelTask(this.activeTimers.get(playerName));
 	}
 
-	private final HashMap<String, Integer> activeTimers = new HashMap<String, Integer>();
+	private final HashMap<String, Integer> activeTimers = new HashMap<>();
 	private final IScheduler scheduler;
 }

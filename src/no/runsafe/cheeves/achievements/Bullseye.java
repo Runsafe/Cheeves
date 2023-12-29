@@ -4,11 +4,11 @@ import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementHandler;
 import no.runsafe.cheeves.Achievements;
 import no.runsafe.framework.api.ILocation;
+import no.runsafe.framework.api.entity.IEntity;
+import no.runsafe.framework.api.entity.projectiles.IProjectile;
 import no.runsafe.framework.api.event.entity.IEntityDamageByEntityEvent;
 import no.runsafe.framework.api.player.IPlayer;
 import no.runsafe.framework.minecraft.entity.ProjectileEntity;
-import no.runsafe.framework.minecraft.entity.RunsafeEntity;
-import no.runsafe.framework.minecraft.entity.RunsafeProjectile;
 import no.runsafe.framework.minecraft.event.entity.RunsafeEntityDamageByEntityEvent;
 
 public class Bullseye extends Achievement implements IEntityDamageByEntityEvent
@@ -39,21 +39,21 @@ public class Bullseye extends Achievement implements IEntityDamageByEntityEvent
 	@Override
 	public void OnEntityDamageByEntity(RunsafeEntityDamageByEntityEvent event)
 	{
-		RunsafeEntity entity = event.getEntity();
+		IEntity entity = event.getEntity();
 		if (!(entity instanceof IPlayer))
 			return;
 
-		RunsafeEntity attacker = event.getDamageActor();
-		if (attacker.getEntityType() == ProjectileEntity.Arrow)
-		{
-			IPlayer shooter = ((RunsafeProjectile) attacker).getShootingPlayer();
-			if (shooter == null)
-				return;
-			ILocation playerLocation = entity.getLocation();
-			ILocation shooterLocation = shooter.getLocation();
+		IEntity attacker = event.getDamageActor();
+		if (attacker.getEntityType() != ProjectileEntity.Arrow)
+			return;
 
-			if (playerLocation != null && shooterLocation != null && playerLocation.distance(shooterLocation) >= 40)
-				award(shooter);
-		}
+		IPlayer shooter = ((IProjectile) attacker).getShootingPlayer();
+		if (shooter == null)
+			return;
+		ILocation playerLocation = entity.getLocation();
+		ILocation shooterLocation = shooter.getLocation();
+
+		if (playerLocation != null && shooterLocation != null && playerLocation.distance(shooterLocation) >= 40)
+			award(shooter);
 	}
 }

@@ -24,19 +24,18 @@ public class AwardAchievement extends ExecutableCommand
 	{
 		IPlayer player = parameters.getValue("player");
 
-		if (player != null)
-		{
-			Integer id = parameters.getValue("achievementID");
-			Achievement achievement = null;
-			if (id != null)
-				achievement = this.achievementFinder.getAchievementByID(id);
-			if (achievement == null)
-				return "&cNo achievement with that ID.";
+		if (player == null)
+			return "&cUnable to find player";
 
-			this.achievementHandler.awardAchievement(achievement, player);
-			return null;
-		}
-		return "&cUnable to find player";
+		Integer id = parameters.getValue("achievementID");
+		Achievement achievement = null;
+		if (id != null)
+			achievement = this.achievementFinder.getAchievementByID(id);
+		if (achievement == null)
+			return "&cNo achievement with that ID.";
+
+		this.achievementHandler.awardAchievement(achievement, player);
+		return null;
 	}
 
 	private final AchievementHandler achievementHandler;

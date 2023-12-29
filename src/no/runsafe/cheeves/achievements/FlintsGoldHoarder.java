@@ -39,24 +39,24 @@ public class FlintsGoldHoarder extends Achievement implements IInventoryClick, I
  
 	private void checkInventory(RunsafeInventory inventory, IPlayer player)
 	{
-		if (player.isInUniverse("survival"))
+		if (!player.isInUniverse("survival"))
+			return;
+
+		int amount = 0;
+		for (RunsafeMeta inventoryItem : inventory.getContents())
 		{
-			int amount = 0;
-			for (RunsafeMeta inventoryItem : inventory.getContents())
+			if (!inventoryItem.is(Item.Materials.GoldNugget))
+				continue;
+
+			String displayName = inventoryItem.getDisplayName();
+			if (displayName == null || !displayName.equals("§6Captain Flint's Gold"))
+				continue;
+
+			amount += inventoryItem.getAmount();
+			if (amount >= 25)
 			{
-				if (inventoryItem.is(Item.Materials.GoldNugget))
-				{
-					String displayName = inventoryItem.getDisplayName();
-					if (displayName != null && displayName.equals("§6Captain Flint's Gold"))
-					{
-						amount += inventoryItem.getAmount();
-						if (amount >= 25)
-						{
-							award(player);
-							return;
-						}
-					}
-				}
+				award(player);
+				return;
 			}
 		}
 	}

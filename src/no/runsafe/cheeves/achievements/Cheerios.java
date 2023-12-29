@@ -41,6 +41,5 @@ public class Cheerios extends Achievement implements IPlayerDeathEvent
 
 		if (killer != null && killer.isInUniverse("survival") && event.getLevelAmount() >= 30)
 			award(killer);
-
 	}
 }

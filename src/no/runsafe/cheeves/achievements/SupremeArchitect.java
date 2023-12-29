@@ -40,16 +40,16 @@ public class SupremeArchitect extends Achievement implements IPlayerCustomEvent
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("creative.plot.approved"))
-		{
-			Map<String, String> data = (Map<String, String>) event.getData();
-			if (Integer.valueOf(data.get("approved_plots")) >= 10)
-			{
-				IPlayer player = server.getPlayer(data.get("owner"));
-				if (player != null && !(player instanceof IAmbiguousPlayer))
-					this.award(player);
-			}
-		}
+		if (!event.getEvent().equals("creative.plot.approved"))
+			return;
+
+		Map<String, String> data = (Map<String, String>) event.getData();
+		if (Integer.parseInt(data.get("approved_plots")) < 10)
+			return;
+
+		IPlayer player = server.getPlayer(data.get("owner"));
+		if (player != null && !(player instanceof IAmbiguousPlayer))
+			this.award(player);
 	}
 
 	private final IServer server;

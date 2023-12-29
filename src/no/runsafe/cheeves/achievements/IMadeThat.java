@@ -40,13 +40,13 @@ public class IMadeThat extends Achievement implements IPlayerCustomEvent
 	@Override
 	public void OnPlayerCustomEvent(RunsafeCustomEvent event)
 	{
-		if (event.getEvent().equals("creative.plot.approved"))
-		{
-			Map<String, String> data = (Map<String, String>) event.getData();
-			IPlayer player = server.getPlayer(data.get("owner"));
-			if (player != null && !(player instanceof IAmbiguousPlayer))
-				this.award(player);
-		}
+		if (!event.getEvent().equals("creative.plot.approved"))
+			return;
+
+		Map<String, String> data = (Map<String, String>) event.getData();
+		IPlayer player = server.getPlayer(data.get("owner"));
+		if (player != null && !(player instanceof IAmbiguousPlayer))
+			this.award(player);
 	}
 
 	private final IServer server;

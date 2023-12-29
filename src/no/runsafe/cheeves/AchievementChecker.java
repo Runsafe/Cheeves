@@ -24,13 +24,10 @@ public class AchievementChecker implements IPlayerJoinEvent
 		final IPlayer player = event.getPlayer();
 		final List<Integer> achievements = this.repository.getNonToastedAchievements(player);
 
-		this.scheduler.startAsyncTask(new Runnable() {
-			@Override
-			public void run()
-			{
-				for (Integer achievementID : achievements)
-					handler.announceAchievement(finder.getAchievementByID(achievementID), player);
-			}
+		this.scheduler.startAsyncTask(() ->
+		{
+			for (Integer achievementID : achievements)
+				handler.announceAchievement(finder.getAchievementByID(achievementID), player);
 		}, 2);
 
 		this.repository.clearNonToastedAchievements(player);
