@@ -55,8 +55,8 @@ public class AchievementHandler implements IPluginEnabled
 	public void announceAchievement(Achievement achievement, IPlayer player)
 	{
 		server.broadcastComplex(
-			String.format("%s &ehas earned the achievement &3%s&e.", player.getPrettyName(), achievement.getAchievementName()),
-			achievement.getAchievementInfo(), null
+			String.format(Config.Message.getAnnounce(), player.getPrettyName(), achievement.getAchievementName()),
+			String.format(Config.Message.getInfoColour(), achievement.getAchievementInfo()), null
 		);
 	}
 

@@ -1,1 +1,11 @@
-option: value
+message:
+  announce: '%s &ehas earned the achievement &3[%s]&e.'
+  infoColour: '%s'
+  invalidPlayer: '&cUnable to find player'
+  consoleInvalidPlayer: '&cPlease specify a player when running this from the console.'
+  invalidAchievementID: '&cNo achievement with that ID.'
+  invalidAchievement: '&cSorry, no achievement with that title could be found.'
+  noAchievements: '&3%s has no achievements.'
+  achievementsListLine1: 'Achievements earned by %s'
+  achievementsListLine2: '&e%s'
+  achievementLookup: '&3%s - &f%s'
