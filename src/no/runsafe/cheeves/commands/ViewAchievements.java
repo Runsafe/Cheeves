@@ -37,7 +37,7 @@ public class ViewAchievements extends ExecutableCommand
 		for (Integer achievementID : achievements)
 		{
 			IAchievement achievement = this.achievementFinder.getAchievementByID(achievementID);
-			executor.sendColouredMessage("&3" + achievement.getAchievementName());
+			executor.sendComplexMessage("&3" + achievement.getAchievementName(), achievement.getAchievementInfo(), null);
 		}
 		return null;
 	}
