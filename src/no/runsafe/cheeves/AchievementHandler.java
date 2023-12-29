@@ -4,6 +4,7 @@ import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.api.IOutput;
 import no.runsafe.framework.api.event.plugin.IPluginEnabled;
 import no.runsafe.framework.api.player.IPlayer;
+import no.runsafe.framework.minecraft.Sound;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +40,7 @@ public class AchievementHandler implements IPluginEnabled
 		boolean toasted = false;
 		if (player.isOnline())
 		{
+			player.playSound(Sound.UI.ChallengeComplete);
 			this.announceAchievement(achievement, player);
 			toasted = true;
 		}
