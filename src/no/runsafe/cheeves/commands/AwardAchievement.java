@@ -3,6 +3,7 @@ package no.runsafe.cheeves.commands;
 import no.runsafe.cheeves.Achievement;
 import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Config;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
 import no.runsafe.framework.api.command.argument.IArgumentList;
@@ -24,19 +25,18 @@ public class AwardAchievement extends ExecutableCommand
 	{
 		IPlayer player = parameters.getValue("player");
 
-		if (player != null)
-		{
-			Integer id = parameters.getValue("achievementID");
-			Achievement achievement = null;
-			if (id != null)
-				achievement = this.achievementFinder.getAchievementByID(id);
-			if (achievement == null)
-				return "&cNo achievement with that ID.";
+		if (player == null)
+			return Config.Message.getInvalidPlayer();
 
-			this.achievementHandler.awardAchievement(achievement, player);
-			return null;
-		}
-		return "&cUnable to find player";
+		Integer id = parameters.getValue("achievementID");
+		Achievement achievement = null;
+		if (id != null)
+			achievement = this.achievementFinder.getAchievementByID(id);
+		if (achievement == null)
+			return Config.Message.getInvalidAchievementID();
+
+		this.achievementHandler.awardAchievement(achievement, player);
+		return null;
 	}
 
 	private final AchievementHandler achievementHandler;

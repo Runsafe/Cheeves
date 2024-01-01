@@ -39,24 +39,24 @@ public class HuckleberryBeta extends Achievement implements IInventoryClick, IPl
  
 	private void checkInventory(RunsafeInventory inventory, IPlayer player)
 	{
-		if (player.isInUniverse("survival"))
+		if (!player.isInUniverse("survival"))
+			return;
+
+		int amount = 0;
+		for (RunsafeMeta inventoryItem : inventory.getContents())
 		{
-			int amount = 0;
-			for (RunsafeMeta inventoryItem : inventory.getContents())
+			if (!inventoryItem.is(Item.Brewing.NetherWart))
+				continue;
+
+			String displayName = inventoryItem.getDisplayName();
+			if (displayName == null || !displayName.equals("§4Beta Token"))
+				continue;
+
+			amount += inventoryItem.getAmount();
+			if (amount >= 100)
 			{
-				if (inventoryItem.is(Item.Brewing.NetherWart))
-				{
-					String displayName = inventoryItem.getDisplayName();
-					if (displayName != null && displayName.equals("§4Beta Token"))
-					{
-						amount += inventoryItem.getAmount();
-						if (amount >= 100)
-						{
-							award(player);
-							return;
-						}
-					}
-				}
+				award(player);
+				return;
 			}
 		}
 	}

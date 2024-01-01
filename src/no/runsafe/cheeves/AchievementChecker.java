@@ -4,6 +4,7 @@ import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.api.IScheduler;
 import no.runsafe.framework.api.event.player.IPlayerJoinEvent;
 import no.runsafe.framework.api.player.IPlayer;
+import no.runsafe.framework.minecraft.Sound;
 import no.runsafe.framework.minecraft.event.player.RunsafePlayerJoinEvent;
 
 import java.util.List;
@@ -24,12 +25,12 @@ public class AchievementChecker implements IPlayerJoinEvent
 		final IPlayer player = event.getPlayer();
 		final List<Integer> achievements = this.repository.getNonToastedAchievements(player);
 
-		this.scheduler.startAsyncTask(new Runnable() {
-			@Override
-			public void run()
+		this.scheduler.startAsyncTask(() ->
+		{
+			for (Integer achievementID : achievements)
 			{
-				for (Integer achievementID : achievements)
-					handler.announceAchievement(finder.getAchievementByID(achievementID), player);
+				player.playSound(Sound.UI.ChallengeComplete);
+				handler.announceAchievement(finder.getAchievementByID(achievementID), player);
 			}
 		}, 2);
 

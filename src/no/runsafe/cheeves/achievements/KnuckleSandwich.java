@@ -43,39 +43,37 @@ public class KnuckleSandwich extends Achievement implements IEntityDamageByEntit
 	@Override
 	public void OnPlayerDeathEvent(RunsafePlayerDeathEvent event)
 	{
-		String playerName = event.getEntity().getName();
-		if (this.meta.containsKey(playerName))
-			this.meta.get(playerName).resetDamage();
+		IPlayer player = event.getEntity();
+		if (this.meta.containsKey(player))
+			this.meta.get(player).resetDamage();
 	}
 
 	@Override
 	public void OnEntityDamageByEntity(RunsafeEntityDamageByEntityEvent event)
 	{
 		RunsafeEntity entity = event.getEntity();
-		if (event.getDamageActor() instanceof IPlayer && entity.getEntityType() == LivingEntity.Wither)
+		if (!(event.getDamageActor() instanceof IPlayer) || entity.getEntityType() != LivingEntity.Wither)
+			return;
+
+		IPlayer player = (IPlayer) event.getDamageActor();
+
+		if (!player.isInUniverse("survival"))
+			return;
+
+		KnuckleSandwichMeta meta = (this.meta.containsKey(player) ? this.meta.get(player) : new KnuckleSandwichMeta(entity));
+
+		if (!meta.isSameEntity(entity) || player.getItemInMainHand() == null || player.getItemInMainHand().is(Item.Unavailable.Air))
 		{
-			IPlayer player = (IPlayer) event.getDamageActor();
-
-			if (player.isInUniverse("survival"))
-			{
-				String playerName = player.getName();
-				KnuckleSandwichMeta meta = (this.meta.containsKey(playerName) ? this.meta.get(playerName) : new KnuckleSandwichMeta(entity));
-
-				if (!meta.isSameEntity(entity) || player.getItemInHand() == null || player.getItemInHand().is(Item.Unavailable.Air))
-				{
-					meta.resetDamage();
-					meta.setEntity(entity);
-				}
-				else
-				{
-					if (meta.getDamage() == 100)
-						this.award(player);
-					else
-						meta.addDamagePoint((int) event.getDamage());
-				}
-			}
+			meta.resetDamage();
+			meta.setEntity(entity);
+			return;
 		}
+
+		if (meta.getDamage() == 100)
+			this.award(player);
+		else
+			meta.addDamagePoint((int) event.getDamage());
 	}
 
-	final HashMap<String, KnuckleSandwichMeta> meta = new HashMap<String, KnuckleSandwichMeta>();
+	final HashMap<IPlayer, KnuckleSandwichMeta> meta = new HashMap<>();
 }

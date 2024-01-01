@@ -13,7 +13,7 @@ public class AchievementFinder
 
 	public Achievement getAchievementByID(int achievementID)
 	{
-		return (this.achievementHashMap.containsKey(achievementID) ? this.achievementHashMap.get(achievementID) : null);
+		return (this.achievementHashMap.getOrDefault(achievementID, null));
 	}
 
 	public Achievement getAchievement(Achievements achievement)
@@ -34,11 +34,8 @@ public class AchievementFinder
 				possibleMatch = achievement;
 		}
 
-		if (possibleMatch != null)
-			return possibleMatch;
-
-		return null;
+		return possibleMatch;
 	}
 
-	private final HashMap<Integer, Achievement> achievementHashMap = new HashMap<Integer, Achievement>();
+	private final HashMap<Integer, Achievement> achievementHashMap = new HashMap<>();
 }

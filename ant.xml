@@ -32,7 +32,7 @@
         <mkdir dir="${jar.dir}"/>
         <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
             <manifest>
-                <attribute name="Class-Path" value="runsafe/framework.jar runsafe/joda-time-2.1.jar"/>
+                <attribute name="Class-Path" value="runsafe/framework.jar"/>
             </manifest>
             <fileset dir="${build.dir}" includes="plugin.yml"/>
             <fileset dir="${src.dir}" includes="defaults.yml"/>

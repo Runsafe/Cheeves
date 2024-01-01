@@ -40,22 +40,20 @@ public class WhatAreTheOdds extends Achievement implements IPlayerDamageEvent
 	@Override
 	public void OnPlayerDamage(final IPlayer player, RunsafeEntityDamageEvent event)
 	{
-		if (player.isInUniverse("survival") && event.getCause() == RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
+		if (!player.isInUniverse("survival") || event.getCause() != RunsafeEntityDamageEvent.RunsafeDamageCause.LIGHTNING)
+			return;
+
+		if (this.awardedPlayers.contains(player))
+			return;
+
+		this.awardedPlayers.add(player);
+		this.scheduler.startAsyncTask(() ->
 		{
-			if (!this.awardedPlayers.contains(player.getName()))
-			{
-				this.awardedPlayers.add(player.getName());
-				this.scheduler.startAsyncTask(new Runnable() {
-					@Override
-					public void run() {
-						award(player);
-						awardedPlayers.remove(player.getName());
-					}
-				}, 4);
-			}
-		}
+			award(player);
+			awardedPlayers.remove(player);
+		}, 4);
 	}
 
-	private final List<String> awardedPlayers = new ArrayList<String>();
+	private final List<IPlayer> awardedPlayers = new ArrayList<>();
 	private final IScheduler scheduler;
 }

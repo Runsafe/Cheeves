@@ -4,6 +4,7 @@ import no.runsafe.cheeves.database.AchievementRepository;
 import no.runsafe.framework.api.IOutput;
 import no.runsafe.framework.api.event.plugin.IPluginEnabled;
 import no.runsafe.framework.api.player.IPlayer;
+import no.runsafe.framework.minecraft.Sound;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,35 +34,35 @@ public class AchievementHandler implements IPluginEnabled
 		if (serverFirst && this.hasHadServerFirst(achievement.getAchievementID()))
 			return;
 
-		if (!this.hasAchievement(player, achievement))
+		if (this.hasAchievement(player, achievement))
+			return;
+
+		boolean toasted = false;
+		if (player.isOnline())
 		{
-			boolean toasted = false;
-			if (player.isOnline())
-			{
-				this.announceAchievement(achievement, player);
-				toasted = true;
-			}
-
-			if (!this.earnedAchievements.containsKey(player))
-				this.earnedAchievements.put(player, new ArrayList<Integer>());
-
-			this.earnedAchievements.get(player).add(achievement.getAchievementID());
-			this.repository.storeAchievement(player, achievement, toasted);
+			player.playSound(Sound.UI.ChallengeComplete);
+			this.announceAchievement(achievement, player);
+			toasted = true;
 		}
+
+		if (!this.earnedAchievements.containsKey(player))
+			this.earnedAchievements.put(player, new ArrayList<>());
+
+		this.earnedAchievements.get(player).add(achievement.getAchievementID());
+		this.repository.storeAchievement(player, achievement, toasted);
 	}
 
 	public void announceAchievement(Achievement achievement, IPlayer player)
 	{
-		server.broadcastColoured(
-			"%s &ehas earned the achievement &3%s&e.",
-			player.getPrettyName(),
-			achievement.getAchievementName()
+		server.broadcastComplex(
+			String.format(Config.Message.getAnnounce(), player.getPrettyName(), achievement.getAchievementName()),
+			String.format(Config.Message.getInfoColour(), achievement.getAchievementInfo()), null
 		);
 	}
 
 	public List<Integer> getPlayerAchievements(IPlayer player)
 	{
-		return (this.earnedAchievements.containsKey(player) ? this.earnedAchievements.get(player) : null);
+		return (this.earnedAchievements.getOrDefault(player, null));
 	}
 
 	public boolean hasAchievement(IPlayer player, Achievement achievement)
@@ -89,8 +90,8 @@ public class AchievementHandler implements IPluginEnabled
 		return this.serverFirstAchievements.contains(achievementID);
 	}
 
-	private HashMap<IPlayer, List<Integer>> earnedAchievements = new HashMap<IPlayer, List<Integer>>();
-	private final List<Integer> serverFirstAchievements = new ArrayList<Integer>();
+	private HashMap<IPlayer, List<Integer>> earnedAchievements = new HashMap<>();
+	private final List<Integer> serverFirstAchievements = new ArrayList<>();
 	private final AchievementRepository repository;
 	private final IOutput server;
 }

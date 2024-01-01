@@ -2,6 +2,7 @@ package no.runsafe.cheeves.commands;
 
 import no.runsafe.cheeves.AchievementFinder;
 import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.Config;
 import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
@@ -26,18 +27,21 @@ public class ViewAchievements extends ExecutableCommand
 		IPlayer viewPlayer = parameters.getValue("player");
 
 		if (viewPlayer == null)
-			return "&cPlease specify a player when running this from the console.";
+			return Config.Message.getConsoleInvalidPlayer();
 
 		List<Integer> achievements = this.achievementHandler.getPlayerAchievements(viewPlayer);
 
 		if (achievements == null)
-			return String.format("&3%s has no achievements.", viewPlayer.getName());
+			return String.format(Config.Message.getNoAchievements(), viewPlayer.getName());
 
-		executor.sendColouredMessage("Achievements earned by " + viewPlayer.getName());
+		executor.sendColouredMessage(Config.Message.getAchievementsListLine1(), viewPlayer.getPrettyName());
 		for (Integer achievementID : achievements)
 		{
 			IAchievement achievement = this.achievementFinder.getAchievementByID(achievementID);
-			executor.sendColouredMessage("&3" + achievement.getAchievementName());
+			executor.sendComplexMessage(
+				String.format(Config.Message.getAchievementsListLine2(), achievement.getAchievementName()),
+				String.format(Config.Message.getInfoColour(), achievement.getAchievementInfo()), null
+			);
 		}
 		return null;
 	}

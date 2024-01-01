@@ -1,6 +1,7 @@
 package no.runsafe.cheeves.commands;
 
 import no.runsafe.cheeves.AchievementFinder;
+import no.runsafe.cheeves.Config;
 import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
@@ -20,9 +21,13 @@ public class AchievementLookup extends ExecutableCommand
 	{
 		IAchievement achievement = this.achievementFinder.getAchievementByTitle(parameters.getValue("achievementTitle"));
 		if (achievement != null)
-			return String.format("&3%s - &f%s", achievement.getAchievementName(), achievement.getAchievementInfo());
+			return String.format(
+				Config.Message.getAchievementLookup(),
+				achievement.getAchievementName(),
+				achievement.getAchievementInfo()
+			);
 
-		return "&cSorry, no achievement with that title could be found.";
+		return Config.Message.getInvalidAchievement();
 	}
 
 	private final AchievementFinder achievementFinder;

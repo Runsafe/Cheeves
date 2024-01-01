@@ -2,7 +2,7 @@ package no.runsafe.cheeves;
 
 public interface IAchievement
 {
-	public String getAchievementName();
-	public String getAchievementInfo();
-	public int getAchievementID();
+	String getAchievementName();
+	String getAchievementInfo();
+	int getAchievementID();
 }
