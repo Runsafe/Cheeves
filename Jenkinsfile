@@ -4,7 +4,8 @@ pipeline {
   stages {
     stage('Ant Build') {
       steps {
-        copyArtifacts(projectName: '/Runsafe/Framework/master', filter:'**/*.jar', optional: false, flatten: true, target: 'framework');
+        copyArtifacts(projectName: '/Runsafe/Framework/master', filter:'framework.tar', optional: false, target: 'framework');
+        sh 'tar -C framework -xvf framework/framework.tar'
         withAnt(installation: 'Ant 1.10.14', jdk: 'JDK 1.8') {
           sh "ant -Drunsafe.dir=framework -Dlib.dir=framework -f ant.xml"
         }
