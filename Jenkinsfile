@@ -10,17 +10,10 @@ pipeline {
     stage('Ant Build') {
       agent { label 'ant' }
       tools {
-        ant 'Ant 1.10.14'
-        jdk 'JDK 1.8'
+        ant 'Default'
+        jdk 'Default'
       }
-      steps {
-        checkout scm
-        copyArtifacts(projectName: '/Runsafe/Framework/master', filter:'framework.tar', optional: false, target: 'framework');
-        sh 'tar -C framework -xvf framework/framework.tar'
-        sh "ant -Drunsafe.dir=framework/runsafe -Dlib.dir=framework/runsafe -f ant.xml"
-        recordIssues enabledForFailure: true, tool: java(), unhealthy: 10
-        archivePlugin '', '../build/jar/*.jar', "${env.plugin}.tar"
-      }
+      steps { buildPluginWithAnt env.plugin, '', 'build/jar/*.jar' }
     }
     stage('Deploy to test server') {
       agent { label 'server4' }
