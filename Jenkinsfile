@@ -5,7 +5,10 @@ pipeline {
     skipDefaultCheckout true
   }
   environment { plugin = "Cheeves" }
-  triggers { pollSCM '@monthly' }
+  triggers {
+    upstream '/Runsafe/Framework/master'
+    pollSCM '@monthly'
+  }
   stages {
     stage('Ant Build') {
       agent { label 'ant' }
@@ -22,16 +25,7 @@ pipeline {
         buildReport env.plugin, 'Deployed to test server'
       }
     }
-    stage('Wait for promotion') {
-      steps { input message: 'Promote to server1?', submitter: 'mortenn' }
-    }
-    stage('Deploy to production server') {
-      agent { label 'server1' }
-      steps {
-        stagePlugin "${env.plugin}.tar"
-        buildReport env.plugin, 'Deployed to production server'
-      }
-    }
+    stage('Ask for promotion') { steps { askForPromotion() } }
   }
   post { failure { buildReport env.plugin, 'Build failed' } }
 }
