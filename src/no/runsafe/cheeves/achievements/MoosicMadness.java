@@ -20,7 +20,7 @@ public class MoosicMadness extends Achievement
 	@Override
 	public String getAchievementInfo()
 	{
-		return "Contribute to endless Moosic library of Runsafe!";
+		return "Contribute to the endless Moosic library of Runsafe!";
 	}
 
 	@Override
