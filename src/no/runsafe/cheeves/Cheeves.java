@@ -132,6 +132,7 @@ public class Cheeves extends RunsafeConfigurablePlugin
 		addComponent(TrialsOfKrimas.class);
 		addComponent(KrimasElf.class);
 		addComponent(TooPersonal.class);
+		addComponent(MoosicMadness.class);
 		
 		addComponent(AchievementFinder.class);
 
