@@ -59,7 +59,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 				"`name` VARCHAR(100) NOT NULL," +
 				"`info` VARCHAR(500) NOT NULL," +
 				"`trigger` VARCHAR(50) NOT NULL," +
-				"`server_first` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0'" +
+				"`server_first` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0'," +
 				"PRIMARY KEY (`id`)" +
 			")",
 			"INSERT INTO `cheeves` (`id`,`name`,`info`,`trigger`) VALUES" +
