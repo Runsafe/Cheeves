@@ -174,8 +174,8 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 			"INSERT INTO `cheeves` (`id`,`name`,`info`,`trigger`,`server_first`) VALUES" +
 				"(6,'Server First: Ender Dragon','Participate in the server-first ender dragon kill.','achievement.SERVER_FIRST_ENDER_DRAGON',1)," +
 				"(22,'Server First: My Brain Hurts','Be the first player to complete the July 2013 puzzle event.','achievement.SERVER_FIRST_MY_BRAIN_HURTS',1)," +
-				"(56,'Server First: Master Treasure Hunter','Was either the first person or group to reach Captain Flint\\'s lost treasure!','achievement.SERVER_FIRST_MASTER_TREASURE_HUNTER',1)," +
-			"ALTER TABLE `cheeves` MODIFY COLUMN `id` INT(10) NOT NULL AUTO_INCREMENT",
+				"(56,'Server First: Master Treasure Hunter','Was either the first person or group to reach Captain Flint\\'s lost treasure!','achievement.SERVER_FIRST_MASTER_TREASURE_HUNTER',1)",
+			"ALTER TABLE `cheeves` MODIFY COLUMN `id` INT(10) AUTO_INCREMENT",
 			"ALTER TABLE `cheeves` AUTO_INCREMENT=105"
 		);
 
