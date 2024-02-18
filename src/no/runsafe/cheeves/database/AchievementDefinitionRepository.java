@@ -4,6 +4,7 @@ import no.runsafe.cheeves.IAchievement;
 import no.runsafe.framework.api.IConfiguration;
 import no.runsafe.framework.api.database.*;
 import no.runsafe.framework.api.event.plugin.IConfigurationChanged;
+import no.runsafe.framework.api.log.IConsole;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -13,6 +14,11 @@ import java.util.Map;
 
 public class AchievementDefinitionRepository extends Repository implements IConfigurationChanged
 {
+	public AchievementDefinitionRepository(IConsole console)
+	{
+		this.console = console;
+	}
+
 	@Nonnull
 	@Override
 	public String getTableName()
@@ -183,6 +189,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 		{
 			this.achievementHashMap.put(achievement.getAchievementID(), achievement);
 		}
+		console.logInformation("Loaded %d achievements from database", achievementHashMap.size());
 	}
 
 	public IAchievement getAchievementByID(int achievementID)
@@ -206,5 +213,6 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 		return possibleMatch;
 	}
 
+	private final IConsole console;
 	private final HashMap<Integer, IAchievement> achievementHashMap = new HashMap<>();
 }
