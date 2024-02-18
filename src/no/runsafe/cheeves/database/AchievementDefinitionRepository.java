@@ -29,7 +29,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 	public List<ConfiguredAchievement> getAchievements()
 	{
 		List<ConfiguredAchievement> achievements = new ArrayList<>();
-		ISet data = this.database.query("SELECT id, name, info, trigger, server_first FROM cheeves");
+		ISet data = this.database.query("SELECT * FROM cheeves");
 		for (IRow node : data)
 		{
 			ConfiguredAchievement achievement = new ConfiguredAchievement(
@@ -48,7 +48,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 	public void storeAchievement(int id, String name, String info, String triggerEvent, Boolean serverFirst)
 	{
 		this.database.execute(
-			"INSERT INTO cheeves (id, name, info, trigger, server_first) VALUES(?, ?, ?, ?, ?)",
+			"INSERT INTO cheeves (`id`, `name`, `info`, `trigger`, `server_first`) VALUES(?, ?, ?, ?, ?)",
 			id, name, info, triggerEvent, serverFirst ? 1 : 0
 		);
 	}
