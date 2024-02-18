@@ -59,6 +59,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 	{
 		ISchemaUpdate update = new SchemaUpdate();
 
+		// Transactions cannot roll back DDL in mariaDb
 		update.addQueries(
 			"CREATE TABLE `cheeves` (" +
 				"`id` INT(10) NOT NULL," +
@@ -67,7 +68,9 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 				"`trigger` VARCHAR(50) NOT NULL," +
 				"`server_first` TINYINT(1) UNSIGNED NOT NULL DEFAULT '0'," +
 				"PRIMARY KEY (`id`)" +
-			")",
+			")"
+		);
+		update.addQueries(
 			"INSERT INTO `cheeves` (`id`,`name`,`info`,`trigger`) VALUES" +
 				"(0,'Gladiator','Earn a rating of 2000 in the PvP arena.','achievement.GLADIATOR')," +
 				"(1,'Pimp','Obtain 64 blocks of diamond.','achievement.PIMP')," +
@@ -174,9 +177,15 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 			"INSERT INTO `cheeves` (`id`,`name`,`info`,`trigger`,`server_first`) VALUES" +
 				"(6,'Server First: Ender Dragon','Participate in the server-first ender dragon kill.','achievement.SERVER_FIRST_ENDER_DRAGON',1)," +
 				"(22,'Server First: My Brain Hurts','Be the first player to complete the July 2013 puzzle event.','achievement.SERVER_FIRST_MY_BRAIN_HURTS',1)," +
-				"(56,'Server First: Master Treasure Hunter','Was either the first person or group to reach Captain Flint\\'s lost treasure!','achievement.SERVER_FIRST_MASTER_TREASURE_HUNTER',1)",
+				"(56,'Server First: Master Treasure Hunter','Was either the first person or group to reach Captain Flint\\'s lost treasure!','achievement.SERVER_FIRST_MASTER_TREASURE_HUNTER',1)"
+		);
+
+		// DDL
+		update.addQueries(
+			"SET SESSION sql_mode='NO_AUTO_VALUE_ON_ZERO'",
 			"ALTER TABLE `cheeves` MODIFY COLUMN `id` INT(10) AUTO_INCREMENT",
-			"ALTER TABLE `cheeves` AUTO_INCREMENT=105"
+			"ALTER TABLE `cheeves` AUTO_INCREMENT=105",
+			"SET SESSION sql_mode=''"
 		);
 
 		return update;
