@@ -1,9 +1,8 @@
 package no.runsafe.cheeves.commands;
 
-import no.runsafe.cheeves.Achievement;
-import no.runsafe.cheeves.AchievementFinder;
-import no.runsafe.cheeves.AchievementHandler;
-import no.runsafe.cheeves.Config;
+import no.runsafe.cheeves.*;
+import no.runsafe.cheeves.database.AchievementDefinitionRepository;
+import no.runsafe.cheeves.listeners.AchievementHandler;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
 import no.runsafe.framework.api.command.argument.IArgumentList;
@@ -13,11 +12,11 @@ import no.runsafe.framework.api.player.IPlayer;
 
 public class AwardAchievement extends ExecutableCommand
 {
-	public AwardAchievement(AchievementHandler achievementHandler, AchievementFinder achievementFinder)
+	public AwardAchievement(AchievementHandler achievementHandler, AchievementDefinitionRepository repository)
 	{
 		super("awardach", "Awards an achievement to a player", "runsafe.cheeves.award", new Player().require(), new WholeNumber("achievementID").require());
 		this.achievementHandler = achievementHandler;
-		this.achievementFinder = achievementFinder;
+		this.repository = repository;
 	}
 
 	@Override
@@ -29,9 +28,9 @@ public class AwardAchievement extends ExecutableCommand
 			return Config.Message.getInvalidPlayer();
 
 		Integer id = parameters.getValue("achievementID");
-		Achievement achievement = null;
+		IAchievement achievement = null;
 		if (id != null)
-			achievement = this.achievementFinder.getAchievementByID(id);
+			achievement = this.repository.getAchievementByID(id);
 		if (achievement == null)
 			return Config.Message.getInvalidAchievementID();
 
@@ -40,5 +39,5 @@ public class AwardAchievement extends ExecutableCommand
 	}
 
 	private final AchievementHandler achievementHandler;
-	private final AchievementFinder achievementFinder;
+	private final AchievementDefinitionRepository repository;
 }

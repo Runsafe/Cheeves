@@ -1,9 +1,9 @@
 package no.runsafe.cheeves.commands;
 
-import no.runsafe.cheeves.AchievementFinder;
-import no.runsafe.cheeves.AchievementHandler;
+import no.runsafe.cheeves.listeners.AchievementHandler;
 import no.runsafe.cheeves.Config;
 import no.runsafe.cheeves.IAchievement;
+import no.runsafe.cheeves.database.AchievementDefinitionRepository;
 import no.runsafe.framework.api.command.ExecutableCommand;
 import no.runsafe.framework.api.command.ICommandExecutor;
 import no.runsafe.framework.api.command.argument.IArgumentList;
@@ -14,10 +14,10 @@ import java.util.List;
 
 public class ViewAchievements extends ExecutableCommand
 {
-	public ViewAchievements(AchievementFinder achievementFinder, AchievementHandler achievementHandler)
+	public ViewAchievements(AchievementDefinitionRepository repository, AchievementHandler achievementHandler)
 	{
-		super("view", "Views achievements for yourself or another player", "runsafe.cheeves.view", new Player().defaultToExecutor());
-		this.achievementFinder = achievementFinder;
+		super("view", "Views listeners for yourself or another player", "runsafe.cheeves.view", new Player().defaultToExecutor());
+		this.repository = repository;
 		this.achievementHandler = achievementHandler;
 	}
 
@@ -37,7 +37,7 @@ public class ViewAchievements extends ExecutableCommand
 		executor.sendColouredMessage(Config.Message.getAchievementsListLine1(), viewPlayer.getPrettyName());
 		for (Integer achievementID : achievements)
 		{
-			IAchievement achievement = this.achievementFinder.getAchievementByID(achievementID);
+			IAchievement achievement = this.repository.getAchievementByID(achievementID);
 			executor.sendComplexMessage(
 				String.format(Config.Message.getAchievementsListLine2(), achievement.getAchievementName()),
 				String.format(Config.Message.getInfoColour(), achievement.getAchievementInfo()), null
@@ -46,6 +46,6 @@ public class ViewAchievements extends ExecutableCommand
 		return null;
 	}
 
-	private final AchievementFinder achievementFinder;
+	private final AchievementDefinitionRepository repository;
 	private final AchievementHandler achievementHandler;
 }

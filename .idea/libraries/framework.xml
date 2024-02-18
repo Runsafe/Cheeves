@@ -1,7 +1,7 @@
 <component name="libraryTable">
   <library name="framework">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../out/framework.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Framework/build/jar/framework.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
