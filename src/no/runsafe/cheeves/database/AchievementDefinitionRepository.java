@@ -29,7 +29,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 	public List<ConfiguredAchievement> getAchievements()
 	{
 		List<ConfiguredAchievement> achievements = new ArrayList<>();
-		ISet data = this.database.query("SELECT * FROM cheeves");
+		ISet data = this.database.query("SELECT `id`, `name`, `info`, `trigger`, `server_first` FROM `cheeves`");
 		for (IRow node : data)
 		{
 			ConfiguredAchievement achievement = new ConfiguredAchievement(
@@ -37,7 +37,7 @@ public class AchievementDefinitionRepository extends Repository implements IConf
 				node.String("name"),
 				node.String("info"),
 				node.String("trigger"),
-				node.Integer("server_first") == 1
+				node.Boolean("server_first")
 			);
 
 			achievements.add(achievement);
