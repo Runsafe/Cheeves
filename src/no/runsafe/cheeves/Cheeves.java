@@ -56,7 +56,7 @@ public class Cheeves extends RunsafeConfigurablePlugin
 		addComponent(HuckleberryBeta.class);
 
 		// Commands
-		Command achievements = new Command("listeners", "Achievement related commands", null);
+		Command achievements = new Command("achievements", "Achievement related commands", null);
 		achievements.addSubCommand(getInstance(AchievementLookup.class));
 		achievements.addSubCommand(getInstance(ViewAchievements.class));
 		addComponent(achievements);
