@@ -6,8 +6,7 @@ pipeline {
   }
   environment { plugin = "Cheeves" }
   triggers {
-    upstream '/Runsafe/Framework/master'
-    upstream '/Runsafe/Framework/develop'
+    upstream '/Runsafe/Framework/master,/Runsafe/Framework/develop'
     pollSCM '@monthly'
   }
   stages {
